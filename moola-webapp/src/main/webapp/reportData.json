@@ -1,0 +1,9 @@
+{
+  "title": "Monthly overview",
+  "timeSliceName": "month",
+  "data": [
+    {"month":"Jan", "categories": [{"name":"salary", "amount":32},{"name":"vacation", "amount":-30},{"name":"groceries","amount":-25}], "balance":279},
+    {"month":"Feb", "categories": [{"name":"salary", "amount":65},{"name":"vacation", "amount":-96}], "balance":289},
+    {"month":"Maa", "categories": [{"name":"salary", "amount":165},{"name":"vacation", "amount":-26},{"name":"groceries","amount":-27}], "balance":319}
+  ]
+}

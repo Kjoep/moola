@@ -1,0 +1,658 @@
+Zichtrekening (in euro)
+IBAN BE72 7506 3768 3216
+BIC AXABBE22   
+
+rapport met volgende selectiecriteria:
+datum van 04-10-2014 tot 03-03-2015
+type transactie: ontvangen en uitgegeven
+
+afschrift;datum verrichting;datum valuta;datum boeking;bedrag;saldo rekening ;omschrijving aard verrichting;rekening begunstigde;tegenpartij;naam terminal;plaats terminal;kaartnummer;mededeling;vervolg mededeling;detail verrichting
+2014 / 7;2014-10-04;2014-10-06;2014-10-06;-173,00;14.099,80;Europese overschrijving;BE27955036302373;BEOBANK VISA LIEVE;;;;"503630237302";"";"Europese overschrijving naar rekening BE27 9550 3630 2373 (BIC: CTBKBEBX) van
+BEOBANK VISA LIEVE
+Generaal Jacqueslaan 263G BE 1050 Brussel
+Ref.opdrachtgevende bank E064810840
+Uitgevoerd via Homebanking op 03-10-2014 om 23:17"
+2014 / 7;2014-10-04;2014-10-04;2014-10-06;-46,57;14.053,23;Aankoop met AXA bankkaart;;;COLRUYT ST TRUID;ST-TRUIDEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 04-10-2014 om 09:48
+bij COLRUYT ST TRUID - ST-TRUIDEN met kaart nummer 7506376832160017"
+2014 / 7;2014-10-07;2014-10-07;2014-10-07;-10,00;14.043,23;Europese domiciliëring;BE02737026917240;Mobile Vikings;;;;"Direct Debit payment CLP1-5686163";"";"Terugkerende Europese domiciliëring (Core) voor
+Mobile Vikings
+Schuldeiseridentificatie: BE02ZZZ0886946917
+Mandaatreferte: M964702U295451"
+2014 / 7;2014-10-08;2014-10-08;2014-10-08;-150,04;13.893,19;Europese overschrijving;BE55733013571744;Eni gas . power nv/sa;;;;"005089560795";"";"Europese overschrijving naar rekening BE55 7330 1357 1744 (BIC: KREDBEBB) van
+Eni gas . power nv/sa
+Guimardstraat 1A, rue Guimard BE BE - 1040 Brussel
+Ref.opdrachtgevende bank E065012367
+Uitgevoerd via Homebanking op 07-10-2014 om 23:32"
+2014 / 7;2014-10-08;2014-10-08;2014-10-08;-877,25;13.015,94;Europese overschrijving;BE66475703660143;The java community EBVBA;;;;"DV14-1073";"Joeri Hendrickx - Rue Lebeau 4, 1000 Brussel -- Factuur: 23/09/2014";"Europese overschrijving naar rekening BE66 4757 0366 0143 (BIC: KREDBEBB) van
+The java community EBVBA
+Lijsterbessendreef 1 BE 8020 Oostkamp
+Ref.opdrachtgevende bank E065012368
+Uitgevoerd via Homebanking op 07-10-2014 om 23:32"
+2014 / 7;2014-10-07;2014-10-07;2014-10-08;90,28;13.106,22;Europese overschrijving;BE49310139775571;PARTENA - CAISSE DECOMPENS;;;;"/C/ DOSSIER    B 315900    011231 A                  PERIODE: 201409";"KINDERBIJSLAG   WWW.KIDS.PARTENA.BE";"Europese overschrijving van rekening BE49 3101 3977 5571 (BIC: BBRUBEBB) van
+PARTENA - CAISSE DECOMPENS
+RUE DES CHARTREUX 45 BE 1000        BRUXELLES 1
+Ref.opdrachtgever NOT PROVIDED Ref.opdrachtgevende bank OVI/D/0701/00069939/00029944"
+2014 / 7;2014-10-08;2014-10-08;2014-10-08;-20,00;13.086,22;Geldopname met AXA bankkaart;;;ORSMAAL;ORSMAAL;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 08-10-2014 om 18:06
+bij ORSMAAL - ORSMAAL met kaart nummer 7506376832160113
+Verrichtingskost 0,20 EUR verrekend op einde kalenderjaar, behoudens vrijstelling of anders vermeld in de tarieflijst."
+2014 / 7;2014-10-08;2014-10-08;2014-10-09;-3,50;13.082,72;Aankp buitenl.mt AXA bnkkrt;;;ZAVENTEM;;="7506376832160017";"";"";"Aankoop met AXA bankkaart
+van 3,50 EUR op 08-10-2014 om 17:11
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te PARKING FP 1           ZAVENTEM met kaartnummer 7506376832160017"
+2014 / 7;2014-10-10;2014-10-10;2014-10-10;-8,00;13.074,72;Europese domiciliëring;BE67001458461987;Arbeidscentrum De Wroeter;;;;"ZO026 Afrekening 2014w38,39";"";"Terugkerende Europese domiciliëring (Core) voor
+Arbeidscentrum De Wroeter
+Schuldeiseridentificatie: BE60ZZZ0433138454
+Mandaatreferte: 20140430-ZO026"
+2014 / 7;2014-10-10;2014-10-10;2014-10-10;-935,14;12.139,58;Europese overschrijving;BE02375111099940;Vlaamse Belastingdienst VKB-GV;;;;"142284900442";"";"Europese overschrijving naar rekening BE02 3751 1109 9940 (BIC: BBRUBEBB) van
+Vlaamse Belastingdienst VKB-GV
+Koning Abert II-Laan 35 bus 62 BE 1030 Brussel
+Ref.opdrachtgevende bank E065192109
+Uitgevoerd via Homebanking op 10-10-2014 om 20:27"
+2014 / 7;2014-10-11;2014-10-11;2014-10-13;-30,45;12.109,13;Aankoop met AXA bankkaart;;;KINEPOLIS LEUVEN;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 11-10-2014 om 22:09
+bij KINEPOLIS LEUVEN - LEUVEN met kaart nummer 7506376832160113"
+2014 / 7;2014-10-10;2014-10-10;2014-10-13;149,80;12.258,93;Europese overschrijving;NL26RABO0120615789;AZERTY B.V.;;;;"F825170";"";"Europese overschrijving van rekening NL26 RABO 0120 6157 89 (BIC: RABONL2U) van
+AZERTY B.V.
+Kotterstraat 14 NL 8102HZ RAALTE Nederland
+Ref.opdrachtgever 385023983 Ref.opdrachtgevende bank OPF-136582320.17"
+2014 / 7;2014-10-16;2014-10-16;2014-10-16;25.000,00;37.258,93;Europese overschrijving;BE76735036453695;HENDRICKX-CAMPS J + Y;;;;"VAN MAMA EN PAPA";"";"Europese overschrijving van rekening BE76 7350 3645 3695 (BIC: KREDBEBB) van
+HENDRICKX-CAMPS J + Y
+ERNEST CLAESLAAN     17 BE 1560    HOEILAART
+Ref.opdrachtgevende bank 1510144132A3S4G0"
+2014 / 7;2014-10-17;2014-10-17;2014-10-17;-10,23;37.248,70;Aankoop met AXA bankkaart;;;APOTHEEK LEEMPUT;LINTER;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 17-10-2014 om 16:38
+bij APOTHEEK LEEMPUT - LINTER met kaart nummer 7506376832160017"
+2014 / 7;2014-10-17;2014-10-17;2014-10-17;-52,72;37.195,98;Aankoop met AXA bankkaart;;;DATS 24;ST-TRUIDEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 17-10-2014 om 16:54
+bij DATS 24 - ST-TRUIDEN met kaart nummer 7506376832160017
+36,89 liter normaal zonder lood aan 1,42 EUR"
+2014 / 7;2014-10-18;2014-10-18;2014-10-20;-35,85;37.160,13;Aankoop met AXA bankkaart;;;DREAMLAND 3954;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 18-10-2014 om 10:55
+bij DREAMLAND 3954 - TIENEN met kaart nummer 7506376832160113"
+2014 / 7;2014-10-18;2014-10-18;2014-10-20;-20,00;37.140,13;Geldopname met AXA bankkaart;;;ORSMAAL;ORSMAAL;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 18-10-2014 om 11:59
+bij ORSMAAL - ORSMAAL met kaart nummer 7506376832160113
+Verrichtingskost 0,20 EUR verrekend op einde kalenderjaar, behoudens vrijstelling of anders vermeld in de tarieflijst."
+2014 / 7;2014-10-18;2014-10-20;2014-10-20;-554,76;36.585,37;Europese overschrijving;BE87458655110194;I.W.M.;;;;"014014507254";"";"Europese overschrijving naar rekening BE87 4586 5511 0194 (BIC: KREDBEBB) van
+I.W.M.
+Willekensmolenstraat 122 BE 3500 Hasselt
+Ref.opdrachtgevende bank E065525533
+Uitgevoerd via Homebanking op 18-10-2014 om 21:29"
+2014 / 7;2014-10-24;2014-10-24;2014-10-24;-40,00;36.545,37;Geldopname met AXA bankkaart;;;ORSMAAL;ORSMAAL;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 24-10-2014 om 20:24
+bij ORSMAAL - ORSMAAL met kaart nummer 7506376832160113
+Verrichtingskost 0,20 EUR verrekend op einde kalenderjaar, behoudens vrijstelling of anders vermeld in de tarieflijst."
+2014 / 7;2014-10-25;2014-10-25;2014-10-27;-29,56;36.515,81;Aankoop met AXA bankkaart;;;COLRUYT ST TRUID;ST-TRUIDEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 25-10-2014 om 11:27
+bij COLRUYT ST TRUID - ST-TRUIDEN met kaart nummer 7506376832160017"
+2014 / 7;2014-10-28;2014-10-29;2014-10-28;-333,00;36.182,81;Bestendige opdracht;BE85755463180006;Anny Coninckx;;;;"bestendige opdracht terugbetaling renteloze lening";"";"Bestendige opdracht naar rekening BE85 7554 6318 0006 (BIC AXABBE22) van
+Anny Coninckx
+Hasseltsesteenweg 421 BE 3800 Sint-Truiden
+Refertenummer bestendige opdracht : 2679355"
+2014 / 7;2014-10-28;2014-10-28;2014-10-28;-155,10;36.027,71;Aankoop met AXA bankkaart;;;ACERTA ONDERNEM;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 28-10-2014 om 10:08
+bij ACERTA ONDERNEM - LEUVEN met kaart nummer 7506376832160017"
+2014 / 7;2014-10-28;2014-10-28;2014-10-28;-26,99;36.000,72;Aankoop met AXA bankkaart;;;BART SMIT 963;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 28-10-2014 om 12:24
+bij BART SMIT 963 - LEUVEN met kaart nummer 7506376832160113"
+2014 / 7;2014-10-28;2014-10-28;2014-10-28;-15,98;35.984,74;Aankoop met AXA bankkaart;;;BART SMIT 963;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 28-10-2014 om 12:29
+bij BART SMIT 963 - LEUVEN met kaart nummer 7506376832160113"
+2014 / 7;2014-10-28;2014-10-28;2014-10-28;-19,72;35.965,02;Aankoop met AXA bankkaart;;;DE SLEGTE 04;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 28-10-2014 om 14:04
+bij DE SLEGTE 04 - LEUVEN met kaart nummer 7506376832160113"
+2014 / 7;2014-10-28;2014-10-28;2014-10-28;-6,50;35.958,52;Aankoop met AXA bankkaart;;;CORPORATION GOV;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 28-10-2014 om 14:14
+bij CORPORATION GOV - LEUVEN met kaart nummer 7506376832160113"
+2014 / 8;2014-10-29;2014-10-29;2014-10-29;2.337,51;38.296,03;Europese overschrijving;BE02310180250540;BELGACOM INTERNATIONAL CARRIER;;;;"/A/ LOON";"";"Europese overschrijving van rekening BE02 3101 8025 0540 (BIC: BBRUBEBB) van
+BELGACOM INTERNATIONAL CARRIER
+LEBEAUSTRAAT 4 BE 1000        BRUSSEL
+Ref.opdrachtgever 00139663-20141029-09H36-00204 Ref.opdrachtgevende bank OVI/D/0701/00143180/00000204"
+2014 / 8;2014-10-31;2014-10-31;2014-10-31;401,50;38.697,53;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 1V062047 - 2128407112327-0048587-317 BETALING   10/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30 BE 1000        BRUSSEL
+Ref.opdrachtgever 141031-056575-/A/ 1V062047 Ref.opdrachtgevende bank OVI/D/0701/00153872/00056575"
+2014 / 8;2014-10-31;2014-10-31;2014-10-31;347,05;39.044,58;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 1R029521 - 0128407112327-0130864-317 BETALING   10/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30 BE 1000        BRUSSEL
+Ref.opdrachtgever 141061-036794-/A/ 1R029521 Ref.opdrachtgevende bank OVI/D/0701/00153843/00036794"
+2014 / 8;2014-10-31;2014-10-31;2014-10-31;491,20;39.535,78;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 5R047206 - 0528407112327-0103648-411 BETALING   10/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30 BE 1000        BRUSSEL
+Ref.opdrachtgever 141061-036795-/A/ 5R047206 Ref.opdrachtgevende bank OVI/D/0701/00153843/00036795"
+2014 / 8;2014-10-31;2014-10-31;2014-10-31;-78,50;39.457,28;Aankoop met AXA bankkaart;;;C&A 023;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 31-10-2014 om 18:02
+bij C&A 023 - ST-TRUIDEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-03;2014-11-03;2014-11-03;-10,00;39.447,28;Europese domiciliëring;BE02737026917240;Mobile Vikings;;;;"Direct Debit payment CLP1-5936319";"";"Terugkerende Europese domiciliëring (Core) voor
+Mobile Vikings
+Schuldeiseridentificatie: BE02ZZZ0886946917
+Mandaatreferte: M964702U295451"
+2014 / 8;2014-11-03;2014-11-03;2014-11-03;-1.149,12;38.298,16;Interne invordering;774-2589358-82;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589358-82   774258935882"
+2014 / 8;2014-11-03;2014-11-03;2014-11-03;-133,80;38.164,36;Interne invordering;774-2589360-84;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589360-84   774258936084"
+2014 / 8;2014-11-03;2014-11-03;2014-11-03;-6,00;38.158,36;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 03-11-2014 om 17:13
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-05;2014-11-05;2014-11-05;-8,00;38.150,36;Europese domiciliëring;BE67001458461987;Arbeidscentrum De Wroeter;;;;"ZO026 Afrekening 2014w42,43";"";"Terugkerende Europese domiciliëring (Core) voor
+Arbeidscentrum De Wroeter
+Schuldeiseridentificatie: BE60ZZZ0433138454
+Mandaatreferte: 20140430-ZO026"
+2014 / 8;2014-11-05;2014-11-05;2014-11-05;-8,00;38.142,36;Europese overschrijving;BE31458916589155;Watering v.d. kleine gete;;;;"100441334573";"";"Europese overschrijving naar rekening BE31 4589 1658 9155 (BIC: KREDBEBB) van
+Watering v.d. kleine gete
+tiensesteenweg 38 B0301 BE BE 3800 Sint-Truiden
+Ref.opdrachtgevende bank E066385352
+Uitgevoerd via Homebanking op 05-11-2014 om 11:05"
+2014 / 8;2014-11-05;2014-11-05;2014-11-05;-10,00;38.132,36;Europese overschrijving;BE40733208116863;Christophe De Troeyer;;;;"Terugbetaling cadeau Kristin";"BEDANKT..";"Europese overschrijving naar rekening BE40 7332 0811 6863 (BIC: KREDBEBB) van
+Christophe De Troeyer
+Ref.opdrachtgevende bank E066385353
+Uitgevoerd via Homebanking op 05-11-2014 om 11:04"
+2014 / 8;2014-11-05;2014-11-05;2014-11-05;-168,95;37.963,41;Aankoop met AXA bankkaart;;;HUBO TIENEN;TIENEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 05-11-2014 om 12:01
+bij HUBO TIENEN - TIENEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-05;2014-11-05;2014-11-05;-14,48;37.948,93;Aankoop met AXA bankkaart;;;GAMMA;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 05-11-2014 om 17:27
+bij GAMMA - TIENEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-06;2014-11-06;2014-11-06;-19,70;37.929,23;Aankoop met AXA bankkaart;;;GB EXPRESS G.CEN;1000 BRUX.;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 06-11-2014 om 07:57
+bij GB EXPRESS G.CEN - 1000 BRUX. met kaart nummer 7506376832160113"
+2014 / 8;2014-11-07;2014-11-07;2014-11-07;-49,06;37.880,17;Aankoop met AXA bankkaart;;;DATS 24;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 07-11-2014 om 07:18
+bij DATS 24 - ST-TRUIDEN met kaart nummer 7506376832160113
+35,12 liter normaal zonder lood aan 1,39 EUR"
+2014 / 8;2014-11-07;2014-11-07;2014-11-07;90,28;37.970,45;Europese overschrijving;BE49310139775571;PARTENA - CAISSE DECOMPENS;;;;"/C/ DOSSIER    B 315900    011231 A                  PERIODE: 201410";"KINDERBIJSLAG   WWW.KIDS.PARTENA.BE";"Europese overschrijving van rekening BE49 3101 3977 5571 (BIC: BBRUBEBB) van
+PARTENA - CAISSE DECOMPENS
+RUE DES CHARTREUX 45 BE 1000        BRUXELLES 1
+Ref.opdrachtgever NOT PROVIDED Ref.opdrachtgevende bank OVI/D/0701/00174642/00029704"
+2014 / 8;2014-11-07;2014-11-07;2014-11-07;-6,00;37.964,45;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 07-11-2014 om 12:26
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-07;2014-11-07;2014-11-07;-90,29;37.874,16;Aankoop met AXA bankkaart;;;COLRUYT 3463;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 07-11-2014 om 13:25
+bij COLRUYT 3463 - ST-TRUIDEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-07;2014-11-07;2014-11-07;-36,21;37.837,95;Aankoop met AXA bankkaart;;;COLRUYT 3202;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 07-11-2014 om 14:13
+bij COLRUYT 3202 - TIENEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-10;2014-11-10;2014-11-10;-4,00;37.833,95;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 10-11-2014 om 14:59
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-14;2014-11-14;2014-11-14;-5,51;37.828,44;Aankoop met AXA bankkaart;;;APOTHEEK LEEMPUT;LINTER;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 14-11-2014 om 17:48
+bij APOTHEEK LEEMPUT - LINTER met kaart nummer 7506376832160113"
+2014 / 8;2014-11-15;2014-11-15;2014-11-17;-4,00;37.824,44;Aankoop met AXA bankkaart;;;PARKING RZ ST TR;3800;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 15-11-2014 om 00:28
+bij PARKING RZ ST TR - 3800 met kaart nummer 7506376832160113"
+2014 / 8;2014-11-15;2014-11-15;2014-11-17;-8,05;37.816,39;Aankoop met AXA bankkaart;;;ALDI TIENEN;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 15-11-2014 om 08:42
+bij ALDI TIENEN - TIENEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-15;2014-11-15;2014-11-17;-15,97;37.800,42;Aankoop met AXA bankkaart;;;GAMMA;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 15-11-2014 om 13:48
+bij GAMMA - TIENEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-16;2014-11-17;2014-11-17;-12,00;37.788,42;Europese overschrijving;BE89734028719685;LOKO;;;;"Inschrijving alumnicantus Joeri Hendrickx";"";"Europese overschrijving naar rekening BE89 7340 2871 9685 (BIC: KREDBEBB) van
+LOKO
+Ref.opdrachtgevende bank E066878641
+Uitgevoerd via Homebanking op 16-11-2014 om 19:36"
+2014 / 8;2014-11-16;2014-11-17;2014-11-17;-12.500,00;25.288,42;Europese overschrijving;BE34001434629390;Joeri Hendrickx;;;;"";"";"Europese overschrijving naar rekening BE34 0014 3462 9390 (BIC: GEBABEBB) van
+Joeri Hendrickx
+Ref.opdrachtgevende bank E066878725
+Uitgevoerd via Homebanking op 16-11-2014 om 19:39"
+2014 / 8;2014-11-17;2014-11-17;2014-11-17;-52,19;25.236,23;Aankoop met AXA bankkaart;;;DATS 24;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 17-11-2014 om 09:10
+bij DATS 24 - ST-TRUIDEN met kaart nummer 7506376832160113
+37,82 liter normaal zonder lood aan 1,38 EUR"
+2014 / 8;2014-11-17;2014-11-17;2014-11-17;-7,00;25.229,23;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 17-11-2014 om 14:23
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-18;2014-11-18;2014-11-18;-3,00;25.226,23;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 18-11-2014 om 15:25
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-19;2014-11-19;2014-11-19;-166,04;25.060,19;Aankoop met AXA bankkaart;;;COLRUYT 3202;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 19-11-2014 om 18:48
+bij COLRUYT 3202 - TIENEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-21;2014-11-21;2014-11-21;1.596,35;26.656,54;Europese overschrijving;BE02310180250540;BELGACOM INTERNATIONAL CARRIER;;;;"/A/ EINDEJAARS PREMIE";"";"Europese overschrijving van rekening BE02 3101 8025 0540 (BIC: BBRUBEBB) van
+BELGACOM INTERNATIONAL CARRIER
+LEBEAUSTRAAT 4 BE 1000        BRUSSEL
+Ref.opdrachtgever 00139663-20141121-09H32-00208 Ref.opdrachtgevende bank OVI/D/0701/00221666/00000208"
+2014 / 8;2014-11-22;2014-11-22;2014-11-24;-33,85;26.622,69;Aankoop met AXA bankkaart;;;DREAMLAND 3954;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 22-11-2014 om 16:54
+bij DREAMLAND 3954 - TIENEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-23;2014-11-24;2014-11-24;-40,00;26.582,69;Europese overschrijving;BE27955036302373;BEOBANK VISA LIEVE;;;;"503630237302";"";"Europese overschrijving naar rekening BE27 9550 3630 2373 (BIC: CTBKBEBX) van
+BEOBANK VISA LIEVE
+Generaal Jacqueslaan 263G BE 1050 Brussel
+Ref.opdrachtgevende bank E067175463
+Uitgevoerd via Homebanking op 23-11-2014 om 20:50"
+2014 / 8;2014-11-23;2014-11-24;2014-11-24;-150,04;26.432,65;Europese overschrijving;BE55733013571744;Eni gas . power nv/sa;;;;"005089560795";"";"Europese overschrijving naar rekening BE55 7330 1357 1744 (BIC: KREDBEBB) van
+Eni gas . power nv/sa
+Guimardstraat 1A, rue Guimard BE BE - 1040 Brussel
+Ref.opdrachtgevende bank E067175464
+Uitgevoerd via Homebanking op 23-11-2014 om 20:46"
+2014 / 8;2014-11-23;2014-11-24;2014-11-24;-63,00;26.369,65;Europese overschrijving;BE03000400084984;bpost, eShop;;;;"001109861670";"";"Europese overschrijving naar rekening BE03 0004 0008 4984 (BIC: BPOTBEB1) van
+bpost, eShop
+POSTBUS 5000 BE 1000 - BRUSSEL
+Ref.opdrachtgevende bank E067175465
+Uitgevoerd via Homebanking op 23-11-2014 om 20:45"
+2014 / 8;2014-11-23;2014-11-24;2014-11-24;-10.000,00;16.369,65;Europese overschrijving;BE34001434629390;Joeri Hendrickx;;;;"";"";"Europese overschrijving naar rekening BE34 0014 3462 9390 (BIC: GEBABEBB) van
+Joeri Hendrickx
+3e Regiment Lansiersstraat 21 BE 3350 Linter
+Ref.opdrachtgevende bank E067176901
+Uitgevoerd via Homebanking op 23-11-2014 om 21:35"
+2014 / 8;2014-11-23;2014-11-24;2014-11-24;-10.000,00;6.369,65;Europese overschrijving;BE59755461649426;Coninckx Lieve;;;;"Spaarrekening aanvullen";"";"Europese overschrijving naar rekening BE59 7554 6164 9426 (BIC: AXABBE22) van
+Coninckx Lieve
+3e Regiment Lansiersstraat 21 BE 3350 Linter
+Uitgevoerd via Homebanking op 23-11-2014 om 21:32"
+2014 / 8;2014-11-24;2014-11-24;2014-11-24;-7,00;6.362,65;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 24-11-2014 om 13:43
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-25;2014-11-25;2014-11-25;-4,00;6.358,65;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 25-11-2014 om 15:20
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-26;2014-11-26;2014-11-26;-14,85;6.343,80;Aankoop met AXA bankkaart;;;STERLING BOOKS;1000 BRUX.;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 26-11-2014 om 12:26
+bij STERLING BOOKS - 1000 BRUX. met kaart nummer 7506376832160113"
+2014 / 8;2014-11-26;2014-11-26;2014-11-26;2.361,85;8.705,65;Europese overschrijving;BE02310180250540;BELGACOM INTERNATIONAL CARRIER;;;;"/A/ LOON";"";"Europese overschrijving van rekening BE02 3101 8025 0540 (BIC: BBRUBEBB) van
+BELGACOM INTERNATIONAL CARRIER
+LEBEAUSTRAAT 4 BE 1000        BRUSSEL
+Ref.opdrachtgever 00139663-20141126-09H38-00207 Ref.opdrachtgevende bank OVI/D/0701/00236050/00000207"
+2014 / 8;2014-11-26;2014-11-26;2014-11-26;-32,34;8.673,31;Aankoop met AXA bankkaart;;;BRICO 3619;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 26-11-2014 om 19:06
+bij BRICO 3619 - TIENEN met kaart nummer 7506376832160113"
+2014 / 8;2014-11-28;2014-11-29;2014-11-28;-333,00;8.340,31;Bestendige opdracht;BE85755463180006;Anny Coninckx;;;;"bestendige opdracht terugbetaling renteloze lening";"";"Bestendige opdracht naar rekening BE85 7554 6318 0006 (BIC AXABBE22) van
+Anny Coninckx
+Hasseltsesteenweg 421 BE 3800 Sint-Truiden
+Refertenummer bestendige opdracht : 2679355"
+2014 / 8;2014-11-28;2014-11-28;2014-11-28;27,00;8.367,31;Europese overschrijving;BE78786548584086;UC LEUVEN VZW;;;;"parking nov";"";"Europese overschrijving van rekening BE78 7865 4858 4086 (BIC: GKCCBEBB) van
+UC LEUVEN VZW
+ABDIJ VAN PARK           9 BE 3001  HEVERLEE
+Ref.opdrachtgever 44007857261120141005410094579390 Ref.opdrachtgevende bank 0800KBR241055"
+2014 / 8;2014-11-28;2014-11-28;2014-11-28;425,15;8.792,46;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 1V062112 - 2128407112327-0039834-317 BETALING   11/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30 BE 1000        BRUSSEL
+Ref.opdrachtgever 141131-056691-/A/ 1V062112 Ref.opdrachtgevende bank OVI/D/0701/00246694/00056691"
+2014 / 8;2014-11-28;2014-11-28;2014-11-28;-20,00;8.772,46;Geldopname met AXA bankkaart;;;BELFIUS35453002;BRUXELLES;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 28-11-2014 om 12:08
+bij BELFIUS35453002 - BRUXELLES met kaart nummer 7506376832160113
+Verrichtingskost 0,20 EUR verrekend op einde kalenderjaar, behoudens vrijstelling of anders vermeld in de tarieflijst."
+2014 / 8;2014-11-28;2014-11-28;2014-11-28;565,36;9.337,82;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 1R029559 - 0128407112327-0130864-317 BETALING   11/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30 BE 1000        BRUSSEL
+Ref.opdrachtgever 141161-037004-/A/ 1R029559 Ref.opdrachtgevende bank OVI/D/0701/00246692/00037004"
+2014 / 8;2014-11-28;2014-11-28;2014-11-28;400,53;9.738,35;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 5R047411 - 0528407112327-0103648-411 BETALING   11/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30 BE 1000        BRUSSEL
+Ref.opdrachtgever 141161-037005-/A/ 5R047411 Ref.opdrachtgevende bank OVI/D/0701/00246692/00037005"
+2014 / 8;2014-11-29;2014-11-29;2014-12-01;-48,73;9.689,62;Aankoop met AXA bankkaart;;;DATS 24;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 29-11-2014 om 10:35
+bij DATS 24 - ST-TRUIDEN met kaart nummer 7506376832160113
+36,39 liter normaal zonder lood aan 1,33 EUR"
+2014 / 8;2014-11-29;2014-11-29;2014-12-01;-231,39;9.458,23;Aankoop met AXA bankkaart;;;COLRUYT ST TRUID;ST-TRUIDEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 29-11-2014 om 16:31
+bij COLRUYT ST TRUID - ST-TRUIDEN met kaart nummer 7506376832160017"
+2014 / 8;2014-11-29;2014-11-29;2014-12-01;-75,00;9.383,23;Aankoop met AXA bankkaart;;;KREOTINE;ST-TRUIDEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 29-11-2014 om 17:10
+bij KREOTINE - ST-TRUIDEN met kaart nummer 7506376832160017"
+2014 / 8;2014-12-01;2014-12-01;2014-12-01;-7,00;9.376,23;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 01-12-2014 om 13:40
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-02;2014-12-02;2014-12-02;-47,25;9.328,98;Aankoop met AXA bankkaart;;;BRICO 3498;1000 BRUX.;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 02-12-2014 om 13:17
+bij BRICO 3498 - 1000 BRUX. met kaart nummer 7506376832160113"
+2014 / 9;2014-12-02;2014-12-02;2014-12-02;-6,00;9.322,98;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 02-12-2014 om 17:34
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-03;2014-12-03;2014-12-03;-10,00;9.312,98;Europese domiciliëring;BE02737026917240;City Live NV;;;;"Direct Debit payment CLP1-6198003";"";"Terugkerende Europese domiciliëring (Core) voor
+City Live NV
+Schuldeiseridentificatie: BE02ZZZ0886946917
+Mandaatreferte: M964702U295451"
+2014 / 9;2014-12-03;2014-12-03;2014-12-03;-1.149,12;8.163,86;Interne invordering;774-2589358-82;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589358-82   774258935882"
+2014 / 9;2014-12-03;2014-12-03;2014-12-03;-133,80;8.030,06;Interne invordering;774-2589360-84;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589360-84   774258936084"
+2014 / 9;2014-12-03;2014-12-03;2014-12-03;30,00;8.060,06;Europese overschrijving;BE55734036039044;VANBRIEL-VERBEEK S + I;;;;"LAN SURPLUS";"";"Europese overschrijving van rekening BE55 7340 3603 9044 (BIC: KREDBEBB) van
+VANBRIEL-VERBEEK S + I
+BRANDENSTRAAT        35 BE 3012    WILSELE
+Ref.opdrachtgevende bank 011214OL4403P6M0"
+2014 / 9;2014-12-03;2014-12-03;2014-12-03;-64,77;7.995,29;Aankoop met AXA bankkaart;;;GAMMA;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 03-12-2014 om 10:10
+bij GAMMA - TIENEN met kaart nummer 7506376832160113"
+2014 / 9;2014-12-03;2014-12-03;2014-12-03;-20,67;7.974,62;Aankoop met AXA bankkaart;;;THIRY PAINTS;ORSMAAL-GU;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 03-12-2014 om 14:57
+bij THIRY PAINTS - ORSMAAL-GU met kaart nummer 7506376832160113"
+2014 / 9;2014-12-03;2014-12-03;2014-12-03;-42,38;7.932,24;Aankoop met AXA bankkaart;;;GAMMA;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 03-12-2014 om 15:10
+bij GAMMA - TIENEN met kaart nummer 7506376832160113"
+2014 / 9;2014-12-04;2014-12-04;2014-12-04;-54,98;7.877,26;Aankoop met AXA bankkaart;;;TOTAL KESSEL LO;KESSEL-LO;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 04-12-2014 om 17:40
+bij TOTAL KESSEL LO - KESSEL-LO met kaart nummer 7506376832160017"
+2014 / 9;2014-12-05;2014-12-05;2014-12-05;-33,75;7.843,51;Aankoop met AXA bankkaart;;;CARREFOUR 0675;KORBEEK-LO;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 05-12-2014 om 13:23
+bij CARREFOUR 0675 - KORBEEK-LO met kaart nummer 7506376832160017"
+2014 / 9;2014-12-05;2014-12-05;2014-12-05;90,28;7.933,79;Europese overschrijving;BE49310139775571;PARTENA - CAISSE DECOMPENS;;;;"/C/ DOSSIER    B 315900    011231 A                  PERIODE: 201411";"KINDERBIJSLAG   WWW.KIDS.PARTENA.BE";"Europese overschrijving van rekening BE49 3101 3977 5571 (BIC: BBRUBEBB) van
+PARTENA - CAISSE DECOMPENS
+RUE DES CHARTREUX 45 BE 1000        BRUXELLES 1
+Ref.opdrachtgever NOT PROVIDED Ref.opdrachtgevende bank OVI/D/0701/00279668/00029470"
+2014 / 9;2014-12-07;2014-12-07;2014-12-08;-150,00;7.783,79;Geldopname met AXA bankkaart;;;ORSMAAL;ORSMAAL;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 07-12-2014 om 08:13
+bij ORSMAAL - ORSMAAL met kaart nummer 7506376832160113
+Verrichtingskost 0,20 EUR verrekend op einde kalenderjaar, behoudens vrijstelling of anders vermeld in de tarieflijst."
+2014 / 9;2014-12-08;2014-12-08;2014-12-08;-950,00;6.833,79;Europese domiciliëring;BE13645100793139;Generali Belgium;;;;"714039097812";"";"Terugkerende Europese domiciliëring (Core) voor
+Generali Belgium
+Schuldeiseridentificatie: BE06ZZZ0403262553
+Mandaatreferte: 146700004074"
+2014 / 9;2014-12-08;2014-12-08;2014-12-08;-8,00;6.825,79;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 08-12-2014 om 14:50
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-08;2014-12-08;2014-12-09;-57,92;6.767,87;Aankp buitenl.mt AXA bnkkrt;;;ST-TRUIDEN;;="7506376832160113";"";"";"Aankoop met AXA bankkaart
+van 57,92 EUR op 08-12-2014 om 16:39
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te COLRUYT SINT TRUIDEN 3 SINT-TRUIDEN met kaartnummer 7506376832160113"
+2014 / 9;2014-12-09;2014-12-09;2014-12-09;-3,00;6.764,87;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 09-12-2014 om 15:14
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-10;2014-12-10;2014-12-10;-53,82;6.711,05;Aankoop met AXA bankkaart;;;TOTAL 2214;3350;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 10-12-2014 om 17:32
+bij TOTAL 2214 - 3350 met kaart nummer 7506376832160017"
+2014 / 9;2014-12-10;2014-12-10;2014-12-11;-71,99;6.639,06;Aankp buitenl.mt AXA bnkkrt;;;UTRECHT;;="7506376832160017";"";"";"Aankoop met AXA bankkaart
+van 71,99 EUR op 10-12-2014 om 10:07
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te Bol.com                Utrecht met kaartnummer 7506376832160017"
+2014 / 9;2014-12-13;2014-12-13;2014-12-15;-40,00;6.599,06;Aankoop met AXA bankkaart;;;AVEVE TIENEN;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 13-12-2014 om 15:41
+bij AVEVE TIENEN - TIENEN met kaart nummer 7506376832160113"
+2014 / 9;2014-12-14;2014-12-15;2014-12-15;-2,65;6.596,41;Europese overschrijving;BE50000171003118;Proximus Pack/VL;;;;"643348326572";"";"Europese overschrijving naar rekening BE50 0001 7100 3118 (BIC: BPOTBEB1) van
+Proximus Pack/VL
+Koning Albert II-laan 27 BE 1030 Brussel
+Ref.opdrachtgevende bank E068299104
+Uitgevoerd via Homebanking op 14-12-2014 om 23:38"
+2014 / 9;2014-12-14;2014-12-15;2014-12-15;-50,00;6.546,41;Europese overschrijving;BE27955036302373;BEOBANK VISA LIEVE;;;;"503630237302";"";"Europese overschrijving naar rekening BE27 9550 3630 2373 (BIC: CTBKBEBX) van
+BEOBANK VISA LIEVE
+Generaal Jacqueslaan 263G BE 1050 Brussel
+Ref.opdrachtgevende bank E068299105
+Uitgevoerd via Homebanking op 14-12-2014 om 23:35"
+2014 / 9;2014-12-14;2014-12-15;2014-12-15;-720,00;5.826,41;Europese overschrijving;BE85732016194506;Sodexo Pass Belgium nv;;;;"190103421585";"";"Europese overschrijving naar rekening BE85 7320 1619 4506 (BIC: CREGBEBB) van
+Sodexo Pass Belgium nv
+CHARLES LEMAIRESTRAAT, 1 BE 1160 BRUSSEL
+Ref.opdrachtgevende bank E068299106
+Uitgevoerd via Homebanking op 14-12-2014 om 23:33"
+2014 / 9;2014-12-14;2014-12-15;2014-12-15;-90,00;5.736,41;Europese overschrijving;FR843000100682355G000000006;Centre d encaissements des amendes;;;;"AMENDE3333539099076102";"";"Europese overschrijving naar rekening FR84 3000 1006 8235 5G00 0000 006 (BIC: BDFEFRPPCCT) van
+Centre d encaissements des amendes
+35073 Rennes Cedes 9 FR France
+Ref.opdrachtgevende bank E068299107
+Uitgevoerd via Homebanking op 14-12-2014 om 23:25"
+2014 / 9;2014-12-14;2014-12-15;2014-12-15;-10,00;5.726,41;Europese overschrijving;BE96734014433205;Vriendenkring TKO;;;;"van Lieve Coninckx voor de collega s.";"";"Europese overschrijving naar rekening BE96 7340 1443 3205 (BIC: KREDBEBB) van
+Vriendenkring TKO
+Ref.opdrachtgevende bank E068299108
+Uitgevoerd via Homebanking op 14-12-2014 om 23:19"
+2014 / 9;2014-12-14;2014-12-15;2014-12-15;-150,04;5.576,37;Europese overschrijving;BE55733013571744;Eni gas . power nv/sa;;;;"005089560795";"";"Europese overschrijving naar rekening BE55 7330 1357 1744 (BIC: KREDBEBB) van
+Eni gas . power nv/sa
+Guimardstraat 1A, rue Guimard BE BE - 1040 Brussel
+Ref.opdrachtgevende bank E068299109
+Uitgevoerd via Homebanking op 14-12-2014 om 23:18"
+2014 / 9;2014-12-15;2014-12-15;2014-12-15;-99,00;5.477,37;Aankoop met AXA bankkaart;;;SAVARO;3800;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 15-12-2014 om 14:31
+bij SAVARO - 3800 met kaart nummer 7506376832160017"
+2014 / 9;2014-12-15;2014-12-15;2014-12-15;-48,34;5.429,03;Aankoop met AXA bankkaart;;;TOTAL 2214;3350;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 15-12-2014 om 16:02
+bij TOTAL 2214 - 3350 met kaart nummer 7506376832160017
+34,83 liter normaal zonder lood aan 1,38 EUR"
+2014 / 9;2014-12-15;2014-12-15;2014-12-15;-30,00;5.399,03;Aankoop met AXA bankkaart;;;CHIC & SIMPEL;KOERSEL;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 15-12-2014 om 19:37
+bij CHIC & SIMPEL - KOERSEL met kaart nummer 7506376832160017"
+2014 / 9;2014-12-15;2014-12-15;2014-12-15;-20,00;5.379,03;Aankoop met AXA bankkaart;;;CHIC & SIMPEL;KOERSEL;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 15-12-2014 om 20:02
+bij CHIC & SIMPEL - KOERSEL met kaart nummer 7506376832160017"
+2014 / 9;2014-12-15;2014-12-15;2014-12-15;-6,70;5.372,33;Aankoop met AXA bankkaart;;;PARKING LADEUZE;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 15-12-2014 om 20:24
+bij PARKING LADEUZE - LEUVEN met kaart nummer 7506376832160113"
+2014 / 9;2014-12-16;2014-12-16;2014-12-16;-55,68;5.316,65;Aankoop met AXA bankkaart;;;APOTHEEK LEEMPUT;LINTER;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 16-12-2014 om 10:25
+bij APOTHEEK LEEMPUT - LINTER met kaart nummer 7506376832160017"
+2014 / 9;2014-12-16;2014-12-16;2014-12-16;-5,00;5.311,65;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 16-12-2014 om 16:23
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-18;2014-12-18;2014-12-18;-8,31;5.303,34;Europese domiciliëring;BE67001458461987;Arbeidscentrum De Wroeter;;;;"ZO026 Afrekening 2014w48,49";"";"Terugkerende Europese domiciliëring (Core) voor
+Arbeidscentrum De Wroeter
+Schuldeiseridentificatie: BE60ZZZ0433138454
+Mandaatreferte: 20140430-ZO026"
+2014 / 9;2014-12-18;2014-12-18;2014-12-18;-41,70;5.261,64;Aankoop met AXA bankkaart;;;TOTAL 5086;HAKENDOVER;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 18-12-2014 om 19:18
+bij TOTAL 5086 - HAKENDOVER met kaart nummer 7506376832160017"
+2014 / 9;2014-12-19;2014-12-19;2014-12-19;-5,00;5.256,64;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 19-12-2014 om 12:21
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-20;2014-12-20;2014-12-22;-110,00;5.146,64;Geldopname met AXA bankkaart;;;ORSMAAL;ORSMAAL;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 20-12-2014 om 21:01
+bij ORSMAAL - ORSMAAL met kaart nummer 7506376832160113"
+2014 / 9;2014-12-22;2014-12-22;2014-12-22;-141,07;5.005,57;Aankoop met AXA bankkaart;;;DREAMLAND 4399;DIEST;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 22-12-2014 om 12:56
+bij DREAMLAND 4399 - DIEST met kaart nummer 7506376832160017"
+2014 / 9;2014-12-22;2014-12-22;2014-12-22;2.314,71;7.320,28;Europese overschrijving;BE02310180250540;BELGACOM INTERNATIONAL CARRIER;;;;"/A/ LOON";"";"Europese overschrijving van rekening BE02 3101 8025 0540 (BIC: BBRUBEBB) van
+BELGACOM INTERNATIONAL CARRIER
+LEBEAUSTRAAT 4 BE 1000        BRUSSEL
+Ref.opdrachtgever 00139663-20141222-09H38-00208 Ref.opdrachtgevende bank OVI/D/0701/00335113/00000208"
+2014 / 9;2014-12-22;2014-12-22;2014-12-22;-34,44;7.285,84;Aankoop met AXA bankkaart;;;SB LEUVEN;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 22-12-2014 om 15:57
+bij SB LEUVEN - LEUVEN met kaart nummer 7506376832160113"
+2014 / 9;2014-12-22;2014-12-22;2014-12-22;-31,90;7.253,94;Aankoop met AXA bankkaart;;;ELECTRO MAFRANS;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 22-12-2014 om 16:19
+bij ELECTRO MAFRANS - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-22;2014-12-22;2014-12-22;-28,47;7.225,47;Aankoop met AXA bankkaart;;;CLAIRE'S LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 22-12-2014 om 16:36
+bij CLAIRE'S LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-22;2014-12-22;2014-12-22;-12,59;7.212,88;Aankoop met AXA bankkaart;;;2415 AV LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 22-12-2014 om 16:49
+bij 2415 AV LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-22;2014-12-22;2014-12-22;-76,99;7.135,89;Aankoop met AXA bankkaart;;;2415 AV LEUVEN;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 22-12-2014 om 17:14
+bij 2415 AV LEUVEN - LEUVEN met kaart nummer 7506376832160113"
+2014 / 9;2014-12-23;2014-12-23;2014-12-23;-48,61;7.087,28;Aankoop met AXA bankkaart;;;COLRUYT 3202;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 23-12-2014 om 17:19
+bij COLRUYT 3202 - TIENEN met kaart nummer 7506376832160113"
+2014 / 9;2014-12-24;2014-12-24;2014-12-24;-52,15;7.035,13;Aankoop met AXA bankkaart;;;TOTAL 2214;3350;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 24-12-2014 om 15:22
+bij TOTAL 2214 - 3350 met kaart nummer 7506376832160113"
+2014 / 9;2014-12-29;2014-12-30;2014-12-29;-333,00;6.702,13;Bestendige opdracht;BE85755463180006;Anny Coninckx;;;;"bestendige opdracht terugbetaling renteloze lening";"";"Bestendige opdracht naar rekening BE85 7554 6318 0006 (BIC AXABBE22) van
+Anny Coninckx
+Hasseltsesteenweg 421 BE 3800 Sint-Truiden
+Refertenummer bestendige opdracht : 2679355"
+2014 / 9;2014-12-29;2014-12-29;2014-12-29;-70,00;6.632,13;Geldopname met AXA bankkaart;;;LEUVEN UNIVERSIT;LEUVEN;="7506376832160017";"";"";"Geldopname met AXA bankkaart op 29-12-2014 om 16:40
+bij LEUVEN UNIVERSIT - LEUVEN met kaart nummer 7506376832160017"
+2014 / 9;2014-12-30;2014-12-30;2014-12-30;-10,00;6.622,13;Europese domiciliëring;BE02737026917240;VikingCo - Mobile Vikings;;;;"Direct Debit payment CLP1-6418235";"";"Terugkerende Europese domiciliëring (Core) voor
+VikingCo - Mobile Vikings
+Schuldeiseridentificatie: BE02ZZZ0886946917
+Mandaatreferte: M964702U295451"
+2014 / 9;2014-12-30;2014-12-30;2014-12-30;-295,00;6.327,13;Europese overschrijving;BE81455902825124;GeBa-Interieur;;;;"Bestelling Hendrickx-Coninckx Linter (Orsmaal-Gussenhoven)";"Gesloten rechte steektrap in eik rustiek";"Europese overschrijving naar rekening BE81 4559 0282 5124 (BIC: KREDBEBB) van
+GeBa-Interieur
+Schurhovenveld 2215 BE 3800 Sint-Truiden
+Ref.opdrachtgevende bank E068983042
+Uitgevoerd via Homebanking op 30-12-2014 om 09:21"
+2014 / 9;2014-12-31;2014-12-31;2014-12-31;428,63;6.755,76;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 1V062538 - 2128407112327-0039834-317 BETALING   12/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30/50 BE 1000        BRUSSEL
+Ref.opdrachtgever 141231-057205-/A/ 1V062538 Ref.opdrachtgevende bank OVI/D/0701/00365057/00057205"
+2014 / 9;2014-12-31;2014-12-31;2014-12-31;385,93;7.141,69;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 5R047919 - 0528407112327-0103648-411 BETALING   12/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30/50 BE 1000        BRUSSEL
+Ref.opdrachtgever 141261-037397-/A/ 5R047919 Ref.opdrachtgevende bank OVI/D/0701/00365054/00037397"
+2014 / 9;2014-12-31;2014-12-31;2014-12-31;779,18;7.920,87;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 1R029786 - 0128407112327-0130864-317 BETALING   12/2014          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30/50 BE 1000        BRUSSEL
+Ref.opdrachtgever 141261-037398-/A/ 1R029786 Ref.opdrachtgevende bank OVI/D/0701/00365054/00037398"
+2015 / 1;2014-12-31;2015-01-01;2015-01-02;-19,33;7.901,54;Kapitalisatie;;;;;;"";"";"Kapitalisatie intresten en kosten
+01-01-2014 - 31-12-2014
+Creditintresten 0,03
+Roerende voorheffing 25% -0,01
+Kosten gebruik AXA bankkaart -8,00
+Kosten gebruik AXA bankkaart -8,00
+Kosten gebruik AXA bankkaart aan niet-AXA automaat -3,20
+Recht van geschriften op aangifte -0,15"
+2015 / 1;2015-01-03;2015-01-03;2015-01-05;-1.149,12;6.752,42;Interne invordering;774-2589358-82;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589358-82   774258935882"
+2015 / 1;2015-01-03;2015-01-03;2015-01-05;-133,80;6.618,62;Interne invordering;774-2589360-84;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589360-84   774258936084"
+2015 / 1;2015-01-03;2015-01-03;2015-01-05;-124,67;6.493,95;Aankoop met AXA bankkaart;;;COLRUYT 3463;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 03-01-2015 om 17:22
+bij COLRUYT 3463 - ST-TRUIDEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-04;2015-01-04;2015-01-05;-403,56;6.090,39;Aankoop met AXA bankkaart;;;CELIO 00344 LEUV;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 04-01-2015 om 15:07
+bij CELIO 00344 LEUV - LEUVEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-04;2015-01-04;2015-01-05;-36,98;6.053,41;Aankoop met AXA bankkaart;;;BART SMIT 963;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 04-01-2015 om 16:24
+bij BART SMIT 963 - LEUVEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-04;2015-01-04;2015-01-05;-48,25;6.005,16;Aankoop met AXA bankkaart;;;C&A 025;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 04-01-2015 om 16:52
+bij C&A 025 - LEUVEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-04;2015-01-04;2015-01-05;-8,80;5.996,36;Aankoop met AXA bankkaart;;;PARKING LADEUZE;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 04-01-2015 om 17:01
+bij PARKING LADEUZE - LEUVEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-06;2015-01-06;2015-01-06;-12,33;5.984,03;Aankoop met AXA bankkaart;;;APOTHEEK LEEMPUT;LINTER;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 06-01-2015 om 11:04
+bij APOTHEEK LEEMPUT - LINTER met kaart nummer 7506376832160017"
+2015 / 1;2015-01-07;2015-01-07;2015-01-07;90,28;6.074,31;Europese overschrijving;BE49310139775571;PARTENA - CAISSE DECOMPENS;;;;"/C/ DOSSIER    B 315900    011231 A                  PERIODE: 201412";"KINDERBIJSLAG   WWW.KIDS.PARTENA.BE";"Europese overschrijving van rekening BE49 3101 3977 5571 (BIC: BBRUBEBB) van
+PARTENA - CAISSE DECOMPENS
+RUE DES CHARTREUX 45 BE 1000        BRUXELLES 1
+Ref.opdrachtgever NOT PROVIDED Ref.opdrachtgevende bank OVI/D/0701/00381364/00029741"
+2015 / 1;2015-01-08;2015-01-08;2015-01-08;-45,37;6.028,94;Aankoop met AXA bankkaart;;;DATS 24;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 08-01-2015 om 08:32
+bij DATS 24 - ST-TRUIDEN met kaart nummer 7506376832160113
+37,84 liter normaal zonder lood aan 1,19 EUR"
+2015 / 1;2015-01-08;2015-01-08;2015-01-08;-8,00;6.020,94;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 08-01-2015 om 20:11
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 1;2015-01-10;2015-01-10;2015-01-12;-120,00;5.900,94;Aankoop met AXA bankkaart;;;CVO ORANJERIE;DIEST;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 10-01-2015 om 11:39
+bij CVO ORANJERIE - DIEST met kaart nummer 7506376832160017"
+2015 / 1;2015-01-11;2015-01-11;2015-01-12;-80,00;5.820,94;Geldopname met AXA bankkaart;;;KBC BANK HEVERLE;HEVERLEE;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 11-01-2015 om 11:51
+bij KBC BANK HEVERLE - HEVERLEE met kaart nummer 7506376832160113"
+2015 / 1;2015-01-10;2015-01-10;2015-01-12;-125,00;5.695,94;Aankp buitenl.mt AXA bnkkrt;;;LEUVEN;;="7506376832160017";"";"";"Aankoop met AXA bankkaart
+van 125,00 EUR op 10-01-2015 om 12:09
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te Optiek De Pauw         Leuven met kaartnummer 7506376832160017"
+2015 / 1;2015-01-12;2015-01-12;2015-01-12;-108,19;5.587,75;Aankoop met AXA bankkaart;;;GAMMA;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 12-01-2015 om 11:00
+bij GAMMA - ST-TRUIDEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-13;2015-01-13;2015-01-14;-107,11;5.480,64;Aankp buitenl.mt AXA bnkkrt;;;ST-TRUIDEN;;="7506376832160113";"";"";"Aankoop met AXA bankkaart
+van 107,11 EUR op 13-01-2015 om 10:17
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te COLRUYT SINT TRUIDEN 3 SINT-TRUIDEN met kaartnummer 7506376832160113"
+2015 / 1;2015-01-18;2015-01-19;2015-01-19;-336,83;5.143,81;Europese overschrijving;BE27955036302373;BEOBANK VISA LIEVE;;;;"503630237302";"";"Europese overschrijving naar rekening BE27 9550 3630 2373 (BIC: CTBKBEBX) van
+BEOBANK VISA LIEVE
+Generaal Jacqueslaan 263G BE 1050 Brussel
+Ref.opdrachtgevende bank E069983763
+Uitgevoerd via Homebanking op 18-01-2015 om 22:58"
+2015 / 1;2015-01-18;2015-01-19;2015-01-19;-1,70;5.142,11;Europese overschrijving;BE31435411161155;Proximus;;;;"107030356233";"";"Europese overschrijving naar rekening BE31 4354 1116 1155 (BIC: KREDBEBB) van
+Proximus
+Koning Albert II-Laan 27 BE 1030 Brussel
+Ref.opdrachtgevende bank E069983764
+Uitgevoerd via Homebanking op 18-01-2015 om 22:54"
+2015 / 1;2015-01-18;2015-01-19;2015-01-19;-28,77;5.113,34;Europese overschrijving;BE87458655110194;I.W.M.;;;;"015000725048";"";"Europese overschrijving naar rekening BE87 4586 5511 0194 (BIC: KREDBEBB) van
+I.W.M.
+Willekensmolenstraat 122 BE 3500 Hasselt
+Ref.opdrachtgevende bank E069983765
+Uitgevoerd via Homebanking op 18-01-2015 om 22:53"
+2015 / 1;2015-01-18;2015-01-19;2015-01-19;-66,00;5.047,34;Europese overschrijving;BE03785550230784;CM Leuven;;;;"685005717816";"";"Europese overschrijving naar rekening BE03 7855 5023 0784 (BIC: GKCCBEBB) van
+CM Leuven
+3010 Leuven BE
+Ref.opdrachtgevende bank E069983766
+Uitgevoerd via Homebanking op 18-01-2015 om 22:52"
+2015 / 1;2015-01-18;2015-01-19;2015-01-19;-66,00;4.981,34;Europese overschrijving;BE03785550230784;CM Leuven;;;;"685005717715";"";"Europese overschrijving naar rekening BE03 7855 5023 0784 (BIC: GKCCBEBB) van
+CM Leuven
+3010 Leuven BE
+Ref.opdrachtgevende bank E069983767
+Uitgevoerd via Homebanking op 18-01-2015 om 22:51"
+2015 / 1;2015-01-18;2015-01-19;2015-01-19;-20,00;4.961,34;Europese overschrijving;BE42751206000354;Hendrickx Joeri / Coninckx Lieve;;;;"";"";"Europese overschrijving naar rekening BE42 7512 0600 0354 (BIC: AXABBE22) van
+Hendrickx Joeri / Coninckx Lieve
+Uitgevoerd via Homebanking op 18-01-2015 om 22:43"
+2015 / 1;2015-01-18;2015-01-18;2015-01-19;-74,40;4.886,94;Aankp buitenl.mt AXA bnkkrt;;;Leuven;;="7506376832160113";"";"";"Aankoop met AXA bankkaart
+van 74,40 EUR op 18-01-2015 om 19:18
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te DE KANSEL              LEUVEN met kaartnummer 7506376832160113"
+2015 / 1;2015-01-17;2015-01-17;2015-01-19;-16,40;4.870,54;Aankp buitenl.mt AXA bnkkrt;;;TIENEN;;="7506376832160113";"";"";"Aankoop met AXA bankkaart
+van 16,40 EUR op 17-01-2015 om 11:39
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te BPOST231700-0206       TIENEN met kaartnummer 7506376832160113"
+2015 / 1;2015-01-21;2015-01-01;2015-01-21;-3,50;4.867,04;Bijdrage zichtrekening;;;;;;"";"";"Bijdrage zichtrekening"
+2015 / 1;2015-01-22;2015-01-22;2015-01-22;-74,09;4.792,95;Aankoop met AXA bankkaart;;;DREAMBABY 3955;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 22-01-2015 om 13:21
+bij DREAMBABY 3955 - TIENEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-22;2015-01-22;2015-01-22;-103,54;4.689,41;Aankoop met AXA bankkaart;;;COLRUYT 3202;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 22-01-2015 om 13:41
+bij COLRUYT 3202 - TIENEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-22;2015-01-22;2015-01-22;-14,44;4.674,97;Aankoop met AXA bankkaart;;;COLRUYT 4146;TIENEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 22-01-2015 om 13:53
+bij COLRUYT 4146 - TIENEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-24;2015-01-24;2015-01-26;-1,00;4.673,97;Aankoop met AXA bankkaart;;;SINT-TRUDO ZIEKE;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 24-01-2015 om 16:20
+bij SINT-TRUDO ZIEKE - ST-TRUIDEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-27;2015-01-27;2015-01-27;22,80;4.696,77;Europese overschrijving;BE40733208116863;DE TROEYER CHRISTOPHE;;;;"KANSEL";"";"Europese overschrijving van rekening BE40 7332 0811 6863 (BIC: KREDBEBB) van
+DE TROEYER CHRISTOPHE
+HET MOER             2 BE 2221    BOOISCHOT
+Ref.opdrachtgevende bank 250115OL4411L3C0"
+2015 / 1;2015-01-27;2015-01-27;2015-01-27;-3,00;4.693,77;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 27-01-2015 om 12:18
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 1;2015-01-27;2015-01-27;2015-01-27;-150,04;4.543,73;Europese overschrijving;BE55733013571744;Eni gas . power nv/sa;;;;"005089560795";"";"Europese overschrijving naar rekening BE55 7330 1357 1744 (BIC: KREDBEBB) van
+Eni gas . power nv/sa
+Guimardstraat 1A, rue Guimard BE BE - 1040 Brussel
+Ref.opdrachtgevende bank E070381780
+Uitgevoerd via Homebanking op 27-01-2015 om 14:29"
+2015 / 1;2015-01-27;2015-01-27;2015-01-27;-16,07;4.527,66;Europese overschrijving;BE50000171003118;Proximus Pack/VL;;;;"651047553446";"";"Europese overschrijving naar rekening BE50 0001 7100 3118 (BIC: BPOTBEB1) van
+Proximus Pack/VL
+Koning Albert II-laan 27 BE 1030 Brussel
+Ref.opdrachtgevende bank E070381781
+Uitgevoerd via Homebanking op 27-01-2015 om 14:28"
+2015 / 1;2015-01-28;2015-01-28;2015-01-28;-10,00;4.517,66;Europese domiciliëring;BE02737026917240;VikingCo - Mobile Vikings;;;;"Direct Debit payment CLP1-6692070";"";"Terugkerende Europese domiciliëring (Core) voor
+VikingCo - Mobile Vikings
+Schuldeiseridentificatie: BE02ZZZ0886946917
+Mandaatreferte: M964702U295451"
+2015 / 1;2015-01-28;2015-01-29;2015-01-28;-333,00;4.184,66;Bestendige opdracht;BE85755463180006;Anny Coninckx;;;;"bestendige opdracht terugbetaling renteloze lening";"";"Bestendige opdracht naar rekening BE85 7554 6318 0006 (BIC AXABBE22) van
+Anny Coninckx
+Hasseltsesteenweg 421 BE 3800 Sint-Truiden
+Refertenummer bestendige opdracht : 2679355"
+2015 / 1;2015-01-28;2015-01-28;2015-01-28;-87,38;4.097,28;Aankoop met AXA bankkaart;;;COLRUYT ST TRUID;ST-TRUIDEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 28-01-2015 om 10:50
+bij COLRUYT ST TRUID - ST-TRUIDEN met kaart nummer 7506376832160017"
+2015 / 1;2015-01-28;2015-01-28;2015-01-28;2.360,23;6.457,51;Europese overschrijving;BE02310180250540;BELGACOM INTERNATIONAL CARRIER;;;;"/A/ LOON";"";"Europese overschrijving van rekening BE02 3101 8025 0540 (BIC: BBRUBEBB) van
+BELGACOM INTERNATIONAL CARRIER
+LEBEAUSTRAAT 4 BE 1000        BRUSSEL
+Ref.opdrachtgever 00139663-20150128-09H36-00204 Ref.opdrachtgevende bank OVI/D/0701/00455760/00000204"
+2015 / 1;2015-01-29;2015-01-29;2015-01-29;-45,71;6.411,80;Aankoop met AXA bankkaart;;;DATS 24;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 29-01-2015 om 09:01
+bij DATS 24 - ST-TRUIDEN met kaart nummer 7506376832160113
+38,38 liter normaal zonder lood aan 1,19 EUR"
+2015 / 1;2015-01-29;2015-01-29;2015-01-29;-3,00;6.408,80;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 29-01-2015 om 11:32
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 1;2015-01-30;2015-01-30;2015-01-30;1.363,93;7.772,73;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 1D027948 - 0128407112327-0130864-317 BETALING   01/2015          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30/50 BE 1000        BRUSSEL
+Ref.opdrachtgever 150100-038184-/A/ 1D027948 Ref.opdrachtgevende bank OVI/D/0701/00466865/00038184"
+2015 / 1;2015-01-30;2015-01-30;2015-01-30;-4,00;7.768,73;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 30-01-2015 om 12:24
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 1;2015-01-31;2015-01-31;2015-02-02;-986,31;6.782,42;Aankoop met AXA bankkaart;;;VERF NET ADVIES;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 31-01-2015 om 14:08
+bij VERF NET ADVIES - ST-TRUIDEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-31;2015-01-31;2015-02-02;-25,50;6.756,92;Aankoop met AXA bankkaart;;;ACCO CVBA LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 31-01-2015 om 16:50
+bij ACCO CVBA LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 1;2015-01-31;2015-01-31;2015-02-02;-14,95;6.741,97;Aankoop met AXA bankkaart;;;AS ADVENTURE;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 31-01-2015 om 17:06
+bij AS ADVENTURE - LEUVEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-31;2015-01-31;2015-02-02;-61,50;6.680,47;Aankoop met AXA bankkaart;;;PICARTO;LEUVEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 31-01-2015 om 17:35
+bij PICARTO - LEUVEN met kaart nummer 7506376832160113"
+2015 / 1;2015-01-31;2015-01-31;2015-02-02;-100,00;6.580,47;Geldopname met AXA bankkaart;;;BELFIUS35618805;LEUVEN GRO;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 31-01-2015 om 17:53
+bij BELFIUS35618805 - LEUVEN GRO met kaart nummer 7506376832160113"
+2015 / 1;2015-01-31;2015-01-31;2015-02-02;-200,00;6.380,47;Aankp buitenl.mt AXA bnkkrt;;;SINT TRUIDEN;;="7506376832160113";"";"";"Aankoop met AXA bankkaart
+van 200,00 EUR op 31-01-2015 om 11:29
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te CCV*LUMIDEE            SINT TRUIDEN met kaartnummer 7506376832160113"
+2015 / 1;2015-02-03;2015-02-03;2015-02-03;-1.149,12;5.231,35;Interne invordering;774-2589358-82;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589358-82   774258935882"
+2015 / 1;2015-02-03;2015-02-03;2015-02-03;-133,80;5.097,55;Interne invordering;774-2589360-84;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589360-84   774258936084"
+2015 / 1;2015-02-03;2015-02-01;2015-02-03;-3,50;5.094,05;Bijdrage zichtrekening;;;;;;"";"";"Bijdrage zichtrekening"
+2015 / 2;2015-02-05;2015-02-05;2015-02-05;90,28;5.184,33;Europese overschrijving;BE49310139775571;PARTENA - CAISSE DECOMPENS;;;;"/C/ DOSSIER    B 315900    011231 A                  PERIODE: 201501";"KINDERBIJSLAG   WWW.KIDS.PARTENA.BE";"Europese overschrijving van rekening BE49 3101 3977 5571 (BIC: BBRUBEBB) van
+PARTENA - CAISSE DECOMPENS
+RUE DES CHARTREUX 45 BE 1000        BRUXELLES 1
+Ref.opdrachtgever NOT PROVIDED Ref.opdrachtgevende bank OVI/D/0701/00488691/00029174"
+2015 / 2;2015-02-06;2015-02-06;2015-02-06;-150,04;5.034,29;Europese overschrijving;BE55733013571744;Eni gas . power nv/sa;;;;"005089560795";"";"Europese overschrijving naar rekening BE55 7330 1357 1744 (BIC: KREDBEBB) van
+Eni gas . power nv/sa
+Guimardstraat 1A, rue Guimard BE BE - 1040 Brussel
+Ref.opdrachtgevende bank E070967469
+Uitgevoerd via Homebanking op 06-02-2015 om 09:54"
+2015 / 2;2015-02-06;2015-02-06;2015-02-06;-950,00;4.084,29;Europese overschrijving;BE13645100793139;Generali Belgium N.V.;;;;"714038764574";"";"Europese overschrijving naar rekening BE13 6451 0079 3139 (BIC: JVBABE22) van
+Generali Belgium N.V.
+Louizalaan 149 BE 1050 Brussel
+Ref.opdrachtgevende bank E070967470
+Uitgevoerd via Homebanking op 06-02-2015 om 09:52"
+2015 / 2;2015-02-09;2015-02-09;2015-02-09;-83,42;4.000,87;Europese domiciliëring;BE67001458461987;Arbeidscentrum De Wroeter;;;;"ZO026 Afrekening 2015w03,04";"";"Terugkerende Europese domiciliëring (Core) voor
+Arbeidscentrum De Wroeter
+Schuldeiseridentificatie: BE60ZZZ0433138454
+Mandaatreferte: 20140430-ZO026"
+2015 / 2;2015-02-10;2015-02-10;2015-02-10;-10,00;3.990,87;Europese domiciliëring;BE02737026917240;VikingCo - Mobile Vikings;;;;"Direct Debit payment CLP1-6804792";"";"Terugkerende Europese domiciliëring (Core) voor
+VikingCo - Mobile Vikings
+Schuldeiseridentificatie: BE02ZZZ0886946917
+Mandaatreferte: M964702U295451"
+2015 / 2;2015-02-10;2015-02-10;2015-02-10;-24,00;3.966,87;Aankoop met AXA bankkaart;;;SAVARO;3800;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 10-02-2015 om 11:51
+bij SAVARO - 3800 met kaart nummer 7506376832160113"
+2015 / 2;2015-02-11;2015-02-11;2015-02-11;-5,00;3.961,87;Aankoop met AXA bankkaart;;;OPLAAD G8T;HEVERLEE;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 11-02-2015 om 11:45
+bij OPLAAD G8T - HEVERLEE met kaart nummer 7506376832160017"
+2015 / 2;2015-02-11;2015-02-11;2015-02-11;-5,00;3.956,87;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 11-02-2015 om 13:54
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 2;2015-02-11;2015-02-11;2015-02-12;-43,18;3.913,69;Aankp buitenl.mt AXA bnkkrt;;;TIENEN;;="7506376832160113";"";"";"Aankoop met AXA bankkaart
+van 43,18 EUR op 11-02-2015 om 19:11
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te MAES TIENEN 1          TIENEN met kaartnummer 7506376832160113"
+2015 / 2;2015-02-12;2015-02-12;2015-02-12;-8,00;3.905,69;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 12-02-2015 om 17:40
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 2;2015-02-15;2015-02-16;2015-02-16;-125,50;3.780,19;Europese overschrijving;BE62799550025061;Vayamundo Ravelingen;;;;"111003293347";"";"Europese overschrijving naar rekening BE62 7995 5002 5061 (BIC: GKCCBEBB) van
+Vayamundo Ravelingen
+Ref.opdrachtgevende bank E071388226
+Uitgevoerd via Homebanking op 15-02-2015 om 22:04"
+2015 / 2;2015-02-15;2015-02-16;2015-02-16;-15,00;3.765,19;Europese overschrijving;BE89523080132785;Voedselteams VZW;;;;"Lidgeld Limburg VT Leopoldsburg Magalie Fransen - Lieve Coninckx";"";"Europese overschrijving naar rekening BE89 5230 8013 2785 (BIC: TRIOBEBB) van
+Voedselteams VZW
+Ref.opdrachtgevende bank E071388227
+Uitgevoerd via Homebanking op 15-02-2015 om 21:59"
+2015 / 2;2015-02-15;2015-02-16;2015-02-16;-10,53;3.754,66;Europese overschrijving;BE43068245000001;Mobile-for;;;;"105751202681";"";"Europese overschrijving naar rekening BE43 0682 4500 0001 (BIC: GKCCBEBB) van
+Mobile-for
+Koning Albert II-Laan 27 BE 1030 Brussel
+Ref.opdrachtgevende bank E071388228
+Uitgevoerd via Homebanking op 15-02-2015 om 21:54"
+2015 / 2;2015-02-15;2015-02-16;2015-02-16;-16,07;3.738,59;Europese overschrijving;BE50000171003118;Proximus Pack/VL;;;;"651287800420";"";"Europese overschrijving naar rekening BE50 0001 7100 3118 (BIC: BPOTBEB1) van
+Proximus Pack/VL
+Koning Albert II-laan 27 BE 1030 Brussel
+Ref.opdrachtgevende bank E071388229
+Uitgevoerd via Homebanking op 15-02-2015 om 21:53"
+2015 / 2;2015-02-18;2015-02-18;2015-02-18;-10,00;3.728,59;Aankoop met AXA bankkaart;;;OPLAAD G8T;HEVERLEE;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 18-02-2015 om 12:31
+bij OPLAAD G8T - HEVERLEE met kaart nummer 7506376832160017"
+2015 / 2;2015-02-18;2015-02-18;2015-02-18;-4,00;3.724,59;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 18-02-2015 om 13:11
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 2;2015-02-19;2015-02-19;2015-02-19;-8,00;3.716,59;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 19-02-2015 om 17:38
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 2;2015-02-25;2015-02-25;2015-02-25;-5,00;3.711,59;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 25-02-2015 om 13:56
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 2;2015-02-25;2015-02-25;2015-02-25;2.369,10;6.080,69;Europese overschrijving;BE02310180250540;BELGACOM INTERNATIONAL CARRIER;;;;"/A/ LOON";"";"Europese overschrijving van rekening BE02 3101 8025 0540 (BIC: BBRUBEBB) van
+BELGACOM INTERNATIONAL CARRIER
+LEBEAUSTRAAT 4 BE 1000        BRUSSEL
+Ref.opdrachtgever 00139663-20150225-09H37-00203 Ref.opdrachtgevende bank OVI/D/0701/00553234/00000203"
+2015 / 2;2015-02-26;2015-02-26;2015-02-26;18,00;6.098,69;Europese overschrijving;BE78786548584086;UC LEUVEN VZW;;;;"parking";"";"Europese overschrijving van rekening BE78 7865 4858 4086 (BIC: GKCCBEBB) van
+UC LEUVEN VZW
+GELDENAAKSEBAAN        335 BE 3001  HEVERLEE
+Ref.opdrachtgever 44007857240220151356110013902475 Ref.opdrachtgevende bank 0800K2O183682"
+2015 / 2;2015-02-26;2015-02-26;2015-02-26;-8,00;6.090,69;Aankoop met AXA bankkaart;;;UZ LEUVEN;LEUVEN;="7506376832160017";"";"";"Aankoop met AXA bankkaart op 26-02-2015 om 17:46
+bij UZ LEUVEN - LEUVEN met kaart nummer 7506376832160017"
+2015 / 2;2015-02-27;2015-02-27;2015-02-27;1.822,46;7.913,15;Europese overschrijving;BE57375111099435;OV VLAAMSE GEMEENSCHAP;;;;"/A/ 1D028005 - 0128407112327-0048587-317 BETALING   02/2015          -";"--";"Europese overschrijving van rekening BE57 3751 1109 9435 (BIC: BBRUBEBB) van
+OV VLAAMSE GEMEENSCHAP
+BOUDEWIJNLAAN 30/50 BE 1000        BRUSSEL
+Ref.opdrachtgever 150200-038469-/A/ 1D028005 Ref.opdrachtgevende bank OVI/D/0701/00563782/00038469"
+2015 / 2;2015-02-28;2015-02-28;2015-03-02;-42,25;7.870,90;Aankoop met AXA bankkaart;;;SCHEPERS;LANDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 28-02-2015 om 10:58
+bij SCHEPERS - LANDEN met kaart nummer 7506376832160113"
+2015 / 2;2015-02-28;2015-02-28;2015-03-02;-13,35;7.857,55;Aankoop met AXA bankkaart;;;VERF NET ADVIES;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 28-02-2015 om 11:36
+bij VERF NET ADVIES - ST-TRUIDEN met kaart nummer 7506376832160113"
+2015 / 2;2015-02-28;2015-02-28;2015-03-02;-103,46;7.754,09;Aankoop met AXA bankkaart;;;COLRUYT 3463;ST-TRUIDEN;="7506376832160113";"";"";"Aankoop met AXA bankkaart op 28-02-2015 om 17:50
+bij COLRUYT 3463 - ST-TRUIDEN met kaart nummer 7506376832160113"
+2015 / 2;2015-02-28;2015-02-28;2015-03-02;-500,00;7.254,09;Geldopname met AXA bankkaart;;;ORSMAAL;ORSMAAL;="7506376832160017";"";"";"Geldopname met AXA bankkaart op 28-02-2015 om 18:12
+bij ORSMAAL - ORSMAAL met kaart nummer 7506376832160017"
+2015 / 2;2015-02-28;2015-02-28;2015-03-02;-500,00;6.754,09;Geldopname met AXA bankkaart;;;ORSMAAL;ORSMAAL;="7506376832160113";"";"";"Geldopname met AXA bankkaart op 28-02-2015 om 18:13
+bij ORSMAAL - ORSMAAL met kaart nummer 7506376832160113"
+2015 / 2;2015-03-02;2015-03-01;2015-03-02;-3,50;6.750,59;Bijdrage zichtrekening;;;;;;"";"";"Bijdrage zichtrekening"
+2015 / 2;2015-03-02;2015-03-03;2015-03-02;-333,00;6.417,59;Bestendige opdracht;BE85755463180006;Anny Coninckx;;;;"bestendige opdracht terugbetaling renteloze lening";"";"Bestendige opdracht naar rekening BE85 7554 6318 0006 (BIC AXABBE22) van
+Anny Coninckx
+Hasseltsesteenweg 421 BE 3800 Sint-Truiden
+Refertenummer bestendige opdracht : 2679355"
+2015 / 2;2015-03-03;2015-03-03;2015-03-03;-133,80;6.283,79;Interne invordering;774-2589360-84;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2589360-84   774258936084"
+2015 / 2;2015-03-03;2015-03-03;2015-03-03;-950,30;5.333,49;Interne invordering;774-2814262-43;AXA BANK EUROPE;;;;"";"";"Interne invordering krediet
+Ref. Invordering : 774-2814262-43   774281426243"
+2015 / 2;2015-03-02;2015-03-02;2015-03-03;-49,68;5.283,81;Aankp buitenl.mt AXA bnkkrt;;;Kumtich;;="7506376832160124";"";"";"Aankoop met AXA bankkaart
+van 49,68 EUR op 02-03-2015 om 18:43
+(1 EUR = 1,000000 EUR en buitenlandse kosten 0,00 EUR)
+te Kumtich met kaartnummer 7506376832160124"

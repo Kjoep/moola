@@ -1,0 +1,34 @@
+<div class="report piechart-report">
+    <div class="header">
+        <h2>Filters</h2>
+    </div>
+
+    <table class="filtersTable">
+        <thead>
+        <tr>
+            <th>Expression</th>
+            <th>Result</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="filter in filters.filters" data-id="{{filter.id}}" >
+            <td class="expression">{{filter.expression}}</td>
+            <td>{{filters.describeResult(filter)}}</td>
+            <td>
+                ...
+                <div context-menu context-button="0">
+                    <a href="#" ng-click="filters.deleteFilter(filter)">Delete</a>
+                    <a href="#" ng-click="filters.applyFilter(filter, 'all')">Apply to all</a>
+                    <a href="#" ng-show="filter.peerId" ng-click="filters.applyFilter(filter, 'noPeer')">Apply to unpeered</a>
+                    <a href="#" ng-show="filter.categoryId" ng-click="filters.applyFilter(filter, 'noCategory')">Apply to uncategorized</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-include="'filterEditor/filterEditor.html'" ng-controller="FilterEditorController as editor">
+    </div>
+
+</div>

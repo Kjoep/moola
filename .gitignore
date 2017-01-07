@@ -1,0 +1,15 @@
+*.class
+*.jar
+*.iml
+*.log
+dummy*
+target
+out
+.idea
+**/target
+**/out
+**/*.class
+**/*.iml
+**/*.log
+**/*.jar
+mock.jpg

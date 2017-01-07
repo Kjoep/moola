@@ -1,0 +1,7 @@
+<div class="colorPicker popover">
+    <span ng-repeat="fgColor in colors" class="fgColor">
+        <span ng-repeat="bgColor in colors" class="bgColor">
+            <span class="color" style="background-color: {{bgColor}}; color: {{fgColor}}" ng-click="pick(fgColor, bgColor)">A</span>
+        </span>
+    </span>
+</div>

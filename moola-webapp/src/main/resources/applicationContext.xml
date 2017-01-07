@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+	   					   "
+        >
+
+    <bean id="accountService" class="be.echostyle.moola.AccountService">
+        <property name="accountFactory" ref="dbAccountRepo" />
+        <property name="accountRepository" ref="dbAccountRepo" />
+        <property name="peerFactory" ref="dbPeerRepo" />
+        <property name="peerRepository" ref="dbPeerRepo" />
+        <property name="categoryFactory" ref="categoryRepo" />
+        <property name="categoryRepository" ref="categoryRepo" />
+    </bean>
+
+    <bean id="importService" class="be.echostyle.moola.parser.ImportServiceImpl">
+        <property name="batchIdGenerator"><bean class="be.echostyle.moola.util.TimestampGenerator" /></property>
+        <property name="parsers">
+            <map>
+                <entry key="AXA" value-ref="axaParser" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="filterService" class="be.echostyle.moola.filters.FilterServiceImpl">
+        <property name="transactionFilterFactory" ref="groovyFilterFactory" />
+        <property name="peerRepository" ref="peerRepo" />
+        <property name="categoryRepository" ref="categoryRepo" />
+        <property name="filterRepository" ref="filterRepo" />
+        <property name="ruleProcessor" ref="dbRuleScheduler" />
+    </bean>
+    
+    <bean id="reportService" class="be.echostyle.moola.peristence.db.DbReportService">
+        <property name="repository" ref="dbAccountRepo" />
+    </bean>
+
+    <bean id="groovyFilterFactory" class="be.echostyle.moola.filters.groovy.GroovyFilterFactory" />
+
+    <bean id="dbAccountRepo" class="be.echostyle.moola.peristence.db.DbAccountRepository" init-method="init">
+        <property name="dataSource" ref="dataSource" />
+        <property name="peerRepository" ref="peerRepo" />
+        <property name="categoryRepository" ref="categoryRepo" />
+    </bean>
+
+    <bean id="dbPeerRepo" class="be.echostyle.moola.peristence.db.DbPeerRepository">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="dbCategoryRepo" class="be.echostyle.moola.peristence.db.DbCategoryRepository">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="dbRuleScheduler" class="be.echostyle.moola.peristence.db.DbRuleProcessor" destroy-method="stop" init-method="start">
+        <property name="dataSource" ref="dataSource" />
+        <property name="categories" ref="categoryRepo" />
+        <property name="peers" ref="peerRepo" />
+        <property name="filters" ref="filterRepo" />
+    </bean>
+
+    <bean id="filterRepo" class="be.echostyle.moola.filters.CachedFilterRepository">
+        <property name="target">
+            <bean class="be.echostyle.moola.peristence.db.DbFilterRepository">
+                <property name="dataSource" ref="dataSource"/>
+                <property name="categoryRepository" ref="categoryRepo" />
+                <property name="peerRepository" ref="peerRepo" />
+                <property name="filterFactory" ref="groovyFilterFactory" />
+            </bean>
+        </property>
+    </bean>
+
+    <alias name="dbPeerRepo" alias="peerRepo" />
+    <alias name="dbCategoryRepo" alias="categoryRepo" />
+
+
+    <bean id="axaParser" class="be.echostyle.moola.parser.axa.AxaParser" />
+
+    <jaxrs:server id="customerService" address="/">
+        <jaxrs:serviceBeans>
+            <ref bean="restAccountService" />
+            <ref bean="restPeerService" />
+            <ref bean="restCategoryService" />
+            <ref bean="restFilterService" />
+            <ref bean="restReportService" />
+        </jaxrs:serviceBeans>
+        <jaxrs:extensionMappings>
+            <entry key="json" value="application/json"/>
+        </jaxrs:extensionMappings>
+        <jaxrs:providers>
+            <bean id="json" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider">
+                <property name="mapper">
+                    <bean class="be.echostyle.moola.rest.jackson.ObjectMapperFactory" />
+                </property>
+            </bean>
+        </jaxrs:providers>
+    </jaxrs:server>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <!-- access -->
+        <property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver" />
+        <property name="jdbcUrl" value="jdbc:derby:db;create=true" />
+        <!--<property name="user" value="${db.user}" />-->
+        <!--<property name="password" value="${db.password}" />-->
+        <!-- pool sizing -->
+        <property name="minPoolSize" value="6" />
+        <property name="maxPoolSize" value="25" />
+        <property name="acquireIncrement" value="3" />
+        <property name="maxStatements" value="0" />
+        <!-- retries -->
+        <property name="acquireRetryAttempts" value="30" />
+        <property name="acquireRetryDelay" value="1000" />
+        <property name="breakAfterAcquireFailure" value="false" />
+        <!-- refreshing connections -->
+        <property name="maxIdleTime" value="180" />
+        <property name="maxConnectionAge" value="10" />
+        <!-- timeouts and testing -->
+        <property name="checkoutTimeout" value="15000" />
+        <property name="idleConnectionTestPeriod" value="60" />
+        <property name="testConnectionOnCheckout" value="true" />
+        <property name="preferredTestQuery" value="VALUES 1" />
+        <property name="testConnectionOnCheckin" value="true" />
+    </bean>
+
+    <bean id="restAccountService" class="be.echostyle.moola.rest.RestAccountServiceImpl">
+        <property name="accountService" ref="accountService" />
+        <property name="importService" ref="importService" />
+        <property name="filterService" ref="filterService" />
+    </bean>
+
+    <bean id="restPeerService" class="be.echostyle.moola.rest.RestPeerServiceImpl">
+        <property name="accountService" ref="accountService" />
+    </bean>
+
+    <bean id="restCategoryService" class="be.echostyle.moola.rest.RestCategoryServiceImpl">
+        <property name="accountService" ref="accountService" />
+    </bean>
+
+    <bean id="restFilterService" class="be.echostyle.moola.rest.RestFilterServiceImpl">
+        <property name="filterService" ref="filterService" />
+    </bean>
+
+    <bean id="restReportService" class="be.echostyle.moola.rest.RestReportServiceImpl">
+        <property name="reportService" ref="reportService" />
+    </bean>
+
+
+</beans>
+              

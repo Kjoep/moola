@@ -1,0 +1,155 @@
+body {
+	background-color: #343634;
+    font-family: 'Calibri', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    position: fixed;
+    top:0;
+	left: 0;
+	
+    width:300px;;
+    padding: 10px;
+}
+
+nav h1 {
+	text-align: center
+}
+
+nav h1  img{
+margin: auto;
+}
+
+nav h2 {
+	font-family: 'Georgia', serif;
+	color: #1fe0be;
+	font-weight: normal;
+	
+}
+
+div.container {
+    padding: 20px;
+}
+
+div.content {
+	min-height: 600px;
+	margin-left: 250px;
+	padding-left: 60px;
+	padding-right: 100px;
+	padding-top: 50px;
+	border-left: solid 143px transparent;
+	border-image: url('img/strewn.png') 0 0 0 142 fill repeat;
+}
+
+nav h1 {
+    color: white;
+    margin :0;
+	
+	
+}
+
+h1 img {
+
+	width:200px;
+
+}
+
+#chart {
+    border: solid black 2px;
+    height: 500px;
+    width: 600px;
+}
+
+table.report {
+    border-collapse:collapse;
+}
+
+table.report td {
+    padding: 10px 20px;
+}
+
+table.report tr td {
+    border-top: solid silver 1px;
+}
+
+table.report th {
+    text-transform: capitalize;
+
+}
+
+.amount {
+    font-family: monospace;
+    text-align: right;
+}
+
+.amount.total {
+    font-weight: bold;
+}
+
+.amount::before {
+    content: '';
+}
+
+.amount.neg {
+    color:red;
+}
+
+.amount.pos {
+    color:green;
+}
+
+table.accountTable {
+    border-collapse: collapse;
+    border: solid #DDD 1px;
+}
+
+table.accountTable tr td {
+    border-bottom: dashed silver 1px;
+}
+
+form {
+    border-radius: 3px;
+    border: solid #DDDDDD 1px;
+    width: 350px;
+    padding: 10px;
+}
+
+form label {
+    width: 130px;
+    display: inline-block;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+    vertical-align: top;
+}
+
+form .radioOptions {
+    display: inline-block;
+    vertical-align: top;
+}
+
+form .radioOption {
+    display: block;
+}
+form .radioOption label{
+    font-weight: normal;
+    display: inline;
+ }
+
+form p.actions {
+    text-align: right;
+    margin: 10px 0 0 0;
+}
+
+.report h2 {
+	font-family: 'Georgia', serif;
+	text-align: center;
+	font-weight: normal;
+	color: #343634;
+}
+
+.report h2 .timerange {
+	font-size:16px;
+}
