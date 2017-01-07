@@ -66,6 +66,12 @@ public abstract class JdbcRepository {
             }
 
             @Override
+            public QueryBuilder orderAsc(String column) {
+                order.add(column + " ASC");
+                return this;
+            }
+
+            @Override
             public QueryBuilder orderDesc(String column) {
                 order.add(column + " DESC");
                 return this;
@@ -137,9 +143,7 @@ public abstract class JdbcRepository {
                 if (!order.isEmpty())
                     sql += " order by "+String.join(", ", order);
                 if (limit!=null && fromRange!=null){
-                    sql = "select * from ("
-                            +sql.replace("select ", "select row_number() over() as rownum, ")
-                            +") res where res.rownum >= " + fromRange +" and res.rownum < "+(fromRange + limit + 1);
+                    sql += " limit "+limit+" offset "+fromRange;
                 }
                 return sql;
             }

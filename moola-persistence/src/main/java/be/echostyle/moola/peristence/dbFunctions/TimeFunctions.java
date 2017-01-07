@@ -1,4 +1,4 @@
-package be.echostyle.moola.peristence.derby;
+package be.echostyle.moola.peristence.dbFunctions;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

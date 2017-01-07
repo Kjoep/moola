@@ -100,8 +100,8 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <!-- access -->
-        <property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver" />
-        <property name="jdbcUrl" value="jdbc:derby:db;create=true" />
+        <property name="driverClass" value="org.h2.Driver" />
+        <property name="jdbcUrl" value="jdbc:h2:h2db" />
         <!--<property name="user" value="${db.user}" />-->
         <!--<property name="password" value="${db.password}" />-->
         <!-- pool sizing -->

@@ -5,9 +5,7 @@ import be.echostyle.dbQueries.Mapper;
 import be.echostyle.dbQueries.QueryBuilder;
 import be.echostyle.dbQueries.RowAdapter;
 import be.echostyle.moola.*;
-import be.echostyle.moola.category.Category;
 import be.echostyle.moola.category.CategoryRepository;
-import be.echostyle.moola.peer.Peer;
 import be.echostyle.moola.peer.PeerRepository;
 import be.echostyle.moola.peristence.cache.CachedCategoryRepository;
 import be.echostyle.moola.reporting.*;
@@ -95,32 +93,38 @@ public class DbReportService implements ReportService {
 
                     private List<BucketMapper<?>> bucketMappers = new ArrayList<>();
 
-                    private <T> void  aggregate(String expression, String name, BiFunction<RowAdapter, String, T> getter, BiConsumer<Bucket, T> setter) {
-                        q = q.groupedBy(expression);
+                    private <T> void aggregateDesc(String expression, String name, BiFunction<RowAdapter, String, T> getter, BiConsumer<Bucket, T> setter) {
+                        q = q.groupedBy(expression).orderDesc(expression);
                         bucketMappers.add(new BucketMapper<>(expression, name, getter, setter));
                     }
 
+                    private <T> void aggregate(String expression, String name, BiFunction<RowAdapter, String, T> getter, BiConsumer<Bucket, T> setter) {
+                        q = q.groupedBy(expression).orderAsc(expression);
+                        bucketMappers.add(new BucketMapper<>(expression, name, getter, setter));
+                    }
+
+
                     @Override
                     public AggregatedQuery byDay() {
-                        aggregate(func("TS_DAY", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
+                        aggregateDesc(func("TS_DAY", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
                         return this;
                     }
 
                     @Override
                     public AggregatedQuery byWeek() {
-                        aggregate(func("TS_WEEK", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
+                        aggregateDesc(func("TS_WEEK", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
                         return this;
                     }
 
                     @Override
                     public AggregatedQuery byMonth() {
-                        aggregate(func("TS_MONTH", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
+                        aggregateDesc(func("TS_MONTH", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
                         return this;
                     }
 
                     @Override
                     public AggregatedQuery byYear() {
-                        aggregate(func("TS_YEAR", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
+                        aggregateDesc(func("TS_YEAR", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
                         return this;
                     }
 

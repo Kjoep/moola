@@ -1,4 +1,4 @@
-package be.echostyle.moola.peristence.derby;
+package be.echostyle.moola.peristence.dbFunctions;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

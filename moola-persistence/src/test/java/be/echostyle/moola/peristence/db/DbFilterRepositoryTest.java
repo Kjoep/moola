@@ -39,7 +39,7 @@ public class DbFilterRepositoryTest extends DbTest {
         peers = Mockito.mock(PeerRepository.class);
         categories = Mockito.mock(CategoryRepository.class);
         factory = Mockito.mock(TransactionFilterFactory.class);
-        ds = new SingleConnectionDataSource("jdbc:derby:memory:db;create=true", true);
+        ds = new SingleConnectionDataSource("jdbc:h2:mem:", true);
         repo.setDataSource(ds);
         repo.setCategoryRepository(categories);
         repo.setPeerRepository(peers);

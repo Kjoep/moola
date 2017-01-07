@@ -18,7 +18,7 @@ public class DbPeerRepositoryTest extends DbTest {
     @Before
     public void setUp() throws Exception {
         repo = new DbPeerRepository();
-        ds = new SingleConnectionDataSource("jdbc:derby:memory:db;create=true", true);
+        ds = new SingleConnectionDataSource("jdbc:h2:mem:", true);
         repo.setDataSource(ds);
         repo.init();
         addTestData();

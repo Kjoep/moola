@@ -1,19 +1,4 @@
-create FUNCTION TS_DAY(ts TIMESTAMP) RETURNS VARCHAR(10)
-  DETERMINISTIC
-  PARAMETER STYLE JAVA NO SQL LANGUAGE JAVA
-  EXTERNAL NAME 'be.echostyle.moola.peristence.derby.TimeFunctions.day';
-
-create FUNCTION TS_WEEK(ts TIMESTAMP) RETURNS VARCHAR(10)
-  DETERMINISTIC
-  PARAMETER STYLE JAVA NO SQL LANGUAGE JAVA
-  EXTERNAL NAME 'be.echostyle.moola.peristence.derby.TimeFunctions.week';
-
-create FUNCTION TS_MONTH(ts TIMESTAMP) RETURNS VARCHAR(10)
-  DETERMINISTIC
-  PARAMETER STYLE JAVA NO SQL LANGUAGE JAVA
-  EXTERNAL NAME 'be.echostyle.moola.peristence.derby.TimeFunctions.month';
-
-create FUNCTION TS_YEAR(ts TIMESTAMP) RETURNS VARCHAR(10)
-  DETERMINISTIC
-  PARAMETER STYLE JAVA NO SQL LANGUAGE JAVA
-  EXTERNAL NAME 'be.echostyle.moola.peristence.derby.TimeFunctions.year';
+create ALIAS TS_DAY for "be.echostyle.moola.peristence.dbFunctions.TimeFunctions.day";
+create ALIAS TS_WEEK for "be.echostyle.moola.peristence.dbFunctions.TimeFunctions.week";
+create ALIAS TS_MONTH for "be.echostyle.moola.peristence.dbFunctions.TimeFunctions.month";
+create ALIAS TS_YEAR for "be.echostyle.moola.peristence.dbFunctions.TimeFunctions.year";

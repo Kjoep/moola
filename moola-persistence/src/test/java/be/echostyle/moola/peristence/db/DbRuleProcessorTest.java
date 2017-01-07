@@ -44,7 +44,7 @@ public class DbRuleProcessorTest extends DbTest{
         categories = Mockito.mock(CategoryRepository.class);
         factory = Mockito.mock(TransactionFilterFactory.class);
         filters = Mockito.mock(DbFilterRepository.class);
-        ds = new DriverManagerDataSource("jdbc:derby:memory:db;create=true");
+        ds = new DriverManagerDataSource("jdbc:h2:mem");
         DbRuleProcessor processor = new DbRuleProcessor();
         processor.setCategories(categories);
         processor.setPeers(peers);
@@ -99,7 +99,7 @@ public class DbRuleProcessorTest extends DbTest{
         JdbcTemplate template = new JdbcTemplate(ds);
 
         template.execute("insert into account values('test', 'Test', 'CHECKING', '')");
-        template.execute("insert into accTransaction values('25', '', 'test', TIMESTAMP ('2016-2-12', '20.00.00'), null, null, -620, 200, 'Damn taxes', NULL, 'transfer', NULL, NULL, NULL, NULL, NULL)");
+        template.execute("insert into accTransaction values('25', '', 'test', {ts '2016-2-12 20:00:00'}, null, null, -620, 200, 'Damn taxes', NULL, 'transfer', NULL, NULL, NULL, NULL, NULL)");
 
     }
 

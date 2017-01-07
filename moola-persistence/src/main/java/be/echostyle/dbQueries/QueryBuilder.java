@@ -22,6 +22,7 @@ public interface QueryBuilder {
     default QueryBuilder limit(int count){
         return limit(count, 0);
     }
+    QueryBuilder orderAsc(String column);
     QueryBuilder orderDesc(String column);
 
     default QueryBuilder whereBetween(String column, Object from, Object to){
