@@ -4,6 +4,12 @@ import be.echostyle.moola.reporting.slicing.WeekOfYear;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 
 public abstract class SliceStrategy {
 
@@ -20,7 +26,19 @@ public abstract class SliceStrategy {
 
         @Override
         public Slice getBucket(LocalDateTime timestamp) {
-            return new WeekOfYear(timestamp.get(ChronoField.ALIGNED_WEEK_OF_YEAR));
+            TemporalField week = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+            return new WeekOfYear(timestamp.get(week));
+        }
+
+        @Override
+        public List<Slice> getSlices(LocalDateTime from, LocalDateTime to) {
+            TemporalField week = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+            if (from.compareTo(to)>=0) return Collections.emptyList();
+            ArrayList<Slice> r = new ArrayList<>();
+            for (LocalDateTime ts = adaptFrom(from); ts.compareTo(adaptTo(to)) <=0; ts = ts.plusWeeks(1)){
+                r.add(new WeekOfYear(ts.get(week)));
+            }
+            return r;
         }
     };
 
@@ -31,4 +49,5 @@ public abstract class SliceStrategy {
     public abstract LocalDateTime adaptFrom(LocalDateTime from);
     public abstract LocalDateTime adaptTo(LocalDateTime to);
     public abstract Slice getBucket(LocalDateTime timestamp);
+    public abstract List<Slice> getSlices(LocalDateTime from, LocalDateTime to);
 }

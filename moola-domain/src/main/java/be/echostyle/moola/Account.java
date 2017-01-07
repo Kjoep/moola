@@ -38,10 +38,14 @@ public interface Account {
 
         Map<Slice, TimeSlice> buckets = new TreeMap<>();
 
+        for (Slice slice : sliceStrategy.getSlices(from, to)){
+            buckets.put(slice, new TimeSlice(slice));
+        }
+
         List<AccountEntry> transactions = getTransactions(from, to);
         for (AccountEntry transaction : transactions) {
             Slice slice = sliceStrategy.getBucket(transaction.getTimestamp());
-            TimeSlice bucket = buckets.computeIfAbsent(slice, TimeSlice::new);
+            TimeSlice bucket = buckets.get(slice);
             bucket.addTransaction(transaction);
         }
 

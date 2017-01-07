@@ -101,10 +101,11 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <!-- access -->
         <property name="driverClass" value="org.h2.Driver" />
-        <property name="jdbcUrl" value="jdbc:h2:h2db" />
+        <property name="jdbcUrl" value="jdbc:h2:file:~/moolaDb" />
         <!--<property name="user" value="${db.user}" />-->
         <!--<property name="password" value="${db.password}" />-->
         <!-- pool sizing -->
+        <property name="initialPoolSize" value="6" />
         <property name="minPoolSize" value="6" />
         <property name="maxPoolSize" value="25" />
         <property name="acquireIncrement" value="3" />
