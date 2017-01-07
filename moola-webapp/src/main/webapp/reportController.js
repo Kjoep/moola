@@ -39,7 +39,10 @@ moolaApp.controller('ReportController', ['$scope', '$location', '$resource', '$f
         }
         for (var key in query.grouping){
             if (!query.grouping.hasOwnProperty(key)) continue;
-            q.push("grouping="+key+":"+query.grouping[key]);
+            if (query.grouping[key]===true || query.grouping[key]==="true")
+                q.push("grouping="+key);
+            else
+                q.push("grouping="+key+":"+query.grouping[key]);
         }
         q = q.length > 0 ? '?'+implode(q,'&') : "";
         return $http({

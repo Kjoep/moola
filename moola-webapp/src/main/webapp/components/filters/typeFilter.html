@@ -1,0 +1,18 @@
+<div class="report-query-panel">
+    <div class="query-section">
+        <h4>Filter</h4>
+        <span class="section-option" ng-repeat="transType in $parent.report.transactionTypes">
+            <input type="checkbox" class="filter-item" id="rq_transtype_{{transType}}" value="{{transType}}" />
+            <label for="rq_transtype_{{transType}}">{{transType}}</label>
+        </span>
+    </div>
+    <div class="query-section">
+        <span class="section-option">
+            <input type="checkbox" id="rq_transtype_group" />
+            <label for="rq_transtype_group">Group by type</label>
+        </span>
+    </div>
+    <div class="query-apply">
+        <button>Apply</button>
+    </div>
+</div>

@@ -59,6 +59,23 @@ public class DbReportServiceTest extends DbTest {
     }
 
     @Test
+    public void canGroupByDayAndType(){
+        int count = reportService.report("test")
+                .aggregate().byDay().byType().count();
+
+        assertEquals(3, count);
+
+        List<Bucket> result = reportService.report("test")
+                .aggregate().byDay().range(0, 30);
+
+        assertEquals(-620, result.get(0).getTotal());
+        assertEquals(1120, result.get(1).getTotal());
+        assertEquals(-20, result.get(2).getTotal());
+
+    }
+
+
+    @Test
     public void canGroupByDay(){
         int count = reportService.report("test")
                 .aggregate().byDay().count();
