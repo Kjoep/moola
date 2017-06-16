@@ -1,4 +1,4 @@
-moolaApp
+angular.module('moola')
     .controller('reportController', ['$scope','$http', function($scope, $http){
         var reports = this;
 

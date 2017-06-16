@@ -1,4 +1,4 @@
-moolaApp.directive('categorySelection',['$parse', 'Categories', function($parse, Categories) {
+angular.module('moola').directive('categorySelection',['$parse', 'Categories', function($parse, Categories) {
     var padding=30;
     var KEY_UP=38;
     var KEY_DOWN=40;

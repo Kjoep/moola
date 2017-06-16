@@ -1,4 +1,4 @@
-moolaApp.controller('ReportController', ['$scope', '$location', '$resource', '$filter', '$http', 'Categories', function ($scope, $location, $resource, $filter, $http, Categories) {
+angular.module('moola').controller('ReportController', ['$scope', '$location', '$resource', '$filter', '$http', 'Categories', function ($scope, $location, $resource, $filter, $http, Categories) {
 
     var self = this;
 
@@ -17,8 +17,8 @@ moolaApp.controller('ReportController', ['$scope', '$location', '$resource', '$f
     var currentAccount = $scope.controller.activeAccount;
     var parentController = $scope.controller;
 
-    $scope.$watch(function(){return $location.path();}, function(){
-        parseHash($location.path());
+    $scope.$watch(function(){return $location.hash();}, function(){
+        parseHash($location.hash());
         loadTransactions().then(function(data){self.transactions = data});
     });
 
@@ -47,7 +47,7 @@ moolaApp.controller('ReportController', ['$scope', '$location', '$resource', '$f
         q = q.length > 0 ? '?'+implode(q,'&') : "";
         return $http({
             method:'GET',
-            url: 'rest/accounts/'+currentAccount.id+'/reports/adhoc/'+(page)+q
+            url: 'http://localhost:8080/moola/rest/accounts/'+currentAccount.id+'/reports/adhoc/'+(page)+q
         }).then(function(r){return r.data});
     };
 
@@ -107,7 +107,7 @@ moolaApp.controller('ReportController', ['$scope', '$location', '$resource', '$f
         else return 'peer-unknown';
     };
 
-        self.getFilteredTransactions = function(expression, limit) {
+    self.getFilteredTransactions = function(expression, limit) {
         return transactionsResource.filtered({accountId: currentAccount.id, filter: expression, limit: limit});
     }
 
@@ -359,7 +359,7 @@ moolaApp.controller('ReportController', ['$scope', '$location', '$resource', '$f
             refreshTimer = null;
             console.log("Checking backlog")
             $http
-                .get('rest/filters/rulesBacklog')
+                .get('http://localhost:8080/moola/rest/filters/rulesBacklog')
                 .then(
                     function ok(resp) {
                         if (resp.data==0)
@@ -401,12 +401,12 @@ moolaApp.controller('ReportController', ['$scope', '$location', '$resource', '$f
         if (!group) delete newQ.grouping[key];
         var r = asHash(newQ);
         console.log("Going to hash: "+r);
-        window.location.hash = "/"+r;
+        $location.hash("/"+r);
     }
 
 }]);
 
-moolaApp.directive('reportQueryPanel', ['$parse', function ($parse) {
+angular.module('moola').directive('reportQueryPanel', ['$parse', function ($parse) {
 
     var self = this;
 

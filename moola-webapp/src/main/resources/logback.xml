@@ -10,6 +10,8 @@
     <logger name="org.springframework.jdbc.support.JdbcAccessor" level="DEBUG" />
     <logger name="be.echostyle" level="DEBUG" />
 
+    <logger name="be.echostyle.moola.persistence.db.DbRuleProcessor" level="INFO" />
+
     <root level="info">
         <appender-ref ref="LOG" />
     </root>

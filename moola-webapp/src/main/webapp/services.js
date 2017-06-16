@@ -1,25 +1,23 @@
-var moolaServices = angular.module('moolaServices', ['ngResource']);
-
-moolaServices.factory('Accounts', ['$resource',
+angular.module('moola').factory('Accounts', ['$resource',
   function($resource){
-    return $resource('rest/accounts', {}, {
-      types: {method:'GET', params:{}, url:'rest/accountTypes', isArray:true},
-      uploadFormats: {method:'GET', params:{}, url:'rest/uploadFormats', isArray:true},
+    return $resource('http://localhost:8080/moola/rest/accounts', {}, {
+      types: {method:'GET', params:{}, url:'http://localhost:8080/moola/rest/accountTypes', isArray:true},
+      uploadFormats: {method:'GET', params:{}, url:'http://localhost:8080/moola/rest/uploadFormats', isArray:true},
       query: {method:'GET', params:{}, isArray:true},
-      save: {method:'PUT', url:'rest/accounts/:id'},
-      delete: {method:'DELETE', url:'rest/accounts/:id'}
+      save: {method:'PUT', url:'http://localhost:8080/moola/rest/accounts/:id'},
+      delete: {method:'DELETE', url:'http://localhost:8080/moola/rest/accounts/:id'}
     });
   }]);
 
-moolaServices.factory('Categories', ['$resource', function($resource){
+angular.module('moola').factory('Categories', ['$resource', function($resource){
 
   var getId = function(template){
     return template.replace(" ", "_");
   }
 
-  var categoriesResource = $resource('rest/categories', {}, {
-    get: {method:'GET', url:'rest/categories/:id', params:{}},
-    update: {method:'PUT', url:'rest/categories/:id', params:{}},
+  var categoriesResource = $resource('http://localhost:8080/moola/rest/categories', {}, {
+    get: {method:'GET', url:'http://localhost:8080/moola/rest/categories/:id', params:{}},
+    update: {method:'PUT', url:'http://localhost:8080/moola/rest/categories/:id', params:{}},
     find: {method:'GET', params:{q: ':query'}, isArray:true}
   });
 
@@ -54,15 +52,15 @@ moolaServices.factory('Categories', ['$resource', function($resource){
 
 }]);
 
-moolaServices.factory('Peers', ['$resource', function($resource){
+angular.module('moola').factory('Peers', ['$resource', function($resource){
 
   var getId = function(template){
     return template.replace(" ", "_");
   }
 
-  var peersResource = $resource('rest/peers', {}, {
-    get: {method:'GET', url:'rest/peers/:id', params:{}},
-    update: {method:'PUT', url:'rest/peers/:id', params:{}},
+  var peersResource = $resource('http://localhost:8080/moola/rest/peers', {}, {
+    get: {method:'GET', url:'http://localhost:8080/moola/rest/peers/:id', params:{}},
+    update: {method:'PUT', url:'http://localhost:8080/moola/rest/peers/:id', params:{}},
     find: {method:'GET', params:{q: ':query'}, isArray:true}
   });
 

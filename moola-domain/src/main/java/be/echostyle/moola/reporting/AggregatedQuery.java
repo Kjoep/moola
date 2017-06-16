@@ -7,5 +7,5 @@ public interface AggregatedQuery extends Query<AggregatedQuery, Bucket> {
     AggregatedQuery byMonth();
     AggregatedQuery byYear();
     AggregatedQuery byType();
-
+    AggregatedQuery byCategory();
 }

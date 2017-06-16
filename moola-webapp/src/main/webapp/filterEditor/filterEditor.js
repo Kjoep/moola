@@ -1,10 +1,10 @@
-moolaApp.controller('FilterEditorController', ['$scope', '$resource', '$filter', function ($scope, $resource, $filter) {
+angular.module('moola').controller('FilterEditorController', ['$scope', '$resource', '$filter', function ($scope, $resource, $filter) {
 
     var self = this;
 
     var APPLY_ALL = "all";
-    var APPLY_NO_CATEGORY = "nocategory";
-    var APPLY_NO_PEER = "nopeer";
+    var APPLY_NO_CATEGORY = "noCategory";
+    var APPLY_NO_PEER = "noPeer";
     var APPLY_NONE = "none";
 
     var SUBJECT_CATEGORY = "category";

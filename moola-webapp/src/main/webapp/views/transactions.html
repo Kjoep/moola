@@ -1,0 +1,85 @@
+<div class="report piechart-report">
+    <div class="header">
+        <h2>Transactions overview</h2>
+    </div>
+
+    <div class="category-overview">
+        <h3>Categories</h3>
+        <ul>
+            <li>
+                <input type="checkbox" id="cat-?" ng-model="transactions.showCat['?']" />
+                <span class="color" style="background-color: silver; color: white">A</span>
+                <label for="cat-?">Uncategorized</label>
+            </li>
+            <li ng-repeat="category in transactions.categoryOptions">
+                <input type="checkbox" id="cat-{{category.id}}" ng-model="transactions.showCat[category.id]" />
+                <span color-picker="category.color" on-select="transactions.updateCategory(category)" class="color" style="background-color: {{category.color.bg}}; color: {{category.color.fg}}">A</span>
+                <label for="cat-{{category.id}}">{{category.name}}</label>
+            </li>
+        </ul>
+        <p class="actionLinks">
+            <a ng-click="transactions.showAllCategories(true)">Show all</a>
+            <a ng-click="transactions.showAllCategories(false)">Hide all</a>
+        </p>
+    </div>
+
+    <canvas chart="transactions.timeSlices" width="600" height="300"></canvas>
+
+    <div class="details-pane">
+        <table class="key-value">
+            <tr><td class="key">ID</td><td class="value">{{transactions.detailTransaction.id}}</td></tr>
+            <tr><td class="key">Timestamp</td><td class="value">{{transactions.detailTransaction.timestamp}}</td></tr>
+            <tr><td class="key">Amount</td><td class="value">{{transactions.detailTransaction.amount}}</td></tr>
+            <tr><td class="key">Comment</td><td class="value">{{transactions.detailTransaction.comment}}</td></tr>
+            <tr><td class="key">Description</td><td class="value">{{transactions.detailTransaction.description}}</td></tr>
+            <tr><td class="key">Type</td><td class="value">{{transactions.detailTransaction.type}}</td></tr>
+            <tr><td class="key">PeerInfo</td><td class="value">{{transactions.detailTransaction.peerInfo|json}}</td></tr>
+            <tr><td class="key">TerminalInfo</td><td class="value">{{transactions.detailTransaction.terminalInfo|json}}</td></tr>
+        </table>
+    </div>
+
+    <table class="transactionsTable">
+        <thead>
+        <tr>
+            <th>Time</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Comment</th>
+            <th>Peer</th>
+            <th>Amount</th>
+            <th>Balance</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="trans in transactions.transactions" data-id="{{trans.id}}" ng-show="transactions.showCat[trans.category.id]">
+            <td><span class="date">{{transactions.formatDateShort(trans.timestamp)}}</span></td>
+            <td>{{trans.type}}</td>
+            <td>
+                <input category-selection="trans.category" category-options="transactions.categoryOptions" on-select="transactions.updateTransactionCategory(trans)"
+                       type="text" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}};" value="{{trans.category.name}}" />
+            </td>
+            <td><div inline-edit ng-model="trans.description" ng-change="transactions.updateDescription(trans)">{{trans.description}}&nbsp;</div></td>
+            <td style="position: relative">
+                <input peer-selection="trans.peer" peer-options="transactions.peerOptions" on-select="transactions.updatePeer(trans)"
+                       type="text" title="{{transactions.formatPeerLong(trans)}}"
+                       class="peer {{transactions.formatPeerClass(trans)}}" value="{{transactions.formatPeer(trans)}}" />
+            </td>
+            <td class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount | number:2}}</td>
+            <td class="amount">{{trans.balance | number:2 }}</td>
+            <td>
+                &#x22ef;
+                <div context-menu context-button="0">
+                    <a href="" ng-click="transactions.showDetails(trans)">Details ...</a>
+                    <a href="" ng-click="transactions.createPeerFilter(trans)">Create peer filter</a>
+                    <a href="" ng-click="transactions.createCategoryFilter(trans)">Create category filter</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-include="'filterEditor/filterEditor.html'" ng-controller="FilterEditorController as editor">
+    </div>
+
+</div>

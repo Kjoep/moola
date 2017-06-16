@@ -1,4 +1,4 @@
-moolaApp.directive('autoComplete', ['$parse', function ($parse) {
+angular.module('moola').directive('autoComplete', ['$parse', function ($parse) {
 
     var self = this;
 

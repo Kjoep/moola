@@ -63,6 +63,11 @@ public class EmptyQuery implements EntryQuery {
             }
 
             @Override
+            public AggregatedQuery byCategory() {
+                return this;
+            }
+
+            @Override
             public int count() {
                 return 0;
             }

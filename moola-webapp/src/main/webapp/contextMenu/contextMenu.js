@@ -1,4 +1,4 @@
-moolaApp.directive('contextMenu', ['$parse', function ($parse) {
+angular.module('moola').directive('contextMenu', ['$parse', function ($parse) {
 
     var self = this;
 

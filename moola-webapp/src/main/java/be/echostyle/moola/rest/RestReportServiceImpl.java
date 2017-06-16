@@ -65,11 +65,16 @@ public class RestReportServiceImpl implements RestReportService {
                 case "date:year":
                     report = report.aggregate().byYear();
                     break;
+                case "category:category":
+                    report = report.aggregate().byCategory();
+                    break;
                 case "type":
                     report = report.aggregate().byType();
                     break;
             }
         }
+        if (grouping.isEmpty())
+            report = report.newestFirst();
         return report;
     }
 

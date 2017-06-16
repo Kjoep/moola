@@ -1,0 +1,20 @@
+<div class="report-query-panel">
+    <div class="query-section">
+        <h4>Filter</h4>
+        <span class="section-option" ng-repeat="category in vm.categoryControllers">
+            <label>
+                <input type="checkbox" class="qs-category-filter" ng-model="category.selected" />
+                {{category.name}}
+            </label>
+        </span>
+    </div>
+    <div class="query-section">
+        <h4>Grouping</h4>
+        <span class="section-option"><input type="radio" name="qs-category-grouping" value="none" ng-model="vm.grouping" id="qs-category-grouping-none" /><label for="qs-category-grouping-none">No grouping</label></span>
+        <span class="section-option"><input type="radio" name="qs-category-grouping" value="category" ng-model="vm.grouping" id="qs-category-grouping-category" /><label for="qs-category-grouping-category">By categoy</label></span>
+        <span class="section-option"><input type="radio" name="qs-category-grouping" value="in_out" ng-model="vm.grouping" id="qs-category-grouping-inOutDef" /><label for="qs-category-grouping-inOutDef">In vs Out</label></span>
+    </div>
+    <div class="query-apply">
+        <button ng-click="vm.apply()">Apply</button>
+    </div>
+</div>

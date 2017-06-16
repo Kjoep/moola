@@ -45,7 +45,7 @@ public interface Account {
         List<AccountEntry> transactions = getTransactions(from, to);
         for (AccountEntry transaction : transactions) {
             Slice slice = sliceStrategy.getBucket(transaction.getTimestamp());
-            TimeSlice bucket = buckets.get(slice);
+            TimeSlice bucket = buckets.computeIfAbsent(slice, TimeSlice::new);
             bucket.addTransaction(transaction);
         }
 

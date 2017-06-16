@@ -19,5 +19,4 @@ public interface Query<Q extends Query, T> {
     Q newestFirst();
 
     AggregatedQuery aggregate();
-
 }

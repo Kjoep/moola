@@ -34,27 +34,27 @@
         <property name="ruleProcessor" ref="dbRuleScheduler" />
     </bean>
     
-    <bean id="reportService" class="be.echostyle.moola.peristence.db.DbReportService">
+    <bean id="reportService" class="be.echostyle.moola.persistence.db.DbReportService">
         <property name="repository" ref="dbAccountRepo" />
     </bean>
 
     <bean id="groovyFilterFactory" class="be.echostyle.moola.filters.groovy.GroovyFilterFactory" />
 
-    <bean id="dbAccountRepo" class="be.echostyle.moola.peristence.db.DbAccountRepository" init-method="init">
+    <bean id="dbAccountRepo" class="be.echostyle.moola.persistence.db.DbAccountRepository" init-method="init">
         <property name="dataSource" ref="dataSource" />
         <property name="peerRepository" ref="peerRepo" />
         <property name="categoryRepository" ref="categoryRepo" />
     </bean>
 
-    <bean id="dbPeerRepo" class="be.echostyle.moola.peristence.db.DbPeerRepository">
+    <bean id="dbPeerRepo" class="be.echostyle.moola.persistence.db.DbPeerRepository">
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <bean id="dbCategoryRepo" class="be.echostyle.moola.peristence.db.DbCategoryRepository">
+    <bean id="dbCategoryRepo" class="be.echostyle.moola.persistence.db.DbCategoryRepository">
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <bean id="dbRuleScheduler" class="be.echostyle.moola.peristence.db.DbRuleProcessor" destroy-method="stop" init-method="start">
+    <bean id="dbRuleScheduler" class="be.echostyle.moola.persistence.db.DbRuleProcessor" destroy-method="stop" init-method="start">
         <property name="dataSource" ref="dataSource" />
         <property name="categories" ref="categoryRepo" />
         <property name="peers" ref="peerRepo" />
@@ -63,7 +63,7 @@
 
     <bean id="filterRepo" class="be.echostyle.moola.filters.CachedFilterRepository">
         <property name="target">
-            <bean class="be.echostyle.moola.peristence.db.DbFilterRepository">
+            <bean class="be.echostyle.moola.persistence.db.DbFilterRepository">
                 <property name="dataSource" ref="dataSource"/>
                 <property name="categoryRepository" ref="categoryRepo" />
                 <property name="peerRepository" ref="peerRepo" />

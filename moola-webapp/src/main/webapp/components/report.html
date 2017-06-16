@@ -31,7 +31,10 @@
                     Type
                     <div type-filter query="report.getQuery()" on-apply="report.applyQuery">
                 </div></th>
-                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('category')">Category</th>
+                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('category')">
+                    Category
+                    <div category-filter categories="report.categoryOptions" query="report.getQuery()" on-apply="report.applyQuery">
+                </th>
                 <th ng-show="!report.grouped()">Comment</th>
                 <th ng-show="showUnusedCols || !report.grouped() || report.grouped('peer')">Peer</th>
                 <th>Amount</th>
@@ -77,11 +80,11 @@
                         <a href="#" ng-click="report.showDetails(trans)">Details ...</a>
                     </div>
                 </td>
-                <td>
-                    <span ng-show="trans.amount" class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount}}</span>
-                    <span ng-show="trans.total" class="amount {{trans.total > 0 ? 'positive' : 'negative'}}">{{trans.total}}</span>
+                <td class="amount">
+                    <span ng-show="trans.amount" class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount | number : 2}}</span>
+                    <span ng-show="trans.total" class="amount {{trans.total > 0 ? 'positive' : 'negative'}}">{{trans.total | number : 2}}</span>
                 </td>
-                <td ng-show="!report.grouped()" class="amount">{{trans.balance}}</td>
+                <td ng-show="!report.grouped()" class="amount">{{trans.balance | number:2}}</td>
             </tr>
         </tbody>
     </table>

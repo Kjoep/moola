@@ -1,4 +1,4 @@
-moolaApp.directive('chart',['$parse', function($parse) {
+angular.module('moola').directive('chart',['$parse', function($parse) {
 
     return {
         restrict: 'A',

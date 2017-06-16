@@ -48,8 +48,8 @@
             <input peer-selection="editor.subject" peer-options="transactions.peerOptions" type="text" value="{{editor.subject.name}}" on-select="editor.selectPeer" />
         </div>
         <span><input type="radio" id="apply-all" value="all" ng-model="editor.applyType" /><label for="apply-all">Apply to all transactions</label><br /></span>
-        <span ng-show="editor.subjectType=='category'"><input type="radio" id="apply-no-category" value="nocategory" ng-model="editor.applyType" /><label for="apply-no-category">Apply to all uncategorized transactions</label><br /></span>
-        <span ng-show="editor.subjectType=='peer'"><input type="radio" id="apply-no-peer" value="nopeer" ng-model="editor.applyType" /><label for="apply-no-peer">Apply to all unpeered transactions</label><br /></span>
+        <span ng-show="editor.subjectType=='category'"><input type="radio" id="apply-no-category" value="noCategory" ng-model="editor.applyType" /><label for="apply-no-category">Apply to all uncategorized transactions</label><br /></span>
+        <span ng-show="editor.subjectType=='peer'"><input type="radio" id="apply-no-peer" value="noPeer" ng-model="editor.applyType" /><label for="apply-no-peer">Apply to all unpeered transactions</label><br /></span>
         <span><input type="radio" id="apply-future" value="none"  ng-model="editor.applyType" /><label for="apply-future">Apply to all future transactions</label><br /></span>
     </p>
     <p class="actions">

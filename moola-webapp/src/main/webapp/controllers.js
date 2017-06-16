@@ -1,6 +1,6 @@
-var moolaApp = angular.module('moola', ['moolaServices', 'moolaDirectives']);
 
-moolaApp.controller('test', ['$scope', function($scope){
+
+angular.module('moola').controller('test', ['$scope', function($scope){
 
   var self = this;
 
@@ -75,7 +75,7 @@ moolaApp.controller('test', ['$scope', function($scope){
 
 }]);
 
-moolaApp.controller('MoolaController', ['$scope', 'Accounts', function ($scope, Accounts) {
+angular.module('moola').controller('MoolaController', ['$scope', 'Accounts', function ($scope, Accounts) {
   var self = this;
 
   self.currentAccount = null;

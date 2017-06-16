@@ -1,4 +1,4 @@
-moolaApp.directive('dateFilter', [function(){
+angular.module('moola').directive('dateFilter', [function(){
     return {
         restrict: 'A',
         scope: {

@@ -1,38 +1,45 @@
-@background: #343634;
-@light: #dedede;
-@accent: #1fe0be;
+@background: white;
+@background-dark: #323232;
+@background-dark-highlight: #525252;
+@light: #eeeeee;
+@accent: #39747c;
 
 body {
   background-color: @background;
-  font-family: 'Calibri', sans-serif;
+  font-family: 'GidoleRegular', sans-serif;
   padding: 0;
   margin: 0;
+  padding-top:80px;
 }
 
 nav {
   position: fixed;
+  width: 100%;
   top: 0;
   left: 0;
+  box-sizing: border-box;
 
-  width: 300px;;
-  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: solid #dedede 1px;
 
   h1 {
-    text-align: center;
+    margin: 0;
+    margin-right: auto;
     img {
-      margin: auto;
+        width: 100px;
+        margin: -12px 0;
     }
   }
 
   h2 {
-    font-family: 'Georgia', serif;
+    font-family: 'GelasioRegular', serif;
     color: @accent;
+    font-size: 15px;
     font-weight: normal;
-  }
-
-  color: white;
-  a {
-    color: white;
   }
 
   input[type=submit], input[type=button], button {
@@ -65,26 +72,15 @@ div.container {
 }
 
 div.content {
-  position: relative;
   z-index: 100;
   min-height: 600px;
-  margin-left: 250px;
-  padding-left: 60px;
-  padding-right: 10px;
-  padding-top: 50px;
-  border-left: solid 143px transparent;
-  border-image: url('img/strewn.png') 0 0 0 142 fill repeat;
-  //overflow: hidden;
+  padding: 10px;
 }
 
-nav h1 {
-  color: white;
-  margin :0;
-  img {
+nav {
 
-    width:200px;
+    background-color: @light;
 
-  }
 }
 
 #chart {
@@ -259,7 +255,9 @@ form {
 }
 
 .report h2 {
-  font-family: 'Georgia', serif;
+  font-family: 'GelasioBold', serif;
+  color: @accent;
+  font-size: 25px;
   text-align: center;
   font-weight: normal;
   color: #343634;
@@ -320,7 +318,7 @@ input.peer, input.category {
   }
 
   td, th {
-    padding: 0 5px;
+    padding: 4px 5px;
     font-size: 13px;
     position: relative;
   }
@@ -339,13 +337,15 @@ input.peer, input.category {
 
   td.amount {
     font-family: monospace;
+    text-align: right;
+    white-space: nowrap;
   }
 
-  td.amount.negative {
+  .amount.negative {
     color: red;
   }
 
-  td.amount.positive {
+  .amount.positive {
     color:green;
   }
 
@@ -368,6 +368,8 @@ input.peer, input.category {
   clear: both;
   max-width:100%;
   border-collapse: collapse;
+  margin: 0 auto;
+  border: solid #ddd 1px;
 
   tr:hover td {
     background-color: #eee;
@@ -382,11 +384,14 @@ input.peer, input.category {
   }
 
   th {
-    border-bottom: double grey 4px;
+    font-weight: bold;
+    border-bottom: solid #ddd 1px;
+    padding: 10px 15px;
   }
 
   td {
-    border-bottom: dotted grey 1px;
+    border-bottom: solid #eee 1px;
+    padding: 6px 15px;
   }
 
   td.amount {
@@ -595,7 +600,7 @@ input.peer, input.category {
       cursor: pointer;
       text-decoration: underline;
     }
-    
+
     a::after {
       content: '|'
     }
@@ -655,7 +660,9 @@ input.peer, input.category {
 
   > h2 {
     margin-top: 0;
-    font-family: 'Georgia', serif;
+    font-family: 'GelasioBold', serif;
+    font-size: 15px;
+    color: @accent;
     padding-bottom: 12px;
     border-bottom: solid #efefef 1px;
     text-align: center;
@@ -730,28 +737,29 @@ input.peer, input.category {
 
   right: 0;
   padding: 3px;
-  background-color: @background;
+  background-color: @background-dark;
 
   a {
     display: block;
-    background-color: @background;
+    background-color: @background-dark;
     color: #dedede;
     padding: 3px 10px;
     text-decoration: none;
     font-size: 16px;
     text-align: center;
     white-space: nowrap;
+    transition: color .5s ease, background-color .5s ease;
   }
 
   a:hover {
-    color: @background;
-    background-color: #dedede;
+    color: @accent;
+    background-color: @background-dark-highlight;
   }
 }
 
 .details-pane {
   .popover;
-  background-color: @background;
+  background-color: @background-dark;
   font-family: monospace;
   padding:10px;
   position: fixed;
@@ -874,4 +882,15 @@ table.key-value {
     background-color: #dfdfdf;
     color: @background;
   }
+}
+
+button.more-options {
+  border-radius: 4px;
+  border: solid #eee 1px;
+  background-color: #fcfcfc;
+  cursor: pointer;
+}
+
+button.more-options:hover {
+  border: solid #ccc 1px;
 }

@@ -1,4 +1,4 @@
-moolaApp.controller('TestController', ['$scope', '$resource', '$filter', '$http', 'Categories', function ($scope, $resource, $filter, $http, Categories) {
+angular.module('moola').controller('TestController', ['$scope', '$resource', '$filter', '$http', 'Categories', function ($scope, $resource, $filter, $http, Categories) {
 
     var self = this;
 
