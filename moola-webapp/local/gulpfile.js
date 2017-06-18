@@ -36,9 +36,11 @@ gulp.task('watch', ['build'], function(){
         server: [TARGET_FOLDER]
     });
 
-    gulp.watch(inSrc(['**/*.js', '**/*.less', '**/*.html']), ['bundle-js', 'bundle-less', 'move-html']);
+    gulp.watch(inSrc('**/*.js'), ['bundle-js']);
+    gulp.watch(inSrc('**/*.less'), ['bundle-less', 'bundle-less-inject']);
+    gulp.watch(inSrc('**/*.html'), ['move-html']);
 
-    gulp.watch([TARGET_FOLDER + '**/*']).on('change', function(){
+    gulp.watch([TARGET_FOLDER + '**/*.html', TARGET_FOLDER + '**/*.js']).on('change', function(){
         browserSync.reload();
     });
 
@@ -60,6 +62,12 @@ gulp.task('bundle-less', function(){
     return src('**/*.less')
         .pipe(less({paths: []}))
         .pipe(gulp.dest(TARGET_FOLDER));
+});
+
+gulp.task('bundle-less-inject', function(){
+    return src('**/*.less')
+        .pipe(less({paths: []}))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('copy-static', function(){
