@@ -1,8 +1,4 @@
-@background: white;
-@background-dark: #323232;
-@background-dark-highlight: #525252;
-@light: #eeeeee;
-@accent: #39747c;
+@import "common.less";
 
 body {
   background-color: @background;
@@ -13,27 +9,6 @@ body {
 }
 
 nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  align-items: center;
-  padding: 10px 20px;
-  border-bottom: solid #dedede 1px;
-
-  h1 {
-    margin: 0;
-    margin-right: auto;
-    img {
-        width: 100px;
-        margin: -12px 0;
-    }
-  }
 
   h2 {
     font-family: 'GelasioRegular', serif;
@@ -75,12 +50,6 @@ div.content {
   z-index: 100;
   min-height: 600px;
   padding: 10px;
-}
-
-nav {
-
-    background-color: @light;
-
 }
 
 #chart {
@@ -144,49 +113,29 @@ table.report th {
 }
 
 table.accountTable {
-  border-collapse: collapse;
-  width: 600px;
 
-  td.icon {
-    width:30px;
-  }
+    .entityTable();
 
-  td.actions {
-    width: 140px;
-    text-align: right;
-    padding-right: 0;
-  }
+    td.icon {
+        width:30px;
+        img {
+            width:20px;
+            vertical-align: middle;
+        }
+    }
 
-  tr td {
-    color: #DDDDDD;
-    cursor: pointer;
-    transition: background-color 350ms;
-  }
+    tr.accountEdit td {
+        border-top: dashed #444444 1px;
+    }
 
-  tr.accountMain td {
-    border-top: solid #444444 1px;
-  }
+    tr:first-child td {
+        border-top: none;
+    }
 
-  tr.accountMain.active td.name {
-    text-decoration: underline;
-  }
-
-  tr.accountEdit td {
-    border-top: dashed #444444 1px;
-  }
-
-  tr.accountMain:hover td {
-    background-color: #444444;
-  }
-
-  tr:first-child td {
-    border-top: none;
-  }
-
-  form {
-    background-color: @background;
-    width: 100%;
-  }
+    form {
+        background-color: @background;
+        width: 100%;
+    }
 
   div.accountUpload {
     position: absolute;
@@ -363,61 +312,48 @@ input.peer, input.category {
   }
 }
 
+.entityTable {
+
+    clear: both;
+    max-width:100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+
+    tr:hover td {
+      background-color: #eee;
+    }
+
+    td, th {
+      padding: 3px 7px;
+    }
+
+    td.actions, th.actions {
+        width: 140px;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    th {
+      font-weight: normal;
+      text-align: left;
+      padding: 10px 15px;
+      border-bottom: solid #aaa 1px;
+    }
+
+    td {
+      padding: 6px 15px;
+    }
+
+
+}
+
 .filtersTable {
 
-  clear: both;
-  max-width:100%;
-  border-collapse: collapse;
-  margin: 0 auto;
-  border: solid #ddd 1px;
+    .entityTable();
 
-  tr:hover td {
-    background-color: #eee;
-  }
-
-  td, th {
-    padding: 3px 7px;
-  }
-
-  td.expression {
-    font-family: monospace;
-  }
-
-  th {
-    font-weight: bold;
-    border-bottom: solid #ddd 1px;
-    padding: 10px 15px;
-  }
-
-  td {
-    border-bottom: solid #eee 1px;
-    padding: 6px 15px;
-  }
-
-  td.amount {
-    font-family: monospace;
-  }
-
-  td.amount.negative {
-    color: red;
-  }
-
-  td.amount.positive {
-    color:green;
-  }
-
-  td > div.inline-edit {
-    cursor: text;
-  }
-
-  td > input.inline-edit {
-    display: block;
-    width: 100%;
-  }
-
-  .date {
-    white-space: nowrap;
-  }
+    td.expression {
+      font-family: monospace;
+    }
 }
 
 

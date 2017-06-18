@@ -1,6 +1,6 @@
 angular.module('moola')
 .component('accountSelection', {
-    templateUrl: 'components/account-selection/account-selection.html',
+    templateUrl: 'components/account-selection.html',
     controller: ['Accounts', 'Session', function(Accounts, Session){
 
         var vm = this;

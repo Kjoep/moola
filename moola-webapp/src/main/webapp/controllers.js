@@ -227,6 +227,3 @@ angular.module('moola').controller('MoolaController', ['$scope', 'Accounts', fun
     return category;
   }
 }]);
-
-
-

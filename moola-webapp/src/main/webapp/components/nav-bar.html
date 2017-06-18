@@ -1,5 +1,14 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <h1><img src="img/moola.svg" alt="Moola" /></h1>
-    <authentication></authentication>
-    <account-selection></account-selection>
+    <authentication class="clickable"></authentication>
+    <current-account class="click-for-menu clickable" ng-class="{active: menuShown}" ng-click="menuShown = !menuShown"></current-account>
 </nav>
+<div ng-class="{visible:menuShown}" class="main-menu">
+    <account-selection></account-selection>
+    <ul class="routes">
+        <li><a href="#!/" ng-click="menuShown=false">Transactions</a></li>
+        <li><a href="#!/reporting" ng-click="menuShown=false">Reporting</a></li>
+        <li><a href="#!/categories" ng-click="menuShown=false">Categories</a></li>
+        <li><a href="#!/filters" ng-click="menuShown=false">Filters</a></li>
+    </ul>
+</div>
