@@ -270,18 +270,25 @@ input.peer, input.category {
     padding: 4px 5px;
     font-size: 13px;
     position: relative;
+    vertical-align: top;
   }
 
   th {
-    border-bottom: double grey 4px;
+    border-bottom: solid #aaa 1px;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  th.col-peer, th.col-category {
+      text-align: center;
+  }
+
+  th.col-amount {
+      text-align: right;
   }
 
   th.filtered {
     color: red;
-  }
-
-  td {
-    border-bottom: dotted grey 1px;
   }
 
   td.amount {

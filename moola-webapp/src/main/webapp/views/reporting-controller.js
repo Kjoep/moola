@@ -1,4 +1,4 @@
-angular.module('moola').controller('ReportController', ['$scope', '$location', '$resource', '$filter', '$http', 'Categories', function ($scope, $location, $resource, $filter, $http, Categories) {
+angular.module('moola').controller('ReportingController', ['$scope', '$location', '$resource', '$filter', '$http', 'Categories', function ($scope, $location, $resource, $filter, $http, Categories) {
 
     var self = this;
 
@@ -14,8 +14,27 @@ angular.module('moola').controller('ReportController', ['$scope', '$location', '
         grouping: {}
     };
 
-    var currentAccount = $scope.controller.activeAccount;
+    var currentAccount;
     var parentController = $scope.controller;
+
+    var onAccountChanged = function(account) {
+        currentAccount = account;
+        if (account) {
+            self.transactions = transactionsResource.all({accountId: account.id});
+            self.timeSlices = {timeSliceName: ""};
+            self.transactions.$promise.then(function () {
+                adaptCategories(self.transactions);
+                loadSlices();
+            });
+        }
+        else {
+            self.transactions = [];
+            self.timeSlices = {timeSliceName: ""};
+        }
+    };
+
+    Session.onAccountChanged(onAccountChanged);
+    onAccountChanged(Session.account());
 
     $scope.$watch(function(){return $location.hash();}, function(){
         parseHash($location.hash());
@@ -467,4 +486,3 @@ angular.module('moola').directive('reportQueryPanel', ['$parse', function ($pars
 
 
 }]);
-

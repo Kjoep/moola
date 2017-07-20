@@ -1,0 +1,26 @@
+<div class="report piechart-report">
+    <div class="header">
+        <h2>Categories</h2>
+    </div>
+
+    <table class="categoriesTable">
+        <thead>
+        <tr>
+            <th><!-- tree --></th>
+            <th><!-- color --></th>
+            <th>Name</th>
+            <th>In/Out</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="category in categories.categories">
+                <td clas="tree">├</td>
+                <td><color-display fg="{{category.colors.fg}}" bg="{{category.colors.bg}}" ></color-display></td>
+                <td>{{category.name}}</td>
+                <td>{{category.inOut}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

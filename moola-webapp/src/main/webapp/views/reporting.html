@@ -1,0 +1,94 @@
+<div class="report piechart-report">
+    <div class="header">
+        <h2>{{report.title}}</h2>
+    </div>
+
+    <canvas chart="report.chartData" width="600" height="300" ng-show="report.chartData"></canvas>
+
+    <div class="details-pane">
+        <table class="key-value">
+                <tr><td class="key">ID</td><td class="value">{{report.detailTransaction.id}}</td></tr>
+                <tr><td class="key">Timestamp</td><td class="value">{{report.detailTransaction.timestamp}}</td></tr>
+                <tr><td class="key">Amount</td><td class="value">{{report.detailTransaction.amount}}</td></tr>
+                <tr><td class="key">Comment</td><td class="value">{{report.detailTransaction.comment}}</td></tr>
+                <tr><td class="key">Description</td><td class="value">{{report.detailTransaction.description}}</td></tr>
+                <tr><td class="key">Type</td><td class="value">{{report.detailTransaction.type}}</td></tr>
+                <tr><td class="key">PeerInfo</td><td class="value">{{report.detailTransaction.peerInfo|json}}</td></tr>
+                <tr><td class="key">TerminalInfo</td><td class="value">{{report.detailTransaction.terminalInfo|json}}</td></tr>
+        </table>
+    </div>
+
+
+    <input type="checkbox" id="show_unused_cols" ng-model="showUnusedCols" /><label for="show_unused_cols">Show unused columns</label>
+
+    <table class="transactionsTable">
+        <thead>
+            <tr>
+                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('date')">Time
+                    <div date-filter query="report.getQuery()" on-apply="report.applyQuery"></div>
+                </th>
+                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('type')">
+                    Type
+                    <div type-filter query="report.getQuery()" on-apply="report.applyQuery">
+                </div></th>
+                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('category')">
+                    Category
+                    <div category-filter categories="report.categoryOptions" query="report.getQuery()" on-apply="report.applyQuery">
+                </th>
+                <th ng-show="!report.grouped()">Comment</th>
+                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('peer')">Peer</th>
+                <th>Amount</th>
+                <th ng-show="!report.grouped()">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="trans in report.transactions" data-id="{{trans.id}}">
+                <td ng-show="showUnusedCols || !report.grouped() || report.grouped('date')">
+                    <span class="date" ng-show="!report.grouped()">{{report.formatDateShort(trans.timestamp)}}</span>
+                    <span class="timeslice" ng-show="report.grouped('date')">{{trans.timeSlice}}</span>
+                    <span ng-show="report.grouped() && !report.grouped('date')">*</span>
+                </td>
+                <td ng-show="showUnusedCols || !report.grouped() || report.grouped('type')">
+                    <span ng-show="!report.grouped() || report.grouped('type')">{{trans.type}}</span>
+                    <span ng-show="report.grouped() && !report.grouped('type')">*</span>
+                    <div context-menu context-button="0" ng-show="trans.type">
+                        <a href="#{{report.withNewFilter('type', trans.type)}}">New filter</a>
+                        <a href="#{{report.withAddFilter('type', trans.type)}}">Add to filter</a>
+                        <a href="#" ng-click="report.showDetails(trans)">Details ...</a>
+                    </div>
+                </td>
+                <td ng-show="showUnusedCols || !report.grouped() || report.grouped('category')" style="position: relative">
+                    <span ng-show="!report.grouped() || report.grouped('category')" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>{{trans.category.name}}</span>
+                    <span ng-show="report.grouped() && !report.grouped('category')">*</span>
+                    <div context-menu context-button="0" ng-show="trans.category">
+                        <a href="#{{report.withNewFilter('category', trans.category ? trans.category.id : null)}}">New filter</a>
+                        <a href="#{{report.withAddFilter('category', trans.category ? trans.category.id : null)}}">Add to filter</a>
+                        <a href="#" ng-click="report.showDetails(trans)">Details ...</a>
+                    </div>
+                </td>
+                <td ng-show="!report.grouped()">
+                    <div inline-edit ng-model="trans.description" ng-change="transactions.updateDescription(trans)">{{trans.description}}&nbsp;</div>
+                </td>
+                <td ng-show="showUnusedCols || !report.grouped() || report.grouped('peer')" style="position: relative">
+                    <span ng-show="!report.grouped() || report.grouped('peer')" class="peer" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>
+                        {{report.formatPeer(trans)}}</span>
+                    <span ng-show="report.grouped() && !report.grouped('peer')" class="peer">
+                        *</span>
+                    <div context-menu context-button="0" ng-show="trans.peer">
+                        <a href="#{{report.withNewFilter('peer', trans.peer ? trans.peer.id : null)}}">New filter</a>
+                        <a href="#{{report.withAddFilter('peer', trans.peer ? trans.peer.id : null)}}">Add to filter</a>
+                        <a href="#" ng-click="report.showDetails(trans)">Details ...</a>
+                    </div>
+                </td>
+                <td class="amount">
+                    <span ng-show="trans.amount" class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount | number : 2}}</span>
+                    <span ng-show="trans.total" class="amount {{trans.total > 0 ? 'positive' : 'negative'}}">{{trans.total | number : 2}}</span>
+                </td>
+                <td ng-show="!report.grouped()" class="amount">{{trans.balance | number:2}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
