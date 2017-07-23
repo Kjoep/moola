@@ -101,7 +101,12 @@ public class RestAccountServiceImpl implements RestAccountService {
     @Override
     public Response upload(String accountId, byte[] content, String format, UriInfo parameters) {
         String ref = upload(accountId, content, format, parameters.getQueryParameters());
-        return Response.ok().location(buildUrl("accounts/{0}/upload/{1}", accountId, ref)).entity(ref).build();
+        return Response
+                .ok()
+                .location(buildUrl("accounts/{0}/upload/{1}", accountId, ref))
+                .type(MediaType.APPLICATION_JSON)
+                .entity("\""+ref+"\"")
+                .build();
     }
 
     @Override
