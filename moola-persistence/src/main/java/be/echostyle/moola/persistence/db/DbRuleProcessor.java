@@ -69,7 +69,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
     @Override
     public void schedule(AccountEntry entry, FilterRule rule) {
         if (!(entry instanceof DbAccountEntry)) throw new IllegalArgumentException("This filterProcessor only supports Account Entries that exist in DB");
-        insert(WORK_TABLE, COL_ENTRY_ID, COL_FILTER_ID).values(entry.getId(), rule.getId());
+        merge(WORK_TABLE, COL_ENTRY_ID, COL_FILTER_ID).values(entry.getId(), rule.getId());
     }
 
     private int peersFirst(FilterRule one, FilterRule two) {

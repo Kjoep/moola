@@ -181,6 +181,19 @@ public abstract class JdbcRepository {
         };
     }
 
+    public InsertBuilder merge(String table, String... columns){
+        return new InsertBuilder() {
+            @Override
+            public void values(Object... values) {
+                String sql = "merge into "+table+
+                        "("+String.join(",",columns)+") values "+
+                        "("+ Stream.of(columns).map(v -> "?").collect(Collectors.joining(","))+")";
+                log.debug("Inserting: {} with values {}", sql, Arrays.asList(values));
+                jdbcTemplate.update(sql, mapTypes(values));
+            }
+        };
+    }
+
     public UpdateBuilder update(String table, String keyColumn, Object keyValue) {
         List<String> columns = new ArrayList<>();
         List<Object> values = new ArrayList<>();

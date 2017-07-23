@@ -68,6 +68,17 @@ public class DbRuleProcessorTest extends DbTest{
         verifyDb("select count(id) from accTransaction where peer_id = 'irs' and category_id = 'taxes' and id = '25'", 1);
     }
 
+    @Test
+    public void ignoresDuplicateSchedulings() throws InterruptedException {
+        verifyDb("select count(id) from accTransaction where peer_id = 'irs' and category_id = 'taxes' and id = '25'", 0);
+        AccountEntry entry = Mockito.mock(DbAccountEntry.class);
+        FilterRule rule = Mockito.mock(FilterRule.class);
+        when(rule.getId()).thenReturn("26");
+        when(entry.getId()).thenReturn("25");
+        processor.schedule(entry, rule);
+        processor.schedule(entry, rule);
+    }
+
     @Override
     protected void addTestData() {
         irs = Mockito.mock(Peer.class);
