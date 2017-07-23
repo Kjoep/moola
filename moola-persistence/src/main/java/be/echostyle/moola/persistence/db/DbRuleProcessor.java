@@ -33,6 +33,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
 
     @Override
     public int scheduleForAll(FilterRule ref) {
+        log.debug("Scheduling filter {} for all entries", ref);
         int r = from(DbAccountEntry.TABLE).insertInto(WORK_TABLE, reference(DbAccountEntry.COL_ID), literal(ref.getId()));
         if (workerThread!=null) workerThread.interrupt();
         return r;
@@ -40,6 +41,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
 
     @Override
     public int scheduleForNoCategory(FilterRule ref) {
+        log.debug("Scheduling filter {} for entries without category", ref);
         int r = from(DbAccountEntry.TABLE)
                 .where(DbAccountEntry.COL_CATEGORY_ID+" is null")
                 .insertInto(WORK_TABLE, reference(DbAccountEntry.COL_ID), literal(ref.getId()));
@@ -49,6 +51,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
 
     @Override
     public int scheduleForNoPeer(FilterRule ref) {
+        log.debug("Scheduling filter {} for entries without peer", ref);
         int r =  from(DbAccountEntry.TABLE)
                 .where(DbAccountEntry.COL_PEER_ID+" is null")
                 .insertInto(WORK_TABLE, reference(DbAccountEntry.COL_ID), literal(ref.getId()));
@@ -58,6 +61,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
 
     @Override
     public int scheduleAll(AccountEntry entry) {
+        log.debug("Scheduling all filters for {}", entry);
         int r = (int) filters.getAllRules().stream()
                 .sorted(this::peersFirst)
                 .peek(rule -> schedule(entry, rule))
@@ -68,6 +72,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
 
     @Override
     public void schedule(AccountEntry entry, FilterRule rule) {
+        log.debug("Scheduling filter {} for entry {}", rule, entry);
         if (!(entry instanceof DbAccountEntry)) throw new IllegalArgumentException("This filterProcessor only supports Account Entries that exist in DB");
         merge(WORK_TABLE, COL_ENTRY_ID, COL_FILTER_ID).values(entry.getId(), rule.getId());
     }
@@ -96,7 +101,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
             while (running) {
                 try {
                     List<WorkEntry> batch = findWork();
-                    log.debug("Found {} entries to process", batch.size());
+                    log.trace("Found {} entries to process", batch.size());
 
                     if (batch.isEmpty())
                         Thread.sleep(5_000);
