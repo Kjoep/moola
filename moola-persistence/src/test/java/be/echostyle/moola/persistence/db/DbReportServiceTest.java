@@ -33,11 +33,11 @@ public class DbReportServiceTest extends DbTest {
 
     @Before
     public void setUp() throws Exception {
+        super.setUp();
         reportService = new DbReportService();
         repo = new DbAccountRepository();
         peers = Mockito.mock(PeerRepository.class);
         categories = Mockito.mock(CategoryRepository.class);
-        ds = new SingleConnectionDataSource("jdbc:h2:mem:", true);
         repo.setDataSource(ds);
         repo.init();
         repo.setCategoryRepository(categories);
@@ -46,6 +46,11 @@ public class DbReportServiceTest extends DbTest {
         reportService.setCategories(categories);
         reportService.setPeers(peers);
         addTestData();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        repo.drop();
     }
 
     @Test
@@ -173,8 +178,8 @@ public class DbReportServiceTest extends DbTest {
 
     @Test
     public void calculatesWeek(){
-        String month = repo.querySingle("select TS_WEEK(transaction_ts) as month from accTransaction where id = 'abc1'", row -> row.string("month"));
-        assertEquals("2016/7", month);
+        String week = repo.querySingle("select TS_WEEK(transaction_ts) as month from accTransaction where id = 'abc1'", row -> row.string("month"));
+        assertEquals("2016/6", week);
     }
 
 
@@ -182,12 +187,6 @@ public class DbReportServiceTest extends DbTest {
     protected void addTestData() {
         JdbcTemplate template = new JdbcTemplate(ds);
         new MarkdownLoader(template).loadTestData(this);
-
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        repo.drop();
     }
 
 }

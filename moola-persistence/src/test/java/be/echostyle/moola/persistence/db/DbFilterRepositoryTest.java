@@ -35,11 +35,11 @@ public class DbFilterRepositoryTest extends DbTest {
 
     @Before
     public void setUp() throws Exception {
+        super.setUp();
         DbFilterRepository repo = new DbFilterRepository();
         peers = Mockito.mock(PeerRepository.class);
         categories = Mockito.mock(CategoryRepository.class);
         factory = Mockito.mock(TransactionFilterFactory.class);
-        ds = new SingleConnectionDataSource("jdbc:h2:mem:", true);
         repo.setDataSource(ds);
         repo.setCategoryRepository(categories);
         repo.setPeerRepository(peers);

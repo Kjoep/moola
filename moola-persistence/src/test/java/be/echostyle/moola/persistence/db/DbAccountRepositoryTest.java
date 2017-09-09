@@ -31,10 +31,10 @@ public class DbAccountRepositoryTest extends DbTest {
 
     @Before
     public void setUp() throws Exception {
+        super.setUp();
         repo = new DbAccountRepository();
         peers = Mockito.mock(PeerRepository.class);
         categories = Mockito.mock(CategoryRepository.class);
-        ds = new SingleConnectionDataSource("jdbc:h2:mem:", true);
         repo.setDataSource(ds);
         repo.init();
         repo.setCategoryRepository(categories);

@@ -2,8 +2,8 @@ package be.echostyle.dbQueries;
 
 import be.echostyle.moola.RepositoryException;
 import be.echostyle.moola.util.Holder;
+import be.echostyle.sql.Sql;
 import org.flywaydb.core.Flyway;
-import org.flywaydb.core.internal.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
@@ -12,9 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.*;
-import java.util.Date;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -26,6 +24,7 @@ public abstract class JdbcRepository {
 
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
+    private Sql dialect;
 
     public JdbcRepository(){}
 
@@ -112,7 +111,7 @@ public abstract class JdbcRepository {
             public <T> Stream<T> stream(Mapper<T> mapper, String... select) {
                 String sql = buildQuery(select);
                 log.debug("Executing {} with {}", sql, parameters);
-                ArgumentPreparedStatementSetter argSetter = new ArgumentPreparedStatementSetter(mapTypes(parameters.toArray(new Object[0])));
+                ArgumentPreparedStatementSetter argSetter = new ArgumentPreparedStatementSetter(dialect.mapTypes(parameters.toArray(new Object[0])));
                 Holder<Connection> connectionHolder = new Holder<>();
                 try {
                     connectionHolder.set(dataSource.getConnection());
@@ -155,7 +154,7 @@ public abstract class JdbcRepository {
                 if (!where.isEmpty())
                     sql+=" where "+String.join(" and ", where);
                 log.debug("Executing {} with {}", sql, parameters);
-                jdbcTemplate.update(sql, mapTypes(parameters.toArray(new Object[0])));
+                jdbcTemplate.update(sql, dialect.mapTypes(parameters.toArray(new Object[0])));
             }
 
             @Override
@@ -176,20 +175,15 @@ public abstract class JdbcRepository {
                         "("+String.join(",",columns)+") values "+
                         "("+ Stream.of(columns).map(v -> "?").collect(Collectors.joining(","))+")";
                 log.debug("Inserting: {} with values {}", sql, Arrays.asList(values));
-                jdbcTemplate.update(sql, mapTypes(values));
+                jdbcTemplate.update(sql, dialect.mapTypes(values));
             }
         };
     }
 
-    public InsertBuilder merge(String table, String... columns){
-        return new InsertBuilder() {
-            @Override
-            public void values(Object... values) {
-                String sql = "merge into "+table+
-                        "("+String.join(",",columns)+") values "+
-                        "("+ Stream.of(columns).map(v -> "?").collect(Collectors.joining(","))+")";
-                log.debug("Inserting: {} with values {}", sql, Arrays.asList(values));
-                jdbcTemplate.update(sql, mapTypes(values));
+    public MergeBuilder merge(String table, String... keyColumns){
+        return new MergeBuilder(keyColumns) {
+            public void perform() {
+                dialect.merge(jdbcTemplate, table, this.keyColumns, this.columns, this.keyValues, this.values);
             }
         };
     }
@@ -214,18 +208,18 @@ public abstract class JdbcRepository {
                         +" where "+keyColumn+"=?";
                 values.add(keyValue);
                 log.debug("Executing {} with {}", sql, values);
-                jdbcTemplate.update(sql, mapTypes(values.toArray(new Object[0])));
+                jdbcTemplate.update(sql, dialect.mapTypes(values.toArray(new Object[0])));
             }
         };
     }
 
     public <T> List<T> query (String sql, Mapper<T> mapper, Object... parameters){
-        parameters = mapTypes(parameters);
+        parameters = dialect.mapTypes(parameters);
         return jdbcTemplate.query(sql, parameters, (resultSet, i) -> mapper.map(adapter(resultSet)));
     }
 
     public <T> T querySingle (String sql, Mapper<T> mapper, Object... parameters){
-        parameters = mapTypes(parameters);
+        parameters = dialect.mapTypes(parameters);
         List<T> r = jdbcTemplate.query(sql, parameters, (resultSet, i) -> mapper.map(adapter(resultSet)));
         return r.isEmpty() ? null: r.iterator().next();
     }
@@ -280,28 +274,22 @@ public abstract class JdbcRepository {
 
     protected Flyway flyway(){
         Flyway r = new Flyway();
-        r.setDataSource(dataSource);
+        try (Connection connection = dataSource.getConnection()){
+            String dialect = connection.getMetaData().getDatabaseProductName();
+            r.setLocations("db/migration/common", "db/migration/" + dialect.toLowerCase());
+            r.setDataSource(dataSource);
+        } catch (SQLException e) {
+            throw new RuntimeException("Cannot read database type", e);
+        }
         return r;
     }
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.dialect = Sql.forDatasource(dataSource);
     }
 
-    private static Object[] mapTypes(Object[] parameters) {
-        Object[] r = new Object[parameters.length];
-        for (int i=0; i<parameters.length; i++)
-            r[i] = mapType(parameters[i]);
-        return r;
-    }
-
-    private static Object mapType(Object parameter) {
-        if (parameter==null) return null;
-        if (parameter instanceof LocalDateTime) return Date.from(((LocalDateTime) parameter).toInstant(ZoneOffset.UTC));
-        if (parameter instanceof Enum<?>) return ((Enum) parameter).name();
-        return parameter;
-    }
 
     protected static QueryBuilder.Value literal(Object literal){
         return () -> {

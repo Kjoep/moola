@@ -1,5 +1,6 @@
 package be.echostyle.moola.persistence.db;
 
+import be.echostyle.sql.Sql;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,9 +26,11 @@ public class MarkdownLoader {
     private static final Logger log = LoggerFactory.getLogger(MarkdownLoader.class);
 
     private JdbcTemplate target;
+    private Sql sql;
 
     public MarkdownLoader(JdbcTemplate target) {
         this.target = target;
+        this.sql = Sql.forDatasource(target.getDataSource());
     }
 
     /**
@@ -104,21 +107,23 @@ public class MarkdownLoader {
 
     private List<TypeHandler> loadFields(String tableName, String[] headers) {
         List<String> headerList = Arrays.asList(headers);
-        List<TypeHandler> r = target.query("SHOW COLUMNS FROM " + tableName, (rs, rowNum) -> {
-            String name = rs.getString("field");
-            String type = rs.getString("type");
-            switch (type.split("\\(")[0]){
-                case "VARCHAR":
+        List<TypeHandler> columns = target.query("SELECT column_name, data_type " +
+                "FROM INFORMATION_SCHEMA.COLUMNS " +
+                "WHERE LOWER(TABLE_NAME) = ?", (rs, rowNum) -> {
+            String name = rs.getString("column_name");
+            String type = rs.getString("data_type");
+            switch (sql.typeForString(type.split("\\(")[0])){
+                case VARCHAR:
                     return TypeHandler.string(name.toLowerCase());
-                case "TIMESTAMP":
+                case TIMESTAMP:
                     return TypeHandler.timestamp(name.toLowerCase());
-                case "INTEGER":
+                case INT:
                     return TypeHandler.integer(name.toLowerCase());
                 default:
-                    throw new RuntimeException("Unsupported type: "+type);
+                    throw new RuntimeException("Unsupported type: "+type+" for column "+name);
             }
-        });
-        List<TypeHandler> result = r.stream()
+        }, tableName.toLowerCase());
+        List<TypeHandler> result = columns.stream()
                 .filter(field -> headerList.contains(field.name()))
                 .sorted(new Comparator<TypeHandler>() {
                     @Override
@@ -167,7 +172,7 @@ public class MarkdownLoader {
         public static TypeHandler timestamp(String fieldName) {
             return new TypeHandler(fieldName) {
                 public String format(String value){
-                    return "ts '"+value+"'";
+                    return "timestamp '"+value+"'";
                 }
             };
         }

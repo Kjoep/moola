@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.IsoFields;
 import java.time.temporal.WeekFields;
 import java.util.Locale;
 
@@ -24,7 +25,7 @@ public final class TimeFunctions {
 
     public static String week(Timestamp ts){
         LocalDateTime ldt = ts.toLocalDateTime();
-        int woy = ldt.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear());
+        int woy = ldt.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
         int year = ldt.get(ChronoField.YEAR);
         return year+"/"+woy;
     }

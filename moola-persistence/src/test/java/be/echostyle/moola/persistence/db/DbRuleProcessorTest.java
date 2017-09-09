@@ -40,11 +40,11 @@ public class DbRuleProcessorTest extends DbTest{
 
     @Before
     public void setUp() throws Exception {
+        super.setUp();
         peers = Mockito.mock(PeerRepository.class);
         categories = Mockito.mock(CategoryRepository.class);
         factory = Mockito.mock(TransactionFilterFactory.class);
         filters = Mockito.mock(DbFilterRepository.class);
-        ds = new SingleConnectionDataSource("jdbc:h2:mem:", true);
         DbRuleProcessor processor = new DbRuleProcessor();
         processor.setCategories(categories);
         processor.setPeers(peers);

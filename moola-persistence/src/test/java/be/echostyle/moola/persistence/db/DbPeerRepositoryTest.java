@@ -1,6 +1,7 @@
 package be.echostyle.moola.persistence.db;
 
 import be.echostyle.moola.peer.Peer;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,11 +18,16 @@ public class DbPeerRepositoryTest extends DbTest {
 
     @Before
     public void setUp() throws Exception {
+        super.setUp();
         repo = new DbPeerRepository();
-        ds = new SingleConnectionDataSource("jdbc:h2:mem:", true);
         repo.setDataSource(ds);
         repo.init();
         addTestData();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        repo.drop();
     }
 
     @Test
