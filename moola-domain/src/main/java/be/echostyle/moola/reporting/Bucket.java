@@ -52,8 +52,8 @@ public class Bucket {
         this.count = count;
     }
 
-    public BigDecimal getTotal() {
-        return new BigDecimal(total).divide(new BigDecimal("100"));
+    public long getTotal() {
+        return total;
     }
 
     public void setTotal(long total) {

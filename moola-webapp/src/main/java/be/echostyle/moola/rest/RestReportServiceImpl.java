@@ -6,6 +6,7 @@ import be.echostyle.moola.reporting.EntryQuery;
 import be.echostyle.moola.reporting.Query;
 import be.echostyle.moola.reporting.ReportService;
 import be.echostyle.moola.reports.Paging;
+import be.echostyle.moola.rest.model.Bucket;
 import be.echostyle.moola.rest.model.Transaction;
 
 import javax.ws.rs.BadRequestException;
@@ -25,7 +26,7 @@ public class RestReportServiceImpl implements RestReportService {
 
     @Override
     public List<?> getPage(String accountId, int page, List<String> filters, List<String> grouping) {
-        return asPages(buildReport(accountId, filters, grouping)).page(PAGE_LENGTH, page);
+        return mapRecords(asPages(buildReport(accountId, filters, grouping)).page(PAGE_LENGTH, page));
     }
 
     private Query buildReport(String accountId, List<String> filters, List<String> grouping) {
@@ -111,9 +112,15 @@ public class RestReportServiceImpl implements RestReportService {
         }
     }
 
+    private List<?> mapRecords(List<?> o) {
+        return o.stream().map(this::mapRecord).collect(Collectors.toList());
+    }
+
     private Object mapRecord(Object o) {
         if (o instanceof AccountEntry)
             return Transaction.fromModel((AccountEntry) o);
+        else if (o instanceof be.echostyle.moola.reporting.Bucket)
+            return Bucket.fromModel((be.echostyle.moola.reporting.Bucket) o);
         else return o;
     }
 
