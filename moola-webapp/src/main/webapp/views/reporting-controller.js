@@ -42,6 +42,7 @@ angular.module('moola').controller('ReportingController',
     }
 
     var loadTransactions = function(){
+        console.log('loading transactions');
         if (!currentAccount) return {then:function(){}};
         var q = [];
         for (var key in query.filters){
@@ -73,19 +74,6 @@ angular.module('moola').controller('ReportingController',
         "managementCost",
         "withdrawal"
     ];
-
-
-    self.selectAccount = function(account) {
-        currentAccount = account;
-        if (account) {
-            loadTransactions().then(function(loaded){
-                self.transactions = loaded;
-            });
-        }
-        else {
-            self.transactions = [];
-        }
-    };
 
     var adaptCategories = function(transactions) {
         for (var i=0; i<transactions.length; i++){
@@ -309,10 +297,6 @@ angular.module('moola').controller('ReportingController',
         //this is a stub
     };
 
-    $scope.$watch('controller.activeAccount ', function(){
-        self.selectAccount($scope.controller.activeAccount);
-    })
-
     self.formatDateShort = function(dateString){
         var date = new Date(dateString);
         var now = new Date();
@@ -419,12 +403,14 @@ angular.module('moola').controller('ReportingController',
     }
 
     Session.onAccountChanged(onAccountChanged);
-    onAccountChanged(Session.account());
 
     $scope.$watch(function(){return $location.hash();}, function(){
         parseHash($location.hash());
-        loadTransactions().then(function(data){self.transactions = data});
+        loadTransactions();
     });
+
+    parseHash($location.hash());
+    onAccountChanged(Session.account());
 
 }]);
 

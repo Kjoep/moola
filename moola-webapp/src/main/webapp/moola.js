@@ -16,7 +16,8 @@ angular.module('moola').config(function($routeProvider, $locationProvider) {
     .when('/reporting', {
         templateUrl: 'views/reporting.html',
         controllerAs: 'report',
-        controller: 'ReportingController'
+        controller: 'ReportingController',
+        reloadOnSearch: false
     })
     .when('/filters', {
         templateUrl: 'views/filters.html',
