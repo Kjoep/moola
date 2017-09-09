@@ -1,3 +1,8 @@
+Array.prototype.singleResultOr = function(fallback){
+    if (this.length === 0) return fallback;
+    return this[0];
+}
+
 angular.module('moola', ['ngResource', 'ngRoute']);
 
 angular.module('moola').config(function($routeProvider, $locationProvider) {
@@ -34,8 +39,7 @@ angular.module('moola').config(function($routeProvider, $locationProvider) {
 .run(function(Accounts, Session){
 
     Accounts.query().$promise.then(function(accounts){
-        if (accounts.length > 0)
-            Session.account(accounts[0]);
+        Session.initAccount(accounts, accounts.singleResultOr(undefined));
     })
 
 })
