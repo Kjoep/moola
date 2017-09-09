@@ -6,7 +6,7 @@
         <label for="filter-exp">Filter</label>
         <textarea id="filter-exp" class="filter" ng-model="editor.filterExpression" ng-keyup="editor.update()"></textarea>
         <h4 ng-show="editor.exampleTransaction">Your selected transaction</h4>
-        <span class="transactionExample">{{editor.exampleTransaction | json}}</span>
+        <div class="transactionExample">{{editor.exampleTransaction | json}}</div>
     </div>
     <div class="filter-example">
         <div class="error" ng-show="editor.error">Invalid expression</div>
@@ -19,18 +19,22 @@
                     <th>Type</th>
                     <th>Category</th>
                     <th>Amount</th>
-                    <th>Comment</th>
                     <th>Peer</th>
+                </tr>
+                <tr>
+                    <th>Comment</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="trans in editor.exampleOutput">
+                <tr ng-repeat-start="trans in editor.exampleOutput">
                     <td><span class="date">{{trans.timestamp}}</span></td>
                     <td>{{trans.type}}</td>
                     <td>{{trans.category.name}}</td>
                     <td class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount}}</td>
-                    <td>{{trans.description}}</td>
                     <td>{{editor.formatPeer(trans)}}</td>
+                </tr>
+                <tr ng-repeat-end>
+                    <td colspan="5">{{trans.description}}</td>
                 </tr>
                 </tbody>
             </table>

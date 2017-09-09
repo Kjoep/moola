@@ -73,6 +73,7 @@ angular.module('moola').directive('dateFilter', [function(){
                 if (group=='none') group = undefined;
 
                 $scope.$apply(function(){
+                    if (filters && filters.length>0) $elem.parent().addClass('filtered');
                     $scope.onApply($scope.$parent)('date', filters, group);
                 })
                 hideFunction();
