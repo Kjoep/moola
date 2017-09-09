@@ -1,6 +1,7 @@
 angular.module('moola')
 .component('accountSelection', {
     templateUrl: 'components/account-selection.html',
+    bindings: {onSelect: '&'},
     controller: ['Accounts', 'Session', function(Accounts, Session){
 
         var vm = this;
@@ -14,6 +15,7 @@ angular.module('moola')
 
         vm.selectAccount = function(account){
             Session.account(account);
+            this.onSelect({});
         }
 
     }],

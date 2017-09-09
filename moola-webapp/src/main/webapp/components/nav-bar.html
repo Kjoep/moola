@@ -4,7 +4,7 @@
     <current-account class="click-for-menu clickable" ng-class="{active: menuShown}" ng-click="menuShown = !menuShown"></current-account>
 </nav>
 <div ng-class="{visible:menuShown}" class="main-menu">
-    <account-selection></account-selection>
+    <account-selection on-select="menuShown=false"></account-selection>
     <ul class="routes">
         <li><a href="#!/" ng-click="menuShown=false">Transactions</a></li>
         <li><a href="#!/reporting" ng-click="menuShown=false">Reporting</a></li>
