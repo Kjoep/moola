@@ -62,7 +62,8 @@
                     </div>
                 </td>
                 <td ng-show="showUnusedCols || !report.grouped() || report.grouped('category')" style="position: relative">
-                    <span ng-show="!report.grouped() || report.grouped('category')" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>{{trans.category.name}}</span>
+                    <span ng-show="(!report.grouped() || report.grouped('category')) && trans.category" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>{{trans.category.name}}</span>
+                    <span ng-show="(!report.grouped() || report.grouped('category')) && !trans.category" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>[No category]</span>
                     <span ng-show="report.grouped() && !report.grouped('category')">*</span>
                     <div context-menu context-button="0" ng-show="trans.category">
                         <a href="#{{report.withNewFilter('category', trans.category ? trans.category.id : null)}}">New filter</a>

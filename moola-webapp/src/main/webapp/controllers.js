@@ -221,6 +221,7 @@ angular.module('moola').controller('MoolaController', ['$scope', 'Accounts', fun
   };
 
   self.internCategory = function(category) {
+    if (!category) return category;
     var interned = self.categories[category.id];
     if (interned) return interned;
     self.categories[category.id] = category;
