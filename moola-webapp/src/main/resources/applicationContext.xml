@@ -36,6 +36,8 @@
     
     <bean id="reportService" class="be.echostyle.moola.persistence.db.DbReportService">
         <property name="repository" ref="dbAccountRepo" />
+        <property name="peers" ref="dbPeerRepo" />
+        <property name="categories" ref="dbCategoryRepo" />
     </bean>
 
     <bean id="groovyFilterFactory" class="be.echostyle.moola.filters.groovy.GroovyFilterFactory" />

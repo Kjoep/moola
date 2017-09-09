@@ -31,6 +31,7 @@ public abstract class JdbcRepository {
     public JdbcRepository(JdbcRepository other) {
         dataSource = other.dataSource;
         jdbcTemplate = other.jdbcTemplate;
+        dialect = other.dialect;
     }
 
     public QueryBuilder from(String table){
