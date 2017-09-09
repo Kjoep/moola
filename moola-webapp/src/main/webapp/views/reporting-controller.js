@@ -1,4 +1,6 @@
-angular.module('moola').controller('ReportingController', ['$scope', '$location', '$resource', '$filter', '$http', 'Categories', function ($scope, $location, $resource, $filter, $http, Categories) {
+angular.module('moola').controller('ReportingController',
+    ['$scope', '$location', '$resource', '$filter', '$http', 'Categories', 'Session',
+    function ($scope, $location, $resource, $filter, $http, Categories, Session) {
 
     var self = this;
 
@@ -20,11 +22,9 @@ angular.module('moola').controller('ReportingController', ['$scope', '$location'
     var onAccountChanged = function(account) {
         currentAccount = account;
         if (account) {
-            self.transactions = transactionsResource.all({accountId: account.id});
             self.timeSlices = {timeSliceName: ""};
-            self.transactions.$promise.then(function () {
+            loadTransactions().then(function(){
                 adaptCategories(self.transactions);
-                loadSlices();
             });
         }
         else {
@@ -32,14 +32,6 @@ angular.module('moola').controller('ReportingController', ['$scope', '$location'
             self.timeSlices = {timeSliceName: ""};
         }
     };
-
-    Session.onAccountChanged(onAccountChanged);
-    onAccountChanged(Session.account());
-
-    $scope.$watch(function(){return $location.hash();}, function(){
-        parseHash($location.hash());
-        loadTransactions().then(function(data){self.transactions = data});
-    });
 
     var implode = function(array, joiner){
         if (array.length == 0) return "";
@@ -64,10 +56,13 @@ angular.module('moola').controller('ReportingController', ['$scope', '$location'
                 q.push("grouping="+key+":"+query.grouping[key]);
         }
         q = q.length > 0 ? '?'+implode(q,'&') : "";
+        self.transactions = [];
         return $http({
             method:'GET',
             url: 'http://localhost:8080/moola/rest/accounts/'+currentAccount.id+'/reports/adhoc/'+(page)+q
-        }).then(function(r){return r.data});
+        }).then(function(r){
+            self.transactions = r.data;
+        });
     };
 
     self.transactionTypes = [
@@ -422,6 +417,14 @@ angular.module('moola').controller('ReportingController', ['$scope', '$location'
         console.log("Going to hash: "+r);
         $location.hash("/"+r);
     }
+
+    Session.onAccountChanged(onAccountChanged);
+    onAccountChanged(Session.account());
+
+    $scope.$watch(function(){return $location.hash();}, function(){
+        parseHash($location.hash());
+        loadTransactions().then(function(data){self.transactions = data});
+    });
 
 }]);
 

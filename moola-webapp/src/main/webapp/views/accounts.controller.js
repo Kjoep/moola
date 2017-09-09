@@ -85,18 +85,13 @@ angular.module('moola')
       }
     }
 
-    self.accounts.$promise.then(function(){
-      if (self.accounts.length>0)
-        $scope.controller.activeAccount = self.accounts[0];
-    });
-
     self.upload = {
       forAccount: function(account){
-        console.log("for account");
+        console.log("for account", account);
 
         this.targetId = account.id;
         return function(file, dz){
-          console.log("called on file");
+          console.log("called on file", file);
 
           self.upload.selectedFile = file;
           self.upload.perform = function(){dz.processQueue()};
@@ -104,7 +99,7 @@ angular.module('moola')
         }
       },
       getUrl: function(){
-        var url = 'rest/accounts/'+self.upload.targetId+'/transactions/upload';
+        var url = 'http://localhost:8080/moola/rest/accounts/'+self.upload.targetId+'/transactions/upload';
         if (self.upload.format)
           url += '?format='+self.upload.format;
         return url;

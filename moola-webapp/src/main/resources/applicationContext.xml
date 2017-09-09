@@ -100,10 +100,10 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <!-- access -->
-        <property name="driverClass" value="org.h2.Driver" />
-        <property name="jdbcUrl" value="jdbc:h2:retry:~/moolaDb" />
-        <!--<property name="user" value="${db.user}" />-->
-        <!--<property name="password" value="${db.password}" />-->
+        <property name="driverClass" value="org.postgresql.Driver" />
+        <property name="jdbcUrl" value="jdbc:postgresql:postgres" />
+        <property name="user" value="postgres" />
+        <property name="password" value="moola" />
         <!-- pool sizing -->
         <property name="initialPoolSize" value="6" />
         <property name="minPoolSize" value="6" />
@@ -121,7 +121,7 @@
         <property name="checkoutTimeout" value="15000" />
         <property name="idleConnectionTestPeriod" value="60" />
         <property name="testConnectionOnCheckout" value="true" />
-        <property name="preferredTestQuery" value="VALUES 1" />
+        <property name="preferredTestQuery" value="SELECT 1" />
         <property name="testConnectionOnCheckin" value="true" />
     </bean>
 
