@@ -1,67 +1,117 @@
-angular.module('moola').directive('chart',['$parse', function($parse) {
+angular.module('moola')
 
-    return {
-        restrict: 'A',
-        scope: {
-        },
-        link:  function($scope, $elem, attrs){
+.component('chart', {
+    bindings: {
+        labels:"<"
+    },
+    transclude: true,
+    controllerAs: 'chart',
+    controller: ['$element', '$scope',  function($elem, $scope){
+        var self = this;
+        var datasets = [];
 
-            var exp = attrs['chart'];
+        $scope.$watch(function(){ return self.labels; }, function(){
+            scheduleUpdate();
+        })
 
-            $scope.$parent.$watch(exp, function(data, oldData){
-                if (data && data.$promise){
-                    data.$promise.then(function(resp){showChart(resp)});
-                }
-                else
-                    showChart(data);
-            });
-
-            var showChart = function(reportData){
-                if (!reportData) return;
-                if (!reportData.data) return;
-                var colCount = 0;
-                var data = Stream(reportData.categories).map(function(cat){
-                    return {
-                        label: cat.name,
-                        backgroundColor: cat.color.bg,
-                        foregroundColor: cat.color.fg,
-                        yAxisID: 'amounts',
-                        data: Stream(reportData.data).map(function(row){if (row.categories[cat.id]) return row.categories[cat.id]/100; else return 0;}).toArray()
-                    }
-                }).toArray();
-                data.unshift({
-                    label: 'Balance',
-                    type:'line',
-                    backgroundColor: 'transparent',
-                    borderColor: 'black',
-                    yAxisID: 'balance',
-                    data: Stream(reportData.data).map(function(row){return row.balance/100;}).toArray()
-                });
-
-                var labels = Stream(reportData.data).map("slice").toArray();
-
-                var chart = new Chart($elem, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: data
-                    },
-                    options: {
-                        responsive: false,
-                        legend: {display: false},
-                        scales: {
-                            xAxes: [{stacked:true}],
-                            yAxes: [
-                                {id: 'amounts',stacked:true,position:'left'},
-                                {id:'balance', position:'right'}
-                            ]
-                        }
-                    }
-                });
-
+        self.addDataSet = function(name, data, type, axis, bgColor, fgColor, borderColor) {
+            if (!data || !(data instanceof Array))
+                throw 'Data should be a valid array';
+            var dataset = {
+                label: name,
+                backgroundColor: bgColor,
+                foregroundColor: fgColor,
+                borderColor: borderColor,
+                data: data,
+                type: type || 'bar',
+                yAxisID: axis
             };
+            datasets.push(dataset);
+            scheduleUpdate();
+            return {
+                updateData: function(data){
+                    dataset.data = data;
+                }
+            }
+        }
 
+        var updateTimeout;
+        var update;
+        var scheduleUpdate = function(){
+            if (updateTimeout)
+                clearTimeout(updateTimeout);
+
+            updateTimeout = setTimeout(function(){
+                update();
+            }, 250);
 
         }
+
+        var chart;
+
+        self.$onInit = function(){
+            console.log('performing chart init');
+
+            var cfg = {
+                type: 'bar',
+                data: {},
+                options: {
+                    responsive: false,
+                    legend: {display: false},
+                    scales: {
+                        xAxes: [{stacked:true}],
+                        yAxes: [
+                            {id: 'amounts',stacked:true,position:'left'},
+                            {id: 'balance', position:'right'}
+                        ]
+                    }
+                }
+            };
+
+            update = function(){
+                console.log('Doing update with '+JSON.stringify(datasets));
+
+                cfg.data.labels = self.labels;
+                cfg.data.datasets = datasets;
+
+                if (!chart)
+                    chart = new Chart($elem.find('canvas')[0], cfg);
+                else
+                    chart.update();
+            }
+            scheduleUpdate();
+        }
+    }],
+
+    template: '<canvas class="chart" width="600" height="300" ng-transclude></canvas>'
+})
+.directive('series', ['$log', function($log){
+    function findInParents($scope, key){
+        var value = $scope[key];
+        while (!value){
+            if (!$scope.$parent) return undefined;
+            $scope = $scope.$parent;
+            value = $scope[key];
+        }
+        return value;
     }
-}]);
+
+    return {
+        restrict: 'E',
+        link: function($scope, $element, attrs){
+            try {
+                var chart = findInParents($scope, 'chart');
+                if (!chart) throw 'Series should be nested inside a chart.';
+                var chartData = $scope.$eval(attrs.data);
+                var dataSet = chart.addDataSet(attrs.name, chartData, attrs.type, attrs.axis,
+                    attrs.bgColor, attrs.fgColor, attrs.borderColor);
+                $scope.$watch(attrs.data, function(value){
+                    dataSet.updateData(value);
+                }, true);
+            } catch (e) {
+                $log.error('Could not add dataset', e);
+            }
+        }
+    }
+
+}])

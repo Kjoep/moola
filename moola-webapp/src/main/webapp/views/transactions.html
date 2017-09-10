@@ -23,7 +23,11 @@
         </p>
     </div>
 
-    <canvas chart="transactions.timeSlices" width="600" height="300"></canvas>
+    <chart labels="transactions.sliceNames">
+        <series ng-repeat="category in transactions.timeSlices.categories" name="{{category.name}}"
+            type="bar" stacked="true" data="transactions.sliceAmounts(category.id)" fg-color="{{category.color.fg}}" bg-color='{{category.color.bg}}' axis="amounts"></series>
+        <series name="Balance" type="line" data="transactions.sliceBalances()" bg-color="transparent" border-color="black" axis="balance"></series>
+    </chart>
 
     <div class="details-pane">
         <table class="key-value">

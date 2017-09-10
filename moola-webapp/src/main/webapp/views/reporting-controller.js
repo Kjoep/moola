@@ -5,7 +5,6 @@ angular.module('moola').controller('ReportingController',
     var self = this;
 
     self.transactions = [];
-    self.timeSlices = {timeSliceName: ""};
     self.categoryOptions = [];
     self.showCat = {};
     self.title = 'All transactions';
@@ -22,14 +21,13 @@ angular.module('moola').controller('ReportingController',
     var onAccountChanged = function(account) {
         currentAccount = account;
         if (account) {
-            self.timeSlices = {timeSliceName: ""};
             loadTransactions().then(function(){
                 adaptCategories(self.transactions);
+                createChartData();
             });
         }
         else {
             self.transactions = [];
-            self.timeSlices = {timeSliceName: ""};
         }
     };
 
@@ -64,6 +62,10 @@ angular.module('moola').controller('ReportingController',
         }).then(function(r){
             self.transactions = r.data;
         });
+    };
+
+    var createChartData = function(){
+        
     };
 
     self.transactionTypes = [

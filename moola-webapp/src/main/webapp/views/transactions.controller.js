@@ -88,6 +88,9 @@ angular.module('moola').controller('TransactionController', ['$scope', '$resourc
         var startTime = self.transactions[self.transactions.length-1].timestamp;
 
         self.timeSlices = transactionsResource.slices({accountId: currentAccount.id, from: startTime, to:endTime});
+        self.timeSlices.$promise.then(function(){
+            self.sliceNames = self.timeSlices.data.map(function(slice){ return slice.slice; });
+        })
     };
 
     self.getFilteredTransactions = function(expression, limit) {
@@ -219,5 +222,19 @@ angular.module('moola').controller('TransactionController', ['$scope', '$resourc
                     });
         }, 500);
     }
+
+    self.sliceAmounts = function(categoryId){
+        if (!self.timeSlices.data) return [];
+        return self.timeSlices.data.map(function(row){
+            if (row.categories[categoryId])
+                return row.categories[categoryId]/100;
+            else return 0;
+        })
+    };
+
+    self.sliceBalances = function(){
+        if (!self.timeSlices.data) return [];
+        return self.timeSlices.data.map(function(row){return row.balance/100;});
+    };
 
 }]);

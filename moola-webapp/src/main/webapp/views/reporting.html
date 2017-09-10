@@ -3,10 +3,6 @@
         <h2>{{report.title}}</h2>
     </div>
 
-    <pre>
-        {{report.getQuery()}}
-    </pre>
-
     <canvas chart="report.chartData" width="600" height="300" ng-show="report.chartData"></canvas>
 
     <div class="details-pane">
