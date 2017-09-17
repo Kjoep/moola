@@ -30,13 +30,6 @@ angular.module('moola').service('BacklogService', function($http, $q, $log, $roo
             });
     };
 
-    window.backlog = function(value){
-        if (value)
-            $rootScope.$broadcast(self.EVENT_BACKLOGCOUNT_UPDATE, value);
-        else
-            $rootScope.$broadcast(self.EVENT_BACKLOG_EMPTY);
-    }
-
     var pollBacklogCount = function(){
         if (!emptyBacklogDeferred) emptyBacklogDeferred = $q.defer();
         fetchBacklogCount().then(function(count){
