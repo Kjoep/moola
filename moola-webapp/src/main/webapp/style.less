@@ -593,12 +593,16 @@ input.peer, input.category {
   left:0;
   z-index: 250;
   box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .modal-window-inner {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   background-color: #fefefe;
-  border-radius: 18px;
-  border: solid #dedede 8px;
+  border-radius: 2px;
+  border: solid #333 1px;
   margin: 10px;
   padding: 16px;
   max-height: 80%;
@@ -619,64 +623,6 @@ input.peer, input.category {
     border-top: solid #efefef 1px;
     text-align: right;
     margin-bottom: 0;
-  }
-}
-
-.filter-editor {
-
-  .filter-input, .filter-example {
-      display: inline-block;
-    width: 48%;
-    vertical-align: top;
-  }
-
-  .transactionExample {
-    white-space: pre-wrap;
-    font-family: monospace;
-    color: #444;
-    overflow: auto;
-  }
-
-  .filter-example {
-      display: inline-block;
-    margin-left: 1%;
-    padding-left: 10px;
-    border-left: solid #dedede 1px;
-
-    table td, table th {
-      font-size: 11px;
-      text-align: left;
-      border-bottom: solid #f0f0f0 1px;
-      padding: 2px 8px;
-    }
-
-    table th {
-      background-color: #f0f0f0;
-    }
-  }
-
-  .filter-input {
-    > label {
-      display: block;
-      margin-top: 0;
-      font-size: 14px;
-      font-weight: bold;
-      margin-bottom: 0.5em;
-    }
-
-    >textarea {
-      width: 100%;
-    }
-  }
-
-  .filter-example > h3 {
-    margin-top: 0;
-    font-size: 14px;
-  }
-
-
-  textarea {
-    height: 5em;
   }
 }
 

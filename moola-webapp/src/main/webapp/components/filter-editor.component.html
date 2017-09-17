@@ -1,0 +1,83 @@
+<div class="modal-window filter-editor" ng-hide="!vm.active">
+    <div class="modal-window-inner">
+
+        <h2>Edit filter for {{vm.subjectType}}</h2>
+
+        <div class="filter-input">
+            <label for="filter-exp">Filter</label>
+            <textarea id="filter-exp" class="filter" ng-model="vm.filterExpression" ng-keyup="vm.update()"></textarea>
+            <h4 ng-show="vm.exampleTransaction">Your selected transaction</h4>
+            <table class="example-transaction key-value">
+                <tr><td>amount</td><td>{{vm.exampleTransaction.amount}}</td></tr>
+                <tr><td>category.id</td><td>{{vm.exampleTransaction.category.id}}</td></tr>
+                <tr><td>category.name</td><td>{{vm.exampleTransaction.category.name}}</td></tr>
+                <tr><td>category.direction</td><td>{{vm.exampleTransaction.category.direction}}</td></tr>
+                <tr><td>peer.id</td><td>{{vm.exampleTransaction.peer.id}}</td></tr>
+                <tr><td>peer.name</td><td>{{vm.exampleTransaction.peer.name}}</td></tr>
+                <tr><td>timestamp</td><td>{{vm.exampleTransaction.timestamp}}</td></tr>
+                <tr><td>comment</td><td>{{vm.exampleTransaction.comment}}</td></tr>
+                <tr><td>type</td><td>{{vm.exampleTransaction.type}}</td></tr>
+                <tr><td>peerInfo</td><td>{{vm.exampleTransaction.peerInfo | json}}</td></tr>
+                <tr><td>terminalInfo.name</td><td>{{vm.exampleTransaction.terminalInfo.name}}</td></tr>
+                <tr><td>terminalInfo.location</td><td>{{vm.exampleTransaction.terminalInfo.location}}</td></tr>
+                <tr><td>terminalInfo.card</td><td>{{vm.exampleTransaction.terminalInfo.card}}</td></tr>
+            </table>
+        </div>
+        <div class="filter-example invalidatable" ng-class="{'invalidated': vm.exampleOutputLoading}">
+            <div class="error" ng-show="vm.error">{{vm.error}}</div>
+            <div ng-show="!vm.error">
+                <h3>Filter result example</h3>
+                <table class="example-transactions">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Type</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Peer</th>
+                        </tr>
+                        <tr>
+                            <th colspan="5">Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat-start="trans in vm.exampleOutput">
+                            <td><span class="date">{{trans.timestamp}}</span></td>
+                            <td>{{trans.type}}</td>
+                            <td>{{trans.category.name}}</td>
+                            <td class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount}}</td>
+                            <td>{{vm.formatPeer(trans)}}</td>
+                        </tr>
+                        <tr ng-repeat-end class="last-row">
+                            <td colspan="5">{{trans.description}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#">See more &hellip;</a>
+            </div>
+        </div>
+
+        <p class="apply-options">
+            <div ng-show="vm.subjectType=='category'">
+                Set category:
+                <input category-selection="vm.subject" category-options="transactions.categoryOptions" type="text" value="{{vm.subject.name}}"
+                    on-select="vm.selectCategory" />
+            </div>
+            <div ng-show="vm.subjectType=='peer'">
+                Set peer:
+                <input peer-selection="vm.subject" peer-options="transactions.peerOptions" type="text" value="{{vm.subject.name}}"
+                    on-select="vm.selectPeer" />
+            </div>
+            <span><input type="radio" id="apply-all" value="all" ng-model="vm.applyType" /><label for="apply-all">Apply to all transactions</label><br /></span>
+            <span ng-show="vm.subjectType=='category'"><input type="radio" id="apply-no-category" value="noCategory" ng-model="vm.applyType" /><label for="apply-no-category">Apply to all uncategorized transactions</label><br /></span>
+            <span ng-show="vm.subjectType=='peer'"><input type="radio" id="apply-no-peer" value="noPeer" ng-model="vm.applyType" /><label for="apply-no-peer">Apply to all unpeered transactions</label><br /></span>
+            <span><input type="radio" id="apply-future" value="none"  ng-model="vm.applyType" /><label for="apply-future">Apply to all future transactions</label><br /></span>
+        </p>
+        <p class="actions">
+            <button ng-click="vm.save()">Save</button>
+            <button ng-click="vm.cancel()">Cancel</button>
+        </p>
+
+
+    </div>
+</div>
