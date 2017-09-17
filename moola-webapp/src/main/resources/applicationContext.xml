@@ -149,6 +149,13 @@
         <property name="reportService" ref="reportService" />
     </bean>
 
+    <bean id="SpringCorsFilter" class="org.springframework.web.filter.CorsFilter">
+        <constructor-arg>
+            <bean class="be.echostyle.moola.spring.OpenCorsConfiguration"></bean>
+        </constructor-arg>
+
+    </bean>
+
 
 </beans>
               
