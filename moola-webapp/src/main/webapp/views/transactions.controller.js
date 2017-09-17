@@ -122,7 +122,7 @@ angular.module('moola').controller('TransactionController', ['$scope', '$resourc
             proposed = "peerInfo.accountNr=='"+trans.peerInfo.account+"'";
         else if (trans.terminalInfo)
             proposed = "terminalInfo.name=='"+trans.terminalInfo.name+"' && terminalInfo.location=='"+trans.terminalInfo.location+"'";
-        self.showFilterEditor('peer', trans, proposed, trans.peer, addPeerFilter);
+        self.filterEditor.newFilter('peer', trans, proposed, trans.peer, addPeerFilter);
     };
 
     self.createCategoryFilter = function(trans){
