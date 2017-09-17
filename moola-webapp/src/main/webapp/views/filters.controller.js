@@ -1,8 +1,9 @@
-angular.module('moola').controller('FilterController', ['$scope', '$resource', '$filter', function ($scope, $resource, $filter) {
+angular.module('moola').controller('FilterController', ['$scope', '$resource', '$filter', 'BacklogService', 'config',
+function ($scope, $resource, $filter, BacklogService, config) {
 
     var self = this;
 
-    var filtersResource = $resource('http://localhost:8080/moola/rest/filters/:filterId', {}, {
+    var filtersResource = $resource(`${config.apiUrl}/filters/:filterId`, {}, {
         all: {method:'GET', params:{'filterId':''}, isArray:true},
         create: {method:'GET', params:{'filterId':'new'}, isArray:false},
         apply: {method:'POST', url:'rest/filters/:filterId/apply', isArray:false},
@@ -78,7 +79,7 @@ angular.module('moola').controller('FilterController', ['$scope', '$resource', '
     };
 
     self.applyFilter = function(filter, applyMode){
-        filtersResource.apply({filterId: filter.id}, applyMode);
+        BacklogService.scheduleFilter(filter.id, applyMode);
     };
 
     self.formatDateShort = function(dateString){

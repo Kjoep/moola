@@ -3,7 +3,10 @@
         <h2>{{report.title}}</h2>
     </div>
 
-    <canvas chart="report.chartData" width="600" height="300" ng-show="report.chartData"></canvas>
+    <chart ng-if="report.chart.type == 'bar'" labels="report.chart.labels">
+        <series ng-repeat="(name, data) in report.chart.groups" name="{{name}}"
+            type="bar" stacked="true" data="data" axis="amounts"></series>
+    </chart>
 
     <div class="details-pane">
         <table class="key-value">
@@ -24,56 +27,56 @@
     <table class="transactionsTable">
         <thead>
             <tr>
-                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('date')">Time
-                    <div date-filter query="report.getQuery()" on-apply="report.applyQuery"></div>
+                <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('date')">Time
+                    <div date-filter query="report.query" on-apply="report.applyQuery"></div>
                 </th>
-                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('type')">
+                <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('type')">
                     Type
-                    <div type-filter query="report.getQuery()" on-apply="report.applyQuery">
+                    <div type-filter query="report.query" on-apply="report.applyQuery">
                 </div></th>
-                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('category')">
+                <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('category')">
                     Category
-                    <div category-filter categories="report.categoryOptions" query="report.getQuery()" on-apply="report.applyQuery">
+                    <div category-filter categories="report.categoryOptions" query="report.query" on-apply="report.applyQuery">
                 </th>
-                <th ng-show="!report.grouped()">Comment</th>
-                <th ng-show="showUnusedCols || !report.grouped() || report.grouped('peer')">Peer</th>
+                <th ng-show="!report.query.isGrouped()">Comment</th>
+                <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('peer')">Peer</th>
                 <th>Amount</th>
-                <th ng-show="!report.grouped()">Balance</th>
+                <th ng-show="!report.query.isGrouped()">Balance</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="trans in report.transactions" data-id="{{trans.id}}">
-                <td ng-show="showUnusedCols || !report.grouped() || report.grouped('date')">
-                    <span class="date" ng-show="!report.grouped()">{{report.formatDateShort(trans.timestamp)}}</span>
-                    <span class="timeslice" ng-show="report.grouped('date')">{{trans.timeSlice}}</span>
-                    <span ng-show="report.grouped() && !report.grouped('date')">*</span>
+                <td ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('date')">
+                    <span class="date" ng-show="!report.query.isGrouped()">{{report.formatDateShort(trans.timestamp)}}</span>
+                    <span class="timeslice" ng-show="report.query.isGrouped('date')">{{trans.timeSlice}}</span>
+                    <span ng-show="report.query.isGrouped() && !report.query.isGrouped('date')">*</span>
                 </td>
-                <td ng-show="showUnusedCols || !report.grouped() || report.grouped('type')">
-                    <span ng-show="!report.grouped() || report.grouped('type')">{{trans.type}}</span>
-                    <span ng-show="report.grouped() && !report.grouped('type')">*</span>
+                <td ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('type')">
+                    <span ng-show="!report.query.isGrouped() || report.query.isGrouped('type')">{{trans.type}}</span>
+                    <span ng-show="report.query.isGrouped() && !report.query.isGrouped('type')">*</span>
                     <div context-menu context-button="0" ng-show="trans.type">
                         <a href="#!/reporting#{{report.withNewFilter('type', trans.type)}}">New filter</a>
                         <a href="#!/reporting#{{report.withAddFilter('type', trans.type)}}">Add to filter</a>
                         <a href="" ng-click="report.showDetails(trans)">Details ...</a>
                     </div>
                 </td>
-                <td ng-show="showUnusedCols || !report.grouped() || report.grouped('category')" style="position: relative">
-                    <span ng-show="(!report.grouped() || report.grouped('category')) && trans.category" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>{{trans.category.name}}</span>
-                    <span ng-show="(!report.grouped() || report.grouped('category')) && !trans.category" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>[No category]</span>
-                    <span ng-show="report.grouped() && !report.grouped('category')">*</span>
+                <td ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('category')" style="position: relative">
+                    <span ng-show="(!report.query.isGrouped() || report.query.isGrouped('category')) && trans.category" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>{{trans.category.name}}</span>
+                    <span ng-show="(!report.query.isGrouped() || report.query.isGrouped('category')) && !trans.category" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>[No category]</span>
+                    <span ng-show="report.query.isGrouped() && !report.query.isGrouped('category')">*</span>
                     <div context-menu context-button="0" ng-show="trans.category">
                         <a href="#!/reporting#{{report.withNewFilter('category', trans.category ? trans.category.id : null)}}">New filter</a>
                         <a href="#!/reporting#{{report.withAddFilter('category', trans.category ? trans.category.id : null)}}">Add to filter</a>
                         <a href="" ng-click="report.showDetails(trans)">Details ...</a>
                     </div>
                 </td>
-                <td ng-show="!report.grouped()">
+                <td ng-show="!report.query.isGrouped()">
                     <div inline-edit ng-model="trans.description" ng-change="transactions.updateDescription(trans)">{{trans.description}}&nbsp;</div>
                 </td>
-                <td ng-show="showUnusedCols || !report.grouped() || report.grouped('peer')" style="position: relative">
-                    <span ng-show="!report.grouped() || report.grouped('peer')" class="peer" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>
+                <td ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('peer')" style="position: relative">
+                    <span ng-show="!report.query.isGrouped() || report.query.isGrouped('peer')" class="peer" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>
                         {{report.formatPeer(trans)}}</span>
-                    <span ng-show="report.grouped() && !report.grouped('peer')" class="peer">
+                    <span ng-show="report.query.isGrouped() && !report.query.isGrouped('peer')" class="peer">
                         *</span>
                     <div context-menu context-button="0" ng-show="trans.peer">
                         <a href="#!/reporting#{{report.withNewFilter('peer', trans.peer ? trans.peer.id : null)}}">New filter</a>
@@ -85,7 +88,7 @@
                     <span ng-show="trans.amount" class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount | number : 2}}</span>
                     <span ng-show="trans.total" class="amount {{trans.total > 0 ? 'positive' : 'negative'}}">{{trans.total | number : 2}}</span>
                 </td>
-                <td ng-show="!report.grouped()" class="amount">{{trans.balance | number:2}}</td>
+                <td ng-show="!report.query.isGrouped()" class="amount">{{trans.balance | number:2}}</td>
             </tr>
         </tbody>
     </table>

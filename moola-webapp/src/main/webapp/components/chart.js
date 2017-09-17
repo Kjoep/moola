@@ -12,7 +12,7 @@ angular.module('moola')
 
         $scope.$watch(function(){ return self.labels; }, function(){
             scheduleUpdate();
-        })
+        });
 
         self.addDataSet = function(name, data, type, axis, bgColor, fgColor, borderColor) {
             if (!data || !(data instanceof Array))
@@ -69,6 +69,7 @@ angular.module('moola')
             };
 
             update = function(){
+                if (!self.labels || datasets.length === 0 || self.labels.length === 0) return;
                 console.log('Doing update with '+JSON.stringify(datasets));
 
                 cfg.data.labels = self.labels;

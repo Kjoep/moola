@@ -1,3 +1,127 @@
+var Query = (function(){
+
+    /**
+     * Make a duplicate of an array, leaving out a single element.
+     */
+    var without = function (arr, value) {
+        var r = [];
+        for (var i = 0; i < arr.length; i++)
+            if (arr[i] !== value)
+                r.push(arr[i]);
+        return r;
+    }
+
+    function Query(filters, grouping) {
+        this.filters = filters || {};
+        this.grouping = grouping || {};
+    }
+    Query.prototype = {
+        asHash: function () {
+            var q = [];
+            var filters = this.filters;
+            var grouping = this.grouping;
+            q.push(...Object.keys(filters).map(function (key) { return `filter=${key}:${filters[key].join(',')}` }));
+            q.push(...Object.keys(grouping).map(function (key) { return `grouping=${key}:${grouping[key]}` }));
+            return q.join('&');
+        },
+        clone: function(){
+            var filters = {};
+            var grouping = {};
+            Object.keys(this.filters).forEach(function(key){
+                filters[key] = [...this.filters[key]];
+            });
+            Object.assign(grouping, this.grouping);
+            return new Query(filters, grouping);
+        },
+        addFilter: function (key, value) {
+            if (!filters[key]) filters[key] = [];
+            filters[key].push(value);
+        },
+        removeFilter: function (key, value) {
+            if (!filters[key]) return;
+            filters[key] = without(filters[key], value);
+            if (filters[key].length === 0) delete filters[key];
+        },
+        setGrouping: function (key, value) {
+            if (!value && this.grouping[key])
+                delete this.grouping[key];
+            else
+                this.grouping[key] = value;
+        },
+        withNewFilter: function (key, value) {
+            if (value === '?') value = '';
+            var filters = {};
+            var grouping = {};
+            filters[key] = [value];
+            Object.assign(grouping, this.grouping);
+            return new Query(filters, grouping);
+        },
+        withAddFilter: function (key, value) {
+            if (value == '?') value = '';
+            var r = this.clone();
+            r.addFilter(key, value);
+            return r;
+        },
+        withoutFilterValue: function (key, value) {
+            if (value == '?') value = "";
+            var q = this.clone();
+            q.removeFilter(key, value);
+            return q;
+        },
+        isGrouped: function (by) {
+            if (Object.keys(this.grouping).length === 0) return false;
+            if (by) return !!this.grouping[key];
+            else return true;
+        }
+    }
+
+    var parseFilter = function (query, string) {
+        var string = string.split(":");
+        var key = string[0];
+        if (string.length == 1) {
+            query.addFilter(key, '');
+            return;
+        }
+        string[1].split(",").forEach(function(value){
+            query.addFilter(key, value);
+        });
+    };
+
+    var parseGrouping = function (query, string) {
+        var string = string.split(":");
+        var key = string[0];
+        if (string.length == 1) {
+            return;
+        }
+        query.setGrouping(key, string[1]);
+    };
+
+    Query.parseHash = function (hash) {
+        var r = new Query();
+        if (hash[0] == '/') hash = hash.substr(1);
+        hash.split('&').forEach(function(part){
+            var parts = hash[i].split("=");
+            if (parts.length > 1) {
+                var key = parts[0];
+                var value = parts[1];
+                if (key == "filter") {
+                    parseFilter(r, value)
+                }
+                if (key == "grouping") {
+                    parseGrouping(r, value);
+                }
+            }
+        })
+        return r
+    }
+
+    return Query;
+}())
+
+
+
+
+
 angular.module('moola').controller('ReportingController',
     ['$scope', '$location', '$resource', '$filter', '$http', 'Categories', 'Session',
     function ($scope, $location, $resource, $filter, $http, Categories, Session) {
@@ -10,10 +134,7 @@ angular.module('moola').controller('ReportingController',
     self.title = 'All transactions';
     var page=0;
 
-    var query = {
-        filters: {},
-        grouping: {}
-    };
+    self.query = new Query();
 
     var currentAccount;
     var parentController = $scope.controller;
@@ -31,21 +152,14 @@ angular.module('moola').controller('ReportingController',
         }
     };
 
-    var implode = function(array, joiner){
-        if (array.length == 0) return "";
-        var r = array[0];
-        for (var i=1; i<array.length; i++)
-            r+=joiner+array[i];
-        return r;
-    }
-
     var loadTransactions = function(){
         console.log('loading transactions');
+        var query = self.query;
         if (!currentAccount) return {then:function(){}};
         var q = [];
         for (var key in query.filters){
             if (!query.filters.hasOwnProperty(key)) continue;
-            q.push("filter="+key+":"+implode(query.filters[key],','));
+            q.push("filter="+key+":"+query.filters[key].join(','));
         }
         for (var key in query.grouping){
             if (!query.grouping.hasOwnProperty(key)) continue;
@@ -54,7 +168,7 @@ angular.module('moola').controller('ReportingController',
             else
                 q.push("grouping="+key+":"+query.grouping[key]);
         }
-        q = q.length > 0 ? '?'+implode(q,'&') : "";
+        q = q.length > 0 ? '?'+q.join('&') : "";
         self.transactions = [];
         return $http({
             method:'GET',
@@ -64,8 +178,56 @@ angular.module('moola').controller('ReportingController',
         });
     };
 
+
+    self.chart = {};
+
     var createChartData = function(){
-        
+
+        if (self.query.isGrouped('date')){
+
+            var groupName = function(transaction){
+                return groupKeys.map(function(gk){
+                    return transaction[gk]
+                }).join('/');
+            }
+
+            var timeSlices = [];
+            var lastTs;
+            var groups = {};
+            var groupKeys = Object.keys(self.query.grouping).filter(function(key){ return key !== 'date'});
+            self.transactions.forEach(function(transaction){
+                groups[groupName(transaction)] = [];
+            });
+            var tsIdx = -1;
+            self.transactions.forEach(function(transaction){
+                // we assume the timeslices are ordered
+                var ts = transaction['timeSlice'];
+                if (ts !== lastTs) {
+                    timeSlices.push(ts);
+                    Object.keys(groups).forEach(function(name){
+                        groups[name].push(0);
+                    })
+                    tsIdx++;
+                }
+
+                groups[groupName(transaction)][tsIdx] = transaction.total;
+
+                //this assumes we want total - but it could be count, or average that we're looking for.
+            });
+
+            self.chart = {
+                type: 'bar',
+                labels: timeSlices,
+                groups: groups
+            }
+        }
+
+    };
+
+    self.values = function(key){
+        return self.transactions.map(function(transaction){
+            return transaction[key];
+        });
     };
 
     self.transactionTypes = [
@@ -171,121 +333,6 @@ angular.module('moola').controller('ReportingController',
         filters[key].push(value);
         loadTransactions().then(function(data){self.transactions = data});
     };
-    self.withNewFilter = function(key, value){
-        if (value=='?') value="";
-        var r = {};
-        r[key] = [value];
-        return asHash({filters:r, grouping : query.grouping});
-    };
-
-    self.withAddFilter = function(key, value){
-        if (value=='?') value="";
-        var q = duplicateQuery();
-        if (!q.filters[key]) q.filters[key] = [];
-        q.filters[key].push(value);
-        return asHash(q);
-    };
-
-    self.withoutFilterValue = function(key, value){
-        if (value=='?') value="";
-        var q = duplicateQuery();
-        if (!q.filters[key]) return asHash(q);
-        q.filters[key] = without(q.filters[key], value);
-        if (q.filters[key].length==0) delete q.filters[key];
-        return asHash(q);
-    };
-
-    var without = function(arr, value){
-        var r = [];
-        for (var i=0; i<arr.length; i++)
-            if (arr[i]!==value)
-                r.push(arr[i]);
-        return r;
-    }
-
-    var duplicateQuery = function(){
-        if (!query) return {};
-        var r = {
-            filters: {},
-            grouping: {}
-        };
-        for (var key in query.filters){
-            if (!query.filters.hasOwnProperty(key)) continue;
-            if (query.filters[key].length==0) continue;
-            r.filters[key]=[];
-            for (var i=0; i<query.filters[key].length; i++){
-                r.filters[key].push(query.filters[key][i]);
-            }
-        }
-        for (var key in query.grouping){
-            if (!query.grouping.hasOwnProperty(key)) continue;
-            if (query.grouping[key].length==0) continue;
-            r.grouping[key]=[query.grouping[key]];
-        }
-        return r;
-    };
-
-    var asHash = function (query){
-        if (!query) return "";
-        var q = [];
-        for (var key in query.filters){
-            if (!query.filters.hasOwnProperty(key)) continue;
-            q.push("filter="+key+":"+implode(query.filters[key],','));
-        }
-        for (var key in query.grouping){
-            if (!query.grouping.hasOwnProperty(key)) continue;
-            q.push("grouping="+key+":"+query.grouping[key]);
-        }
-        return implode(q, '&');
-    };
-
-    var parseHash = function(hash){
-        var hFilters = {};
-        var hGrouping = {};
-        if (hash[0]=='/') hash = hash.substr(1);
-        hash = hash.split('&');
-        for (var i=0; i<hash.length; i++){
-            var parts = hash[i].split("=");
-            if (parts.length>1) {
-                var key = parts[0];
-                var value = parts[1];
-                if (key == "filter") {
-                    parseFilter(hFilters, value)
-                }
-                if (key == "grouping") {
-                    parseGrouping(hGrouping, value);
-                }
-            }
-        }
-        console.log("Done parsing: "+JSON.stringify(hFilters));
-        query = {filters: hFilters, grouping: hGrouping};
-    }
-
-    var parseFilter = function(filters, string){
-        var string = string.split(":");
-        var key = string[0];
-        if (string.length==1) {
-            filters[key]=[""];
-            return;
-        }
-        var values = string[1].split(",");
-        for (var j = 0; j < values.length; j++) {
-            if (filters.hasOwnProperty(key))
-                filters[key].push(values[j]);
-            else
-                filters[key] = [values[j]];
-        }
-    };
-
-    var parseGrouping = function(grouping, string){
-        var string = string.split(":");
-        var key = string[0];
-        if (string.length==1) {
-            return;
-        }
-        grouping[key] = string[1];
-    };
-
 
     var addPeerFilter = function(filterExp, peerToSet, applyMode){
         filtersResource.add({id:'new'}, {expression: filterExp, peerId: peerToSet.id, apply: applyMode}).$promise
@@ -371,23 +418,7 @@ angular.module('moola').controller('ReportingController',
     };
 
     self.getFilters = function(){
-        return query.filters;
-    }
-
-    self.getQuery = function(){
-        return query;
-    }
-
-    self.grouped = function(by){
-        if (!query.grouping || objKeys(query.grouping).length == 0) return false;
-        if (by) return query.grouping.hasOwnProperty(by);
-        else return true;
-    }
-
-    var objKeys = function(obj){
-        var keys = [];
-        for (var k in obj) keys.push(k);
-        return keys;
+        return self.query.filters;
     }
 
     self.applyQuery = function(key, filter, group){
