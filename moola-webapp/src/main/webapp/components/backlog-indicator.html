@@ -1,0 +1,4 @@
+<div class="backlog-indicator" ng-class="{'visible' : vm.rulesLeft > 0}">
+    <span ng-show="vm.rulesLeft > 0">Processing rules: {{vm.rulesLeft}} left.</span>
+    <span ng-show="vm.rulesLeft == 0">Processing rules: Done.</span>
+</div>
