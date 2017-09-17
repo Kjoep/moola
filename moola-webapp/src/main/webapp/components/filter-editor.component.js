@@ -14,7 +14,7 @@ angular.module('moola').component('filterEditor', {
     },
     controllerAs: 'vm',
     controller: ['$scope', '$resource', '$filter', '$timeout', 'TransactionService', 'FilterService', 'Session',
-        function ($scope, $resource, $filter, $timeout, FilterService, TransactionService, Session) {
+        function ($scope, $resource, $filter, $timeout, TransactionService, FilterService, Session) {
 
         var vm = this;
 
@@ -23,14 +23,11 @@ angular.module('moola').component('filterEditor', {
         var APPLY_NO_PEER = "noPeer";
         var APPLY_NONE = "none";
 
-        var SUBJECT_CATEGORY = "category";
-        var SUBJECT_PEER = "peer";
-
         vm.active = false;
 
         vm.applyType = APPLY_ALL;
         vm.error = null;
-        vm.subjectType = SUBJECT_CATEGORY;
+        vm.subjectType = FilterService.SUBJECT_CATEGORY;
         vm.subject = "";
         vm.filterExpression = "";
         vm.exampleTransaction = {};
@@ -58,7 +55,7 @@ angular.module('moola').component('filterEditor', {
 
         vm.cancel = function () {
             vm.active = false;
-            vm.subjectType = SUBJECT_CATEGORY;
+            vm.subjectType = FilterService.SUBJECT_CATEGORY;
             vm.exampleTransaction = {};
             vm.filterExpression = '';
             vm.subject = undefined;
@@ -67,10 +64,11 @@ angular.module('moola').component('filterEditor', {
 
         vm.save = function () {
             vm.saving = true;
-            FilterService.saveNewFilter(vm.filterExpression, vm.subject, vm.applyType)
+            FilterService.saveNewFilter(vm.filterExpression, vm.subjectType, vm.subject, vm.applyType)
                 .then(function(){
                     vm.saving = false;
                     vm.cancel();
+                    vm.onSave({});
                 })
                 .catch(function(error){
                     vm.saving = false;

@@ -1,4 +1,5 @@
-angular.module('moola').service('FilterService', ['$http', 'config', function($http, config){
+angular.module('moola').service('FilterService', ['$http', 'config', 'BacklogService', 
+    function ($http, config, BacklogService){
 
     var self = this;
 
@@ -21,6 +22,9 @@ angular.module('moola').service('FilterService', ['$http', 'config', function($h
 
         return $http.post(url('/filters/new'), data)
             .then(unwrapResponse)
+            .then(function(){
+                BacklogService.whenBacklogEmpty();
+            })
             .catch(unwrapError);
     }
 
