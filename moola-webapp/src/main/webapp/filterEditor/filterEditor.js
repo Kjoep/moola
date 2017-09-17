@@ -19,13 +19,6 @@ angular.module('moola').controller('FilterEditorController', ['$scope', '$resour
     self.exampleOutput = [];
     self.onSave = function(){};
 
-    self.formatPeer = function(trans){
-        if (trans.peer) return trans.peer.name;
-        else if (trans.peerInfo) return '? '+trans.peerInfo.name;
-        else if (trans.terminalInfo) return '? '+trans.terminalInfo.name+" "+trans.terminalInfo.location;
-        else return '?';
-    };
-
     var updateTimer;
 
     self.update = function(){

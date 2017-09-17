@@ -56,28 +56,6 @@ angular.module('moola').controller('TransactionController', ['$scope', '$resourc
         //TODO: handle failure
     }
 
-    self.formatPeer = function(trans){
-        if (trans.peer) return trans.peer.name;
-        else if (trans.peerInfo) return '? '+trans.peerInfo.name;
-        else if (trans.terminalInfo) return '? '+trans.terminalInfo.name+" "+trans.terminalInfo.location;
-        else return '?';
-    };
-
-    self.formatPeerLong = function(trans){
-        var r = ''
-        if (trans.peer) r = trans.peer.name+' :: ';
-
-        if (trans.peerInfo) return r+trans.peerInfo.name+' ('+trans.peerInfo.account+')';
-        if (trans.terminalInfo) return r+trans.terminalInfo.name+" "+trans.terminalInfo.location+' (card '+trans.terminalInfo.card+')';
-
-        return r;
-    };
-
-    self.formatPeerClass = function(trans){
-        if (trans.peer) return 'peer-'+trans.peer.class;
-        else return 'peer-unknown';
-    };
-
     var loadSlices = function(){
         if (self.transactions.length<2) {
             self.timeSlices = {timeSliceName: ""};

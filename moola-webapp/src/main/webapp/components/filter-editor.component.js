@@ -38,13 +38,6 @@ angular.module('moola').component('filterEditor', {
         vm.exampleOutput = [];
         vm.onSave = function () { };
 
-        vm.formatPeer = function (trans) {
-            if (trans.peer) return trans.peer.name;
-            else if (trans.peerInfo) return '? ' + trans.peerInfo.name;
-            else if (trans.terminalInfo) return '? ' + trans.terminalInfo.name + " " + trans.terminalInfo.location;
-            else return '?';
-        };
-
         vm.update = function(){
             vm.exampleOutputLoading = true;
             vm.error = undefined;

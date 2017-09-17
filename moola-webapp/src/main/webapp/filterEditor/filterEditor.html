@@ -31,7 +31,7 @@
                     <td>{{trans.type}}</td>
                     <td>{{trans.category.name}}</td>
                     <td class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount}}</td>
-                    <td>{{editor.formatPeer(trans)}}</td>
+                    <td>{{trans | format_Peer}}</td>
                 </tr>
                 <tr ng-repeat-end>
                     <td colspan="5">{{trans.description}}</td>

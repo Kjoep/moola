@@ -66,8 +66,8 @@
             <td><div inline-edit ng-model="trans.description" ng-change="transactions.updateDescription(trans)">{{trans.description}}&nbsp;</div></td>
             <td style="position: relative">
                 <input peer-selection="trans.peer" peer-options="transactions.peerOptions" on-select="transactions.updatePeer(trans)"
-                       type="text" title="{{transactions.formatPeerLong(trans)}}"
-                       class="peer {{transactions.formatPeerClass(trans)}}" value="{{transactions.formatPeer(trans)}}" />
+                       type="text" title="{{trans | formatPeerLong}}"
+                       class="peer {{trans | formatPeerClass}}" value="{{trans | format_Peer}}" />
             </td>
             <td class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount | number:2}}</td>
             <td class="amount">{{trans.balance | number:2 }}</td>
