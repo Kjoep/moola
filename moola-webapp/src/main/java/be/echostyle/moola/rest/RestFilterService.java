@@ -20,9 +20,8 @@ public interface RestFilterService {
     void addFilter(FilterSpec filter);
 
     @POST
-    @Consumes(MediaType.TEXT_PLAIN)
     @Path("{id}/apply")
-    void applyFilter(@PathParam("id") String id, String applyMode);
+    void applyFilter(@PathParam("id") String id, @QueryParam("apply") @DefaultValue("all") String applyMode);
 
     @GET
     @Path("{id}")
