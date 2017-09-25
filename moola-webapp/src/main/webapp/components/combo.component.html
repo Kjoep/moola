@@ -1,0 +1,14 @@
+<input type="text" ng-model="vm.filter" ng-focus="vm.show()" ng-blur="vm.hide()" select-on-click 
+    ng-keydown="vm.filterKeyDown($event)" ng-keyup="vm.filterKeyUp($event)" 
+    class="{{vm.active ? 'active' : 'inactive'}}"
+    style="{{vm.ngModel && !vm.active ? vm.filterStyle : ''}}">
+<div class="combo popover" ng-show="vm.active">
+    <div class="options-section">
+        <div class="option" ng-class="{'active': vm.selectedIndex == -1}" ng-show="vm.allowNew()" 
+             inject="{option: {name: vm.filter, new: true}}">
+        </div>
+        <div ng-repeat="option in vm.filteredOptions" class="option" ng-class="{'active': $index == vm.selectedIndex}"
+            ng-click="vm.applyOption(option)" inject="{option: option}">
+        </div>
+    </div>
+</div>

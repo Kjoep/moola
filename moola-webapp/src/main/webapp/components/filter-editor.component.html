@@ -60,6 +60,7 @@
         <p class="apply-options">
             <div ng-show="vm.subjectType=='category'">
                 Set category:
+                <category-selection ng-model="vm.subject" options="transactions.categoryOptions"></category-selection>
                 <input category-selection="vm.subject" category-options="transactions.categoryOptions" type="text" value="{{vm.subject.name}}"
                     on-select="vm.selectCategory" />
             </div>
