@@ -1,0 +1,5 @@
+<combo ng-model="vm.ngModel" on-select="vm.onComboSelect(item)" repository="vm.repository" 
+       placeholder="{{vm.placeholder}}">
+    <span class="label">{{option.name}}</span>
+    <span class='description' ng-if="option.new">create as peer</span>
+</combo>
