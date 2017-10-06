@@ -100,7 +100,7 @@ var Query = (function(){
         var r = new Query();
         if (hash[0] == '/') hash = hash.substr(1);
         hash.split('&').forEach(function(part){
-            var parts = hash[i].split("=");
+            var parts = part.split("=");
             if (parts.length > 1) {
                 var key = parts[0];
                 var value = parts[1];
@@ -417,11 +417,11 @@ angular.module('moola').controller('ReportingController',
     Session.onAccountChanged(onAccountChanged);
 
     $scope.$watch(function(){return $location.hash();}, function(){
-        parseHash($location.hash());
+        self.query = Query.parseHash($location.hash());
         loadTransactions();
     });
 
-    parseHash($location.hash());
+    self.query = Query.parseHash($location.hash());
     onAccountChanged(Session.account());
 
 }]);

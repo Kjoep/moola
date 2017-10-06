@@ -74,8 +74,8 @@
                     <div inline-edit ng-model="trans.description" ng-change="transactions.updateDescription(trans)">{{trans.description}}&nbsp;</div>
                 </td>
                 <td ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('peer')" style="position: relative">
-                    <span ng-show="!report.query.isGrouped() || report.query.isGrouped('peer')" class="peer" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}}";>
-                        {{report.formatPeer(trans)}}</span>
+                    <span ng-show="!report.query.isGrouped() || report.query.isGrouped('peer')" class="peer">
+                        {{trans | format_Peer}}</span>
                     <span ng-show="report.query.isGrouped() && !report.query.isGrouped('peer')" class="peer">
                         *</span>
                     <div context-menu context-button="0" ng-show="trans.peer">
