@@ -76,26 +76,8 @@ angular.module('moola').component('filterEditor', {
                 });
         };
 
-        vm.selectPeer = function (peer) {
-            if (peer.id)
-                vm.subject = peer;
-            else {
-                peer.id = getId(peer.name);
-                peersResource.update({ id: newPeer.id }, newPeer).$promise.then(function () {
-                    console.log("Created peer: " + JSON.stringify(newPeer))
-                    vm.peerOptions.push(newPeer);
-                    transactionsResource.update({ accountId: currentAccount.id, transactionId: transaction.id }, { peer: newPeer });
-                })
-
-            }
-        };
-
         var getId = function (template) {
             return template.replace(" ", "_");
-        }
-
-        vm.selectCategory = function (category) {
-            vm.subject = category;
         }
 
         vm.$onInit = function(){

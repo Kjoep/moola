@@ -60,20 +60,18 @@
         <p class="apply-options">
             <div ng-show="vm.subjectType=='category'">
                 Set category:
-                <category-selection ng-model="vm.subject" options="transactions.categoryOptions"></category-selection>
-                <input category-selection="vm.subject" category-options="transactions.categoryOptions" type="text" value="{{vm.subject.name}}"
-                    on-select="vm.selectCategory" />
+                <category-selection ng-model="vm.subject" on-select="vm.subject = item"></category-selection>
             </div>
             <div ng-show="vm.subjectType=='peer'">
                 Set peer:
-                <input peer-selection="vm.subject" peer-options="transactions.peerOptions" type="text" value="{{vm.subject.name}}"
-                    on-select="vm.selectPeer" />
+                <peer-selection ng-model="vm.subject" placeholder="bollekes" on-select="vm.subject = item"></peer-selection>
             </div>
             <span><input type="radio" id="apply-all" value="all" ng-model="vm.applyType" /><label for="apply-all">Apply to all transactions</label><br /></span>
             <span ng-show="vm.subjectType=='category'"><input type="radio" id="apply-no-category" value="noCategory" ng-model="vm.applyType" /><label for="apply-no-category">Apply to all uncategorized transactions</label><br /></span>
             <span ng-show="vm.subjectType=='peer'"><input type="radio" id="apply-no-peer" value="noPeer" ng-model="vm.applyType" /><label for="apply-no-peer">Apply to all unpeered transactions</label><br /></span>
             <span><input type="radio" id="apply-future" value="none"  ng-model="vm.applyType" /><label for="apply-future">Apply to all future transactions</label><br /></span>
         </p>
+        
         <p class="actions">
             <button ng-click="vm.save()">Save</button>
             <button ng-click="vm.cancel()">Cancel</button>
