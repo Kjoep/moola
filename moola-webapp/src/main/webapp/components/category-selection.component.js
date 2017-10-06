@@ -3,7 +3,8 @@
 angular.module('moola').component('categorySelection', {
     bindings: {
         ngModel: '=',
-        onSelect: '&'
+        onSelect: '&',
+        placeholder: '@'
     },
     controllerAs: 'vm',
     controller: ['$scope', '$resource', '$filter', '$timeout', 'CategoryService',
@@ -15,6 +16,10 @@ angular.module('moola').component('categorySelection', {
                     create: CategoryService.create
                 };
             };
+
+            vm.onComboSelect = function(item){
+                vm.onSelect({item: item});
+            }
         }],
     templateUrl: 'components/category-selection.component.html',
 });

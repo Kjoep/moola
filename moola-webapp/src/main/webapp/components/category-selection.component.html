@@ -1,4 +1,6 @@
-<combo ng-model="vm.ngModel" on-select="vm.onSelect" repository="vm.repository">
+<combo ng-model="vm.ngModel" on-select="vm.onComboSelect(item)" repository="vm.repository" 
+       placeholder="{{vm.placeholder}}"
+       filter-style="background-color: {{vm.ngModel.color.bg}}; color: {{vm.ngModel.color.fg}}">
     <span class="label">
         <span class="color" style="background-color: {{option.color.bg}}; color: {{option.color.fg}}">A</span> {{option.name}}
     </span>
