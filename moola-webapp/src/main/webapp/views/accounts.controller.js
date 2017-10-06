@@ -54,7 +54,7 @@ angular.module('moola')
     self.save = function(){
       var account = self.editValue;
       if (!account.id)
-        account.id = account.name;
+        account.id = idFor(account.name);
       var result = Accounts.save({id: account.id}, account);
       result.$promise.then(function(){
         if (account.isNew) {
@@ -128,6 +128,10 @@ angular.module('moola')
         if (filter(array[i])) r.push(array[i]);
       }
       return r;
+    }
+
+    var idFor = function(name){
+      return name.replace(/\s/g, '_');
     }
 
     return this;
