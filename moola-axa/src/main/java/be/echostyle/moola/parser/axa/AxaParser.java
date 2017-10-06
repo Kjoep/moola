@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -56,13 +57,14 @@ public class AxaParser implements HistoryParser {
 
     @Override
     public List<AccountEntry> parse(InputStream stream, AccountEntryFactory entryFactory) throws IOException {
+        AtomicInteger index = new AtomicInteger(0);
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(stream, encoding));
             readHeader(br);
             String[] headerNames = getHeaderNames();
             CSVParser csvRecords = new CSVParser(br, CSVFormat.DEFAULT.withDelimiter(';').withSkipHeaderRecord().withHeader(headerNames));
             return StreamSupport.stream(csvRecords.spliterator(), false)
-                    .map(line -> this.parseLineSingle(new CsvLine(line), entryFactory))
+                    .map(line -> this.parseLineSingle(new CsvLine(line, index.getAndIncrement()), entryFactory))
                     .collect(Collectors.toList());
         } catch (IllegalArgumentException e){
             log.warn("Parse error for stream "+stream, e);
@@ -86,6 +88,7 @@ public class AxaParser implements HistoryParser {
     private AccountEntry parseLineSingle(CsvLine accountLine, AccountEntryFactory entryFactory) {
         return entryFactory.create(
                 accountLine.timestamp(Header.datum_verrichting),
+                accountLine.index(),
                 accountLine.longCents(Header.bedrag),
                 accountLine.longCents(Header.saldo_rekening),
                 accountLine.strings("; ", Header.mededeling,  Header.vervolg_mededeling),
@@ -127,9 +130,15 @@ public class AxaParser implements HistoryParser {
      */
     private static class CsvLine{
         CSVRecord wrapped;
+        int index;
 
-        public CsvLine(CSVRecord wrapped) {
+        public CsvLine(CSVRecord wrapped, int index) {
             this.wrapped = wrapped;
+            this.index = index;
+        }
+
+        int index() {
+            return index;
         }
 
         String string(Enum<?> col){

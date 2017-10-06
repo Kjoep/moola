@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface SimpleAccount extends Account {
 
-    AccountEntry addEntry(String batchId, LocalDateTime timestamp, long amount, long balance, String comment, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo);
+    AccountEntry addEntry(String batchId, LocalDateTime timestamp, int orderNr, long amount, long balance, String comment, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo);
 
     void setType(AccountType accountType);
 

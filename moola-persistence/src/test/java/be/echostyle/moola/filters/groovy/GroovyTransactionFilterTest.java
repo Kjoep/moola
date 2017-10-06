@@ -60,6 +60,11 @@ public class GroovyTransactionFilterTest {
         }
 
         @Override
+        public int getOrderNr() {
+            return 0;
+        }
+
+        @Override
         public String getComment() {
             return comment;
         }

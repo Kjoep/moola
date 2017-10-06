@@ -24,8 +24,8 @@ public class ImportServiceImpl implements ImportService {
             String batchId = batchIdGenerator.generateId();
 
             parser.parse(new ByteArrayInputStream(content),
-                    (timestamp, amount, balance, comment, type, peerInfo, terminalInfo) -> {
-                        AccountEntry entry = account.addEntry(batchId, timestamp, amount, balance, comment, type, peerInfo, terminalInfo);
+                    (timestamp, orderNr, amount, balance, comment, type, peerInfo, terminalInfo) -> {
+                        AccountEntry entry = account.addEntry(batchId, timestamp, orderNr, amount, balance, comment, type, peerInfo, terminalInfo);
                         if (postProcessor != null)
                             postProcessor.accept(entry);
                         return entry;

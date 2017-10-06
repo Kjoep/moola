@@ -11,6 +11,7 @@ create table AccTransaction (
   batch_id VARCHAR(64),
   account_id VARCHAR(64),
   transaction_ts TIMESTAMP,
+  order_nr INTEGER,
   peer_id VARCHAR(64),
   category_id VARCHAR(64),
   amount INTEGER,

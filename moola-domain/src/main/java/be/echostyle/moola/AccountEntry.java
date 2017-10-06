@@ -23,6 +23,11 @@ public abstract class AccountEntry {
 
     public abstract LocalDateTime getTimestamp();
 
+    /**
+     * A numeric value to order by when multiple transactions share a timestamp.
+     */
+    public abstract int getOrderNr();
+
     public abstract String getComment();
 
     public abstract long getBalance();

@@ -110,7 +110,7 @@ public class DbRuleProcessorTest extends DbTest{
         JdbcTemplate template = new JdbcTemplate(ds);
 
         template.execute("insert into account values('test', 'Test', 'CHECKING', '')");
-        template.execute("insert into accTransaction values('25', '', 'test', {ts '2016-2-12 20:00:00'}, null, null, -620, 200, 'Damn taxes', NULL, 'transfer', NULL, NULL, NULL, NULL, NULL)");
+        template.execute("insert into accTransaction values('25', '', 'test', {ts '2016-2-12 20:00:00'}, 0, null, null, -620, 200, 'Damn taxes', NULL, 'transfer', NULL, NULL, NULL, NULL, NULL)");
 
     }
 

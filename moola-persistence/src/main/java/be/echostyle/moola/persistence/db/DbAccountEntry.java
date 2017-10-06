@@ -22,6 +22,7 @@ public class DbAccountEntry extends AccountEntry {
     final static String COL_ID = "id";
     final static String COL_BATCH_ID = "batch_id";
     final static String COL_TIMESTAMP = "transaction_ts";
+    final static String COL_ORDERNR = "order_nr";
     final static String COL_COMMENT = "comment";
     final static String COL_DESCRIPTION = "description";
     final static String COL_ACCOUNT_ID = "account_id";
@@ -37,13 +38,14 @@ public class DbAccountEntry extends AccountEntry {
     final static String COL_CATEGORY_ID = "category_id";
 
     final static String[] ALL_COLS = {COL_ID, COL_BATCH_ID, COL_ACCOUNT_ID,
-            COL_TIMESTAMP, COL_AMOUNT, COL_COMMENT, COL_DESCRIPTION, COL_BALANCE, COL_TYPE,
+            COL_TIMESTAMP, COL_ORDERNR, COL_AMOUNT, COL_COMMENT, COL_DESCRIPTION, COL_BALANCE, COL_TYPE,
             COL_PEER_ACCOUNTNR, COL_PEER_NAME,
             COL_TERMINAL_NAME, COL_TERMINAL_LOCATION, COL_TERMINAL_CARD, COL_PEER_ID, COL_CATEGORY_ID};
 
 
     private final JdbcRepository jdbc;
     private final LocalDateTime timestamp;
+    private final int orderNr;
     private final long amount;
     private final long balance;
     private final String comment;
@@ -55,10 +57,11 @@ public class DbAccountEntry extends AccountEntry {
     private final PeerInfo peerInfo;
     private final TerminalInfo terminalInfo;
 
-    DbAccountEntry(String id, JdbcRepository jdbc, LocalDateTime timestamp, long amount, long balance, String comment, PeerInfo peerInfo, TerminalInfo terminalInfo, AccountEntryType type, String description, Peer peer, Category category) {
+    DbAccountEntry(String id, JdbcRepository jdbc, LocalDateTime timestamp, int orderNr, long amount, long balance, String comment, PeerInfo peerInfo, TerminalInfo terminalInfo, AccountEntryType type, String description, Peer peer, Category category) {
         super(id);
         this.jdbc = jdbc;
         this.timestamp = timestamp;
+        this.orderNr = orderNr;
         this.amount = amount;
         this.comment = comment;
         this.type = type;
@@ -73,6 +76,11 @@ public class DbAccountEntry extends AccountEntry {
     @Override
     public LocalDateTime getTimestamp() {
         return timestamp;
+    }
+
+    @Override
+    public int getOrderNr() {
+        return orderNr;
     }
 
     @Override

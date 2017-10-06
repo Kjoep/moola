@@ -27,8 +27,8 @@ public class AxaParserTest {
 
         AccountEntryFactory target = new AccountEntryFactory() {
             @Override
-            public AccountEntry create(LocalDateTime timestamp, long amount, long balance, String comment, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo) {
-                return new DummyAccountEntry(timestamp, amount, comment, balance, type, peerInfo, terminalInfo);
+            public AccountEntry create(LocalDateTime timestamp, int orderNr, long amount, long balance, String comment, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo) {
+                return new DummyAccountEntry(timestamp, orderNr, amount, comment, balance, type, peerInfo, terminalInfo);
             }
         };
 
@@ -44,6 +44,7 @@ public class AxaParserTest {
 
     private class DummyAccountEntry extends AccountEntry {
         private final LocalDateTime timestamp;
+        private final int orderNr;
         private final long amount;
         private final String comment;
         private final long balance;
@@ -51,9 +52,10 @@ public class AxaParserTest {
         private PeerInfo peerInfo;
         private TerminalInfo terminalInfo;
 
-        public DummyAccountEntry(LocalDateTime timestamp, long amount, String comment, long balance, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo) {
+        public DummyAccountEntry(LocalDateTime timestamp, int orderNr, long amount, String comment, long balance, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo) {
             super(UUID.randomUUID().toString());
             this.timestamp = timestamp;
+            this.orderNr = orderNr;
             this.amount = amount;
             this.comment = comment;
             this.balance = balance;
@@ -70,6 +72,11 @@ public class AxaParserTest {
         @Override
         public LocalDateTime getTimestamp() {
             return timestamp;
+        }
+
+        @Override
+        public int getOrderNr() {
+            return orderNr;
         }
 
         @Override

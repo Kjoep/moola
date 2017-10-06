@@ -30,21 +30,21 @@ public class SimpleDbAccount extends DbAccount implements SimpleAccount {
     }
 
     @Override
-    public AccountEntry addEntry(String batchId, LocalDateTime timestamp, long amount, long balance, String comment, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo) {
+    public AccountEntry addEntry(String batchId, LocalDateTime timestamp, int orderNr, long amount, long balance, String comment, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo) {
         DbAccountEntry r = find(timestamp, amount, comment, type);
         if (r==null) {
             String id = idGenerator.generate();
             repository
                     .insert(DbAccountEntry.TABLE,
                             COL_ID, COL_BATCH_ID, COL_ACCOUNT_ID,
-                            COL_TIMESTAMP, COL_AMOUNT, COL_COMMENT, COL_BALANCE, COL_TYPE,
+                            COL_TIMESTAMP, COL_ORDERNR, COL_AMOUNT, COL_COMMENT, COL_BALANCE, COL_TYPE,
                             COL_PEER_ACCOUNTNR, COL_PEER_NAME,
                             COL_TERMINAL_NAME, COL_TERMINAL_LOCATION, COL_TERMINAL_CARD)
                     .values(id, batchId, this.id,
-                            timestamp, amount, comment, balance, type,
+                            timestamp, orderNr, amount, comment, balance, type,
                             peerInfo == null ? null : peerInfo.getAccountNr(), peerInfo == null ? null : peerInfo.getName(),
                             terminalInfo == null ? null : terminalInfo.getName(), terminalInfo == null ? null : terminalInfo.getLocation(), terminalInfo == null ? null : terminalInfo.getCard());
-            r = new DbAccountEntry(id, repository, timestamp, amount, balance, comment, peerInfo, terminalInfo, type, null, null, null);
+            r = new DbAccountEntry(id, repository, timestamp, orderNr, amount, balance, comment, peerInfo, terminalInfo, type, null, null, null);
         }
         return r;
     }
@@ -150,7 +150,7 @@ public class SimpleDbAccount extends DbAccount implements SimpleAccount {
             AccountEntryType type = row.value(COL_TYPE, AccountEntryType.class);
             Peer peer = row.reference(COL_PEER_ID, peerRepository::getPeer);
             Category category = row.reference(COL_CATEGORY_ID, cachedCategories::getCategory);
-            DbAccountEntry r = new DbAccountEntry(row.string(COL_ID), repository, row.dateTime(COL_TIMESTAMP), row.longInt(COL_AMOUNT), row.longInt(COL_BALANCE), row.string(COL_COMMENT), peerInfo, terminalInfo, type, row.string(COL_DESCRIPTION), peer, category);
+            DbAccountEntry r = new DbAccountEntry(row.string(COL_ID), repository, row.dateTime(COL_TIMESTAMP), row.integer(COL_ORDERNR), row.longInt(COL_AMOUNT), row.longInt(COL_BALANCE), row.string(COL_COMMENT), peerInfo, terminalInfo, type, row.string(COL_DESCRIPTION), peer, category);
             return r;
         }
     }

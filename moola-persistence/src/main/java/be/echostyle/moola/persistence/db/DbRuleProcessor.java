@@ -140,6 +140,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
                 row.string(DbAccountEntry.COL_ID),
                 this,
                 row.dateTime(DbAccountEntry.COL_TIMESTAMP),
+                row.integer(DbAccountEntry.COL_ORDERNR),
                 row.longInt(DbAccountEntry.COL_AMOUNT),
                 row.longInt(DbAccountEntry.COL_BALANCE),
                 row.string(DbAccountEntry.COL_COMMENT),

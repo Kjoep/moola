@@ -19,15 +19,18 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.time.LocalDateTime.parse;
 
@@ -123,7 +126,10 @@ public class RestAccountServiceImpl implements RestAccountService {
             else if (filterExpression != null)
                 return account.getTransactions(LocalDateTime.now(), filterService.filter(filterExpression), limit).stream().map(Transaction::fromModel).collect(Collectors.toList());
             else
-                return account.getTransactions(LocalDateTime.now(), limit).stream().map(Transaction::fromModel).collect(Collectors.toList());
+                return account.getTransactions(LocalDateTime.now(), limit).stream()
+                        .sorted(Comparator.comparing(AccountEntry::getTimestamp).thenComparing(AccountEntry::getId))
+                        .map(Transaction::fromModel)
+                        .collect(Collectors.toList());
         } catch (FilterExpressionException e){
             throw new BadRequestException(Response.status(400).type(MediaType.TEXT_PLAIN).entity("Invalid filter: "+filterExpression+": "+e.getMessage()).build());
         }
@@ -182,6 +188,14 @@ public class RestAccountServiceImpl implements RestAccountService {
 
     private URI buildUrl(String format, Object... parameters) {
         try {
+            parameters = Stream.of(parameters)
+                    .map(Object::toString)
+                    .map(s -> {
+                        try { return URLEncoder.encode(s, "utf-8"); }
+                        catch (UnsupportedEncodingException e) { return s; }
+                    })
+                    .collect(Collectors.toList())
+                    .toArray();
             return new URI(baseUrl + MessageFormat.format(format, parameters));
         } catch (URISyntaxException e) {
             throw new RuntimeException("Could not build url", e);
