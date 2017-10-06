@@ -271,6 +271,13 @@ input.peer, input.category {
     font-size: 13px;
     position: relative;
     vertical-align: top;
+
+    input[type=text] {
+      font-family: inherit;
+      font-size: inherit;
+      border: none;
+      background-color: transparent;
+    }
   }
 
   th {
@@ -652,9 +659,11 @@ input.peer, input.category {
   font-family: monospace;
   padding:10px;
   position: fixed;
-  margin: 50px auto;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
   width:600px;
-  top:0;
+  z-index: 100;
   color: #efefef;
   display: none;
 }

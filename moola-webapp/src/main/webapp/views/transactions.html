@@ -3,26 +3,6 @@
         <h2>Transactions overview</h2>
     </div>
 
-    <div class="category-overview">
-        <h3>Categories</h3>
-        <ul>
-            <li>
-                <input type="checkbox" id="cat-?" ng-model="transactions.showCat['?']" />
-                <span class="color" style="background-color: silver; color: white">A</span>
-                <label for="cat-?">Uncategorized</label>
-            </li>
-            <li ng-repeat="category in transactions.categoryOptions">
-                <input type="checkbox" id="cat-{{category.id}}" ng-model="transactions.showCat[category.id]" />
-                <span color-picker="category.color" on-select="transactions.updateCategory(category)" class="color" style="background-color: {{category.color.bg}}; color: {{category.color.fg}}">A</span>
-                <label for="cat-{{category.id}}">{{category.name}}</label>
-            </li>
-        </ul>
-        <p class="actionLinks">
-            <a ng-click="transactions.showAllCategories(true)">Show all</a>
-            <a ng-click="transactions.showAllCategories(false)">Hide all</a>
-        </p>
-    </div>
-
     <chart labels="transactions.sliceNames">
         <series ng-repeat="category in transactions.timeSlices.categories" name="{{category.name}}"
             type="bar" stacked="true" data="transactions.sliceAmounts(category.id)" fg-color="{{category.color.fg}}" bg-color='{{category.color.bg}}' axis="amounts"></series>
@@ -60,14 +40,11 @@
             <td><span class="date">{{transactions.formatDateShort(trans.timestamp)}}</span></td>
             <td>{{trans.type}}</td>
             <td>
-                <input category-selection="trans.category" category-options="transactions.categoryOptions" on-select="transactions.updateTransactionCategory(trans)"
-                       type="text" class="category" style="color: {{trans.category.color.fg}}; background-color: {{trans.category.color.bg}};" value="{{trans.category.name}}" />
+                <category-selection ng-model="trans.category" on-select="transactions.updateTransactionCategory(trans, item)" />
             </td>
             <td><div inline-edit ng-model="trans.description" ng-change="transactions.updateDescription(trans)">{{trans.description}}&nbsp;</div></td>
             <td style="position: relative">
-                <input peer-selection="trans.peer" peer-options="transactions.peerOptions" on-select="transactions.updatePeer(trans)"
-                       type="text" title="{{trans | formatPeerLong}}"
-                       class="peer {{trans | formatPeerClass}}" value="{{trans | format_Peer}}" />
+                <peer-selection ng-model="trans.peer" on-select="transactions.updatePeer(trans, item)" placeholder="{{trans | format_Peer }}" />
             </td>
             <td class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount | number:2}}</td>
             <td class="amount">{{trans.balance | number:2 }}</td>

@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('moola').controller('TransactionController', ['$scope', '$resource', '$filter', '$http', 'Categories', 'Session',
-    function ($scope, $resource, $filter, $http, Categories, Session) {
+angular.module('moola').controller('TransactionController', 
+    ['$scope', '$resource', '$filter', '$http', 'Categories', 'Session', 'BacklogService',
+    function ($scope, $resource, $filter, $http, Categories, Session, BacklogService) {
 
     var self = this;
 
@@ -75,19 +76,13 @@ angular.module('moola').controller('TransactionController', ['$scope', '$resourc
         return transactionsResource.filtered({accountId: currentAccount.id, filter: expression, limit: limit});
     }
 
-    self.updatePeer = function(transaction){
-        console.log("Selecting peer for "+JSON.stringify(transaction));
-        return function(newPeer){
-            transactionsResource.update({accountId: currentAccount.id, transactionId: transaction.id}, {peer: newPeer});
-        }
+    self.updatePeer = function(transaction, newPeer){
+        transactionsResource.update({accountId: currentAccount.id, transactionId: transaction.id}, {peer: newPeer});
     };
 
-    self.updateTransactionCategory = function(transaction){
-        console.log("Selecting category for "+JSON.stringify(transaction));
-        return function(newCat){
-            transactionsResource.update({accountId: currentAccount.id, transactionId: transaction.id}, {category: newCat});
-            self.showCat[newCat.id] = true;
-        }
+    self.updateTransactionCategory = function(transaction, newCategory){
+        transactionsResource.update({accountId: currentAccount.id, transactionId: transaction.id}, {category: newCategory});
+        self.showCat[newCat.id] = true;
     };
 
     self.updateCategory = function(category){
@@ -100,14 +95,14 @@ angular.module('moola').controller('TransactionController', ['$scope', '$resourc
             proposed = "peerInfo.accountNr=='"+trans.peerInfo.account+"'";
         else if (trans.terminalInfo)
             proposed = "terminalInfo.name=='"+trans.terminalInfo.name+"' && terminalInfo.location=='"+trans.terminalInfo.location+"'";
-        self.filterEditor.newFilter('peer', trans, proposed, trans.peer, addPeerFilter);
+        self.filterEditor.newFilter('peer', trans, proposed, trans.peer);
     };
 
     self.createCategoryFilter = function(trans){
         var proposed;
         if (trans.peer)
             proposed = "peer.id=='"+trans.peer.id+"'";
-        self.showFilterEditor('category', trans, proposed, trans.category, addCategoryFilter);
+        self.filterEditor.newFilter('category', trans, proposed, trans.category);
     };
 
     var addCategoryFilter = function(filterExp, categoryToSet, applyMode){
@@ -124,10 +119,6 @@ angular.module('moola').controller('TransactionController', ['$scope', '$resourc
                 growl('filter added');
                 refreshOnEmptyBacklog();
             });
-    };
-
-    self.showFilterEditor = function(type, exampleTransaction, proposedFilter, subject){
-        //this is a stub
     };
 
     self.formatDateShort = function(dateString){
@@ -214,5 +205,7 @@ angular.module('moola').controller('TransactionController', ['$scope', '$resourc
         if (!self.timeSlices.data) return [];
         return self.timeSlices.data.map(function(row){return row.balance/100;});
     };
+
+    $scope.$on(BacklogService.EVENT_BACKLOGCOUNT_UPDATE, refresh);
 
 }]);
