@@ -8,10 +8,10 @@
 
     <logger name="com.mchange.v2.c3p0.SQLWarnings" level="WARN" />
     <logger name="org.springframework.jdbc.support.JdbcAccessor" level="DEBUG" />
-    <logger name="be.echostyle" level="DEBUG" />
+    <logger name="be.echostyle" level="INFO" />
+    <logger name="be.echostyle.dbQueries" level="INFO" />
+    <logger name="be.echostyle.sql" level="INFO" />
     <logger name="com.mchange.v2.resourcepool.BasicResourcePool output" level="TRACE" />
-
-    <logger name="be.echostyle.moola.persistence.db.DbRuleProcessor" level="DEBUG" />
 
     <root level="info">
         <appender-ref ref="LOG" />

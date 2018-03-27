@@ -141,13 +141,11 @@ public class DbAccountEntry extends AccountEntry {
     public void setPeer(Peer peer) {
         jdbc.update(TABLE, COL_ID, this.id).set(COL_PEER_ID, peer.getId()).perform();
         this.peer = peer;
-        log.info("After setting peer:"+ jdbc.query("select * from " + TABLE, RowAdapter::all));
     }
 
     @Override
     public void setCategory(Category category) {
         jdbc.update(TABLE, COL_ID, this.id).set(COL_CATEGORY_ID, category.getId()).perform();
         this.category = category;
-        log.info("After setting category:"+jdbc.query("select * from " + TABLE, RowAdapter::all));
     }
 }
