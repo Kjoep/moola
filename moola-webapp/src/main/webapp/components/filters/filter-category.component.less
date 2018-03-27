@@ -1,0 +1,142 @@
+@import '../../common.less';
+@import '../../style.less';
+
+filter-category {
+  display: inline-block;
+  position: relative;
+
+  .report-query-trigger {
+    cursor: pointer;
+  }
+
+  .report-query-backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #ffffff00;
+    z-index: 10;
+  }
+
+  .report-query-panel {
+      .popover;
+    
+      font-weight: normal;
+    
+      .query-section {
+        border-bottom: solid #666 1px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 200px;
+        position: relative;
+    
+        h4 {
+          position: absolute;
+          color: #666;
+          font-variant: small-caps;
+          transform: rotateZ(-90deg) translateX(-100%);
+          transform-origin: top left;
+          font-size: 18px;
+          margin: 0;
+          top: 4px;
+          left: 0;
+        }
+    
+        .section-option {
+          color: black;
+          display: flex;
+          text-align: left;
+          margin-left: 25px;
+          padding-left: 4px;
+          align-items: center;
+          transition: background-color .25s ease;
+    
+          input[type=radio], 
+          input[type=radio] + label,
+          input[type=checkbox], 
+          input[type=checkbox] + label {
+              cursor: pointer;
+          }
+
+          input[type=radio], 
+          input[type=checkbox]{
+              margin: 0;
+          } 
+
+          input[type=radio] + label,
+          input[type=checkbox] + label {
+              flex-grow: 1;
+              padding: 5px;
+          }
+        }
+    
+        .custom-details {
+          display: none;
+        }
+    
+        .custom-toggle:checked + label + .custom-details {
+          display: block;
+        }
+    
+        .section-option:hover {
+          color: #333;
+          background-color: @light;
+        }
+      }
+    
+      .query-apply {
+        padding-top: 6px;
+        text-align: center;
+        color: black;
+      }
+    
+      .filter-option {
+        color: @light;
+        text-align: left;
+        display: block;
+        margin-left: 25px;
+      }
+    
+      padding: 3px;
+      background-color: @background;
+    
+      a {
+        display: block;
+        background-color: @background;
+        color: #dedede;
+        padding: 3px 10px;
+        text-decoration: none;
+        font-size: 16px;
+        text-align: center;
+        white-space: nowrap;
+      }
+    
+      a:hover {
+        color: @background;
+        background-color: #dedede;
+      }
+    
+    
+      input[type=submit], input[type=button], button {
+        background-color: transparent;
+        border: solid #dfdfdf 1px;
+        border-radius: 5px;
+        color: black;
+        font-size: 10px;
+        font-weight: bold;
+        padding: 3px 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    
+      input[type=submit]:hover , input[type=button]:hover , button:hover {
+        border-color: white;
+      }
+    
+      input[type=submit]:active , input[type=button]:active , button:active {
+        background-color: #dfdfdf;
+        color: @background;
+      }
+    }
+  }

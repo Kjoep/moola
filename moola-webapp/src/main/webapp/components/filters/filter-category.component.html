@@ -1,0 +1,29 @@
+<span class="report-query-trigger" ng-click="vm.active ? vm.cancel() : vm.activate()" ng-transclude></span>
+<div class="report-query-backdrop" ng-show="vm.active" ng-mousedown="vm.cancel()">&nbsp;</div>
+<div class="report-query-panel" ng-show="vm.active" ng-blur="vm.cancel()">
+    <div class="query-section">
+        <h4>Filter</h4>
+        <span class="section-option" ng-repeat="option in vm.parentOptions">
+            <input type="checkbox" class="filter-item" id="{{::$id}}rq_cat_{{option.id}}" 
+                    ng-model="vm.selected[option.id]" ng-change="vm.deselectSpecific()" />
+            <label for="{{::$id}}rq_cat_{{option.id}}">{{option.name}}</label>
+        </span>
+    </div>
+    <div class="query-section">
+        <h4>Filter</h4>
+        <span class="section-option" ng-repeat="option in vm.options">
+            <input type="checkbox" class="filter-item" id="{{::$id}}rq_cat_{{option.id}}" 
+                   ng-model="vm.selected[option.id]" ng-change="vm.deselectGeneral()" />
+            <label for="{{::$id}}rq_cat_{{option.id}}">{{option.name}}</label>
+        </span>
+    </div>
+    <div class="query-section">
+        <h4>Grouping</h4>
+        <span class="section-option"><input type="radio" name="{{::$id}}qs-category-grouping" value="none" ng-model="vm.group" id="{{::$id}}qs-category-grouping-none" /><label for="{{::$id}}qs-category-grouping-none">No grouping</label></span>
+        <span class="section-option"><input type="radio" name="{{::$id}}qs-category-grouping" value="category" ng-model="vm.group" id="{{::$id}}qs-category-grouping-category" /><label for="{{::$id}}qs-category-grouping-category">By categoy</label></span>
+        <span class="section-option"><input type="radio" name="{{::$id}}qs-category-grouping" value="in_out" ng-model="vm.group" id="{{::$id}}qs-category-grouping-inOutDef" /><label for="{{::$id}}qs-category-grouping-inOutDef">In vs Out</label></span>
+    </div>
+    <div class="query-apply">
+        <button ng-click="vm.apply()">Apply</button>
+    </div>
+</div>
