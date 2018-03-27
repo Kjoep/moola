@@ -1,0 +1,36 @@
+<span class="report-query-trigger" ng-click="vm.active ? vm.cancel() : vm.activate()" ng-transclude></span>
+<div class="report-query-backdrop" ng-show="vm.active" ng-mousedown="vm.cancel()">&nbsp;</div>
+<div class="report-query-panel" ng-show="vm.active" ng-blur="vm.cancel()">
+    <div class="query-section">
+        <h4>Filter</h4>
+        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="none" id="{{::$id}}qs-date-filter-none" /><label for="{{::$id}}qs-date-filter-none">All time</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="7days" id="{{::$id}}qs-date-filter-7days" /><label for="{{::$id}}qs-date-filter-7days">Last 7 days</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="30days" id="{{::$id}}qs-date-filter-30days" /><label for="{{::$id}}qs-date-filter-30days">Last 30 days</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="1month" id="{{::$id}}qs-date-filter-1month" /><label for="{{::$id}}qs-date-filter-1month">Last month</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="12months" id="{{::$id}}qs-date-filter-12months" /><label for="{{::$id}}qs-date-filter-12months">Last 12 months</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="custom" id="{{::$id}}qs-date-filter-custom" class="custom-toggle" /><label for="{{::$id}}qs-date-filter-custom">Custom...</label>
+            <div class="custom-details" id="{{::$id}}qs-date-filter-custom-spec" style="padding-left: 15px; padding-top: 5px; margin-bottom: 3px">
+                    <input id="{{::$id}}qs-date-filter-custom-nr" type="text" placeholder="x" ng-model="vm.customNr" style="width: 2em; border: solid silver 1px; border-top-left-radius: 7px; border-bottom-left-radius: 7px;  padding-left: 7px;  margin-right: 0;" />
+                    <select id="{{::$id}}qs-date-filter-custom-type" ng-model="vm.customType" style="border: solid silver 1px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; transform: translateX(-7px);">
+                        <option>days</option>
+                        <option>weeks</option>
+                        <option>months</option>
+                        <option>years</option>
+                    </select><br />
+                    from
+                    <input id="{{::$id}}qs-date-filter-custom-from" type="text" ng-model="vm.customFrom" placeholder="yyyy-mm-dd" />
+            </div>
+        </span>
+    </div>
+    <div class="query-section">
+        <h4>Grouping</h4>
+        <span class="section-option"><input type="radio" name="qs-date-grouping" ng-model="vm.group" value="none" id="{{::$id}}qs-date-grouping-none" /><label for="{{::$id}}qs-date-grouping-none">By transaction</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-grouping" ng-model="vm.group" value="day" id="{{::$id}}qs-date-grouping-day" /><label for="{{::$id}}qs-date-grouping-day">By day</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-grouping" ng-model="vm.group" value="week" id="{{::$id}}qs-date-grouping-week" /><label for="{{::$id}}qs-date-grouping-week">By week</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-grouping" ng-model="vm.group" value="month" id="{{::$id}}qs-date-grouping-month" /><label for="{{::$id}}qs-date-grouping-month">By month</label></span>
+        <span class="section-option"><input type="radio" name="qs-date-grouping" ng-model="vm.group" value="year" id="{{::$id}}qs-date-grouping-year" /><label for="{{::$id}}qs-date-grouping-year">By year</label></span>
+    </div>
+    <div class="query-apply">
+        <button ng-click="vm.apply()">Apply</button>
+    </div>
+</div>
