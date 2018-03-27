@@ -29,11 +29,18 @@
                         <label for="format_upload_{{account.id}}">Format</label>
                         <select name="format_upload_{{account.id}}" id="format_upload_{{account.id}}"
                                 ng-model="accounts.upload.format"
+                                ng-readonly="accounts.upload.state != 'processing'"
                                 ng-options="format as format for format in accounts.upload.formats">
                         </select>
-                        <p class="actions">
+                        <p class="pending" ng-show="accounts.upload.state == 'processing'">
+                            &nbsp;
+                        </p>
+                        <p class="error" ng-show="accounts.upload.state == 'error'">
+                            &nbsp;
+                        </p>
+                        <p class="actions" ng-show="accounts.upload.state != 'processing'">
                             <button type="button" ng-click="accounts.upload.cancel()">Cancel</button>
-                            <button type="button" ng-click="accounts.upload.perform()" class="default">Upload</button>
+                            <button type="button" ng-click-single="accounts.upload.perform()" class="default">Upload</button>
                         </p>
                     </form>
                 </div>

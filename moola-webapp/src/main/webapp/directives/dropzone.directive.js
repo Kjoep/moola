@@ -19,11 +19,11 @@ angular.module('moola').directive('dropzone',
                     autoProcessQueue: false,
                     previewTemplate: '<span></span>',
                     error: function(file, response, xhr){
-                        scope.onError(scope)(response, xhr);
+                        scope.onError({response: response, xhr: xhr});
                         scope.$apply();
                     },
                     success: function(file, response){
-                        scope.onSuccess(scope)(response);
+                        scope.onSuccess({response: response});
                         scope.$apply();
                     }
                 };

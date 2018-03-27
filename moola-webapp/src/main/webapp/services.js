@@ -13,7 +13,7 @@ angular.module('moola').factory('Categories', ['$resource', function($resource){
 
   var getId = function(template){
     return template.replace(" ", "_");
-  }
+  };
 
   var categoriesResource = $resource('http://localhost:8080/moola/rest/categories', {}, {
     get: {method:'GET', url:'http://localhost:8080/moola/rest/categories/:id', params:{}},

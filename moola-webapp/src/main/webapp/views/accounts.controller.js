@@ -87,14 +87,13 @@ angular.module('moola')
 
     self.upload = {
       forAccount: function(account){
-        console.log("for account", account);
-
         this.targetId = account.id;
         return function(file, dz){
-          console.log("called on file", file);
-
           self.upload.selectedFile = file;
-          self.upload.perform = function(){dz.processQueue()};
+          self.upload.perform = function(){
+            self.upload.state = 'processing';
+            dz.processQueue();
+          };
           self.upload.format = self.upload.formats.length == 0 ? null : self.upload.formats[0];
         }
       },
@@ -111,14 +110,16 @@ angular.module('moola')
       format: null,
       cancel: function(){
         this.targetId = null;
+        self.upload.state = undefined;
       },
       error: function(message) {
         this.targetId = null;
         alert("Upload error: "+message);
+        self.upload.state = 'error';
       },
       done: function(response){
         this.targetId = null;
-        //transactions.showByBatchId(response)
+        self.upload.state = undefined;
       }
     };
 
