@@ -47,7 +47,7 @@
         removeFilter: function (key, value) {
             if (!this.filters[key]) return;
             this.filters[key] = without(this.filters[key], value);
-            if (this.filters[key].length === 0) delete this.filters[key];
+            if (value === undefined || this.filters[key].length === 0) delete this.filters[key];
         },
         setGrouping: function (key, value) {
             if (value === undefined) value = true;
@@ -67,7 +67,10 @@
         withAddFilter: function (key, value) {
             if (value == '?') value = '';
             var r = this.clone();
-            r.addFilter(key, value);
+            if (value === null)
+                r.removeFilter(key);
+            else
+                r.addFilter(key, value);
             return r;
         },
         withoutFilterValue: function (key, value) {

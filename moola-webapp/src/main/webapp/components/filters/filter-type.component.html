@@ -1,0 +1,20 @@
+<span class="report-query-trigger" ng-click="vm.active ? vm.cancel() : vm.activate()" ng-transclude></span>
+<div class="report-query-backdrop" ng-show="vm.active" ng-mousedown="vm.cancel()">&nbsp;</div>
+<div class="report-query-panel" ng-show="vm.active" ng-blur="vm.cancel()">
+    <div class="query-section">
+        <h4>Filter</h4>
+        <span class="section-option" ng-repeat="transType in vm.types">
+            <input type="checkbox" class="filter-item" id="{{::$id}}rq_transtype_{{transType}}" ng-model="vm.selected[transType]" />
+            <label for="{{::$id}}rq_transtype_{{transType}}">{{transType}}</label>
+        </span>
+    </div>
+    <div class="query-section">
+        <span class="section-option">
+            <input type="checkbox" id="{{::$id}}rq_transtype_group" ng-model="vm.group" />
+            <label for="{{::$id}}rq_transtype_group">Group by type</label>
+        </span>
+    </div>
+    <div class="query-apply">
+        <button ng-click="vm.apply()">Apply</button>
+    </div>
+</div>
