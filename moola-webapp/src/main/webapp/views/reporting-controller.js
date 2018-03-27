@@ -11,70 +11,6 @@ var Query = (function(){
         return r;
     }
 
-    function Query(filters, grouping) {
-        this.filters = filters || {};
-        this.grouping = grouping || {};
-    }
-    Query.prototype = {
-        asHash: function () {
-            var q = [];
-            var filters = this.filters;
-            var grouping = this.grouping;
-            q.push(...Object.keys(filters).map(function (key) { return `filter=${key}:${filters[key].join(',')}` }));
-            q.push(...Object.keys(grouping).map(function (key) { return `grouping=${key}:${grouping[key]}` }));
-            return q.join('&');
-        },
-        clone: function(){
-            var filters = {};
-            var grouping = {};
-            Object.keys(this.filters).forEach(function(key){
-                filters[key] = [...this.filters[key]];
-            });
-            Object.assign(grouping, this.grouping);
-            return new Query(filters, grouping);
-        },
-        addFilter: function (key, value) {
-            if (!filters[key]) filters[key] = [];
-            filters[key].push(value);
-        },
-        removeFilter: function (key, value) {
-            if (!filters[key]) return;
-            filters[key] = without(filters[key], value);
-            if (filters[key].length === 0) delete filters[key];
-        },
-        setGrouping: function (key, value) {
-            if (!value && this.grouping[key])
-                delete this.grouping[key];
-            else
-                this.grouping[key] = value;
-        },
-        withNewFilter: function (key, value) {
-            if (value === '?') value = '';
-            var filters = {};
-            var grouping = {};
-            filters[key] = [value];
-            Object.assign(grouping, this.grouping);
-            return new Query(filters, grouping);
-        },
-        withAddFilter: function (key, value) {
-            if (value == '?') value = '';
-            var r = this.clone();
-            r.addFilter(key, value);
-            return r;
-        },
-        withoutFilterValue: function (key, value) {
-            if (value == '?') value = "";
-            var q = this.clone();
-            q.removeFilter(key, value);
-            return q;
-        },
-        isGrouped: function (by) {
-            if (Object.keys(this.grouping).length === 0) return false;
-            if (by) return !!this.grouping[key];
-            else return true;
-        }
-    }
-
     var parseFilter = function (query, string) {
         var string = string.split(":");
         var key = string[0];
@@ -404,12 +340,12 @@ angular.module('moola').controller('ReportingController',
         console.log("Applying query on "+key);
         console.log("Filter: "+JSON.stringify(filter));
         console.log("Group: "+JSON.stringify(group));
-        var newQ = duplicateQuery();
+        var newQ = self.query.clone();
         newQ.filters[key] = filter;
         newQ.grouping[key] = group;
         if (!filter) delete newQ.filters[key];
         if (!group) delete newQ.grouping[key];
-        var r = asHash(newQ);
+        var r = newQ.asHash();
         console.log("Going to hash: "+r);
         $location.hash("/"+r);
     }

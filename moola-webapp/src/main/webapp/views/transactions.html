@@ -3,12 +3,6 @@
         <h2>Transactions overview</h2>
     </div>
 
-    <chart labels="transactions.sliceNames">
-        <series ng-repeat="category in transactions.timeSlices.categories" name="{{category.name}}"
-            type="bar" stacked="true" data="transactions.sliceAmounts(category.id)" fg-color="{{category.color.fg}}" bg-color='{{category.color.bg}}' axis="amounts"></series>
-        <series name="Balance" type="line" data="transactions.sliceBalances()" bg-color="transparent" border-color="black" axis="balance"></series>
-    </chart>
-
     <div class="details-pane">
         <table class="key-value">
             <tr><td class="key">ID</td><td class="value">{{transactions.detailTransaction.id}}</td></tr>
@@ -36,7 +30,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="trans in transactions.transactions" data-id="{{trans.id}}" ng-show="transactions.showCat[trans.category.id]">
+        <tr ng-repeat="trans in transactions.transactions" data-id="{{trans.id}}">
             <td><span class="date">{{transactions.formatDateShort(trans.timestamp)}}</span></td>
             <td>{{trans.type}}</td>
             <td>
@@ -59,6 +53,8 @@
         </tr>
         </tbody>
     </table>
+
+    <a href="" ng-click="transactions.loadMore()">Load next page</a>
 
     <filter-editor ng-model="transactions.filterEditor" />
 

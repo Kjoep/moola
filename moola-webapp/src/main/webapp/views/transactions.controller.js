@@ -8,8 +8,8 @@ angular.module('moola').controller('TransactionController',
 
     var transactionsResource = $resource('http://localhost:8080/moola/rest/accounts/:accountId/transactions', {}, {
         all: {method:'GET', params:{}, isArray:true},
+        page: {method:'GET', params:{from: ':from', limit: ':limit'}, isArray:true},
         filtered: {method:'GET', params:{filter: ':filter', limit: ':limit'}, isArray:true},
-        slices: {method:'GET', url:'http://localhost:8080/moola/rest/accounts/:accountId/slices', params:{from: ':from', to: ':to'}},
         update: {method:'POST', url:'http://localhost:8080/moola/rest/accounts/:accountId/transactions/:transactionId'}
     });
 
@@ -19,27 +19,28 @@ angular.module('moola').controller('TransactionController',
     });
 
     self.transactions = [];
-    self.timeSlices = {timeSliceName: ""};
     self.categoryOptions = [];
-    self.showCat = {};
 
     var currentAccount = $scope.controller.activeAccount;
     var parentController = $scope.controller;
+    var page = 0;
 
     var onAccountChanged = function(account) {
         currentAccount = account;
         if (account) {
             self.transactions = transactionsResource.all({accountId: account.id});
-            self.timeSlices = {timeSliceName: ""};
             self.transactions.$promise.then(function () {
                 adaptCategories(self.transactions);
-                loadSlices();
             });
         }
         else {
             self.transactions = [];
-            self.timeSlices = {timeSliceName: ""};
         }
+    };
+
+    self.loadMore = function(){
+        page++;
+        self.transactions = transactionsResource.page({accountId: currentAccount.id, from: page * 200, limit: 200});
     };
 
     Session.onAccountChanged(onAccountChanged);
@@ -57,21 +58,6 @@ angular.module('moola').controller('TransactionController',
         //TODO: handle failure
     }
 
-    var loadSlices = function(){
-        if (self.transactions.length<2) {
-            self.timeSlices = {timeSliceName: ""};
-            return;
-        }
-
-        var endTime = self.transactions[0].timestamp;
-        var startTime = self.transactions[self.transactions.length-1].timestamp;
-
-        self.timeSlices = transactionsResource.slices({accountId: currentAccount.id, from: startTime, to:endTime});
-        self.timeSlices.$promise.then(function(){
-            self.sliceNames = self.timeSlices.data.map(function(slice){ return slice.slice; });
-        })
-    };
-
     self.getFilteredTransactions = function(expression, limit) {
         return transactionsResource.filtered({accountId: currentAccount.id, filter: expression, limit: limit});
     }
@@ -82,7 +68,6 @@ angular.module('moola').controller('TransactionController',
 
     self.updateTransactionCategory = function(transaction, newCategory){
         transactionsResource.update({accountId: currentAccount.id, transactionId: transaction.id}, {category: newCategory});
-        self.showCat[newCat.id] = true;
     };
 
     self.updateCategory = function(category){
@@ -134,18 +119,11 @@ angular.module('moola').controller('TransactionController',
         return template.replace(" ", "_");
     }
 
-    self.showAllCategories = function(val){
-        self.showCat['?'] = val;
-        for (var i=0; i<self.categoryOptions.length; i++)
-            self.showCat[self.categoryOptions[i].id] = val;
-    }
-
     self.categoryOptions = Categories.get();
     self.categoryOptions.$promise.then(function(){
         for (var i=0; i<self.categoryOptions.length; i++){
             self.categoryOptions[i] = parentController.internCategory(self.categoryOptions[i]);
         }
-        self.showAllCategories(true);
     });
 
     self.showDetails = function(transaction){
@@ -168,7 +146,7 @@ angular.module('moola').controller('TransactionController',
     };
 
     var refresh = function(){
-        transactionsResource.all({accountId: currentAccount.id}, function(data){
+        transactionsResource.page({accountId: currentAccount.id, from: page * 200, limit: 200}, function(data){
             self.transactions = data;
         });
     };
@@ -191,20 +169,6 @@ angular.module('moola').controller('TransactionController',
                     });
         }, 500);
     }
-
-    self.sliceAmounts = function(categoryId){
-        if (!self.timeSlices.data) return [];
-        return self.timeSlices.data.map(function(row){
-            if (row.categories[categoryId])
-                return row.categories[categoryId]/100;
-            else return 0;
-        })
-    };
-
-    self.sliceBalances = function(){
-        if (!self.timeSlices.data) return [];
-        return self.timeSlices.data.map(function(row){return row.balance/100;});
-    };
 
     $scope.$on(BacklogService.EVENT_BACKLOGCOUNT_UPDATE, refresh);
 
