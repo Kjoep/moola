@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+
+  server:
+    build:
+      context: .
+      dockerfile: server.Dockerfile
+    depends_on:
+      - db
+    environment:
+      REBEL_BASE: /.jrebel
+      REBEL_HOME: /jrebel6
+      JAVA_OPTS: -agentpath:/jrebel6/lib/libjrebel64.so
+      MOOLA_DB_URL: jdbc:postgresql://db/postgres
+    volumes:
+      - ~/.jrebel:/.jrebel
+      - ${REBEL_HOME}:/jrebel6
+      - ./moola-webapp/target/moola:/moola-server/tomcat/webapps/moola
+      - ./logs:/moola-server/tomcat/logs
+      - .:/moola-server/src
+    ports:
+      - 8080:8080
+  client:
+    build:
+      context: .
+      dockerfile: client.Dockerfile
+    environment:
+      MOOLA_SERVICE: localhost:8080/moola
+      MOOLA_CLIENT_SRC: /moola-client/src/
+    volumes:
+      - ./moola-webapp/src/main/webapp:/moola-client/src
+    ports:
+      - 3000:3000
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432

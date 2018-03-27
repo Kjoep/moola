@@ -13,3 +13,4 @@ out
 **/*.log
 **/*.jar
 mock.jpg
+logs

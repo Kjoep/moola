@@ -10,7 +10,7 @@ var gulp  = require('gulp'),
     clean = require('gulp-clean'),
     debug = require('gulp-debug');
 
-var SRC_FOLDER = '../src/main/webapp/';
+var SRC_FOLDER = process.env.MOOLA_CLIENT_SRC || '../src/main/webapp/';
 var TARGET_FOLDER = 'dist/';
 
 var src = function(sources){
@@ -87,7 +87,7 @@ gulp.task('move-html', ['bundle-less', 'bundle-js'], function(){
 });
 
 gulp.task('bundle-js', function(){
-    return src('**/*.js', '!lib/**/*')
+    return src(['**/*.js', '!lib/**/*'])
         .pipe(gulp.dest(TARGET_FOLDER));
 })
 

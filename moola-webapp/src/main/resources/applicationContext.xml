@@ -8,6 +8,8 @@
 	   					   "
         >
 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
+
     <bean id="accountService" class="be.echostyle.moola.AccountService">
         <property name="accountFactory" ref="dbAccountRepo" />
         <property name="accountRepository" ref="dbAccountRepo" />
@@ -78,7 +80,9 @@
     <alias name="dbCategoryRepo" alias="categoryRepo" />
 
 
-    <bean id="axaParser" class="be.echostyle.moola.parser.axa.AxaParser" />
+    <bean id="axaParser" class="be.echostyle.moola.parser.axa.AxaParser">
+        <property name="encoding" value="Windows-1252" />
+    </bean>
 
     <jaxrs:server id="customerService" address="/">
         <jaxrs:serviceBeans>
@@ -103,7 +107,7 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <!-- access -->
         <property name="driverClass" value="org.postgresql.Driver" />
-        <property name="jdbcUrl" value="jdbc:postgresql:postgres" />
+        <property name="jdbcUrl" value="${MOOLA_DB_URL}" />
         <property name="user" value="postgres" />
         <property name="password" value="moola" />
         <!-- pool sizing -->
