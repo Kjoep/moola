@@ -165,6 +165,16 @@ public abstract class JdbcRepository {
                 String sql = "insert into "+table+" ("+selectValues+")";
                 return jdbcTemplate.update(sql, parameters.toArray(new Object[0]));
             }
+
+            @Override
+            public int insertInto(String table, ConflictHandling conflictHandling, Value... mapping) {
+                String[] select = map(mapping, Value::describe);
+                String selectValues = buildQuery(select);
+                String sql = "insert into "+table+" ("+selectValues+")";
+                if (conflictHandling == ConflictHandling.IGNORE)
+                    sql += " on conflict do nothing";
+                return jdbcTemplate.update(sql, parameters.toArray(new Object[0]));
+            }
         };
     }
 

@@ -42,6 +42,6 @@ public class PostgresSql extends Sql {
         log.debug("Merging: {} with keys {}, values {}", sql,
                 Arrays.asList(keyValues), Arrays.asList(values));
 
-        jdbc.update(sql, mapTypes(allValues));
+        jdbc.update(sql, mapTypes(allValues).toArray(new Object[0]));
     }
 }

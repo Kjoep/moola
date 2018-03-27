@@ -44,11 +44,17 @@ public interface QueryBuilder {
     };
     <T> Stream<T> stream(Mapper<T> mapper, String... columns);
     int insertInto(String table, Value... mapping);
+    int insertInto(String table, ConflictHandling conflictHandling, Value... mapping);
     int count(String column);
     void delete();
 
 
     interface Value {
         String describe();
+    }
+
+    enum ConflictHandling {
+        IGNORE,
+        FAIL
     }
 }

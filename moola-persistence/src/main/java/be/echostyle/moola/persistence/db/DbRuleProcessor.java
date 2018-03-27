@@ -1,6 +1,7 @@
 package be.echostyle.moola.persistence.db;
 
 import be.echostyle.dbQueries.JdbcRepository;
+import be.echostyle.dbQueries.QueryBuilder;
 import be.echostyle.dbQueries.RowAdapter;
 import be.echostyle.moola.AccountEntry;
 import be.echostyle.moola.AccountEntryType;
@@ -44,7 +45,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
         log.debug("Scheduling filter {} for entries without category", ref);
         int r = from(DbAccountEntry.TABLE)
                 .where(DbAccountEntry.COL_CATEGORY_ID+" is null")
-                .insertInto(WORK_TABLE, reference(DbAccountEntry.COL_ID), literal(ref.getId()));
+                .insertInto(WORK_TABLE, QueryBuilder.ConflictHandling.IGNORE, reference(DbAccountEntry.COL_ID), literal(ref.getId()));
         if (workerThread!=null) workerThread.interrupt();
         return r;
     }
@@ -54,7 +55,7 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
         log.debug("Scheduling filter {} for entries without peer", ref);
         int r =  from(DbAccountEntry.TABLE)
                 .where(DbAccountEntry.COL_PEER_ID+" is null")
-                .insertInto(WORK_TABLE, reference(DbAccountEntry.COL_ID), literal(ref.getId()));
+                .insertInto(WORK_TABLE, QueryBuilder.ConflictHandling.IGNORE, reference(DbAccountEntry.COL_ID), literal(ref.getId()));
         if (workerThread!=null) workerThread.interrupt();
         return r;
     }
@@ -62,11 +63,16 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
     @Override
     public int scheduleAll(AccountEntry entry) {
         log.debug("Scheduling all filters for {}", entry);
-        int r = (int) filters.getAllRules().stream()
-                .sorted(this::peersFirst)
-                .peek(rule -> schedule(entry, rule))
-                .count();
+
+        int r = from(DbFilterRule.TABLE)
+                .where(DbFilterRule.COL_PEER + " is not null")
+                .insertInto(WORK_TABLE, QueryBuilder.ConflictHandling.IGNORE, literal(entry.getId()), reference(DbFilterRule.COL_ID));
+        r += from(DbFilterRule.TABLE)
+                .where(DbFilterRule.COL_CATEGORY + " is not null")
+                .insertInto(WORK_TABLE, QueryBuilder.ConflictHandling.IGNORE, literal(entry.getId()), reference(DbFilterRule.COL_ID));
+
         if (workerThread!=null) workerThread.interrupt();
+
         return r;
     }
 
@@ -91,6 +97,8 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
     private Thread workerThread;
     private volatile boolean running = false;
 
+    //TODO: make this into a private class and use wait/notify with sychronized methods instead
+    // this also has the advantage that you can add a stop method
     public void start(){
         if (running) return;
         workerThread = new Thread(()->{
@@ -103,8 +111,9 @@ public class DbRuleProcessor extends JdbcRepository implements RuleProcessor {
                     List<WorkEntry> batch = findWork();
                     log.trace("Found {} entries to process", batch.size());
 
-                    if (batch.isEmpty())
+                    if (batch.isEmpty()) {
                         Thread.sleep(5_000);
+                    }
                     else {
                         for (WorkEntry entry: batch){
                             entry.process();
