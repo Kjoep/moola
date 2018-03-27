@@ -28,7 +28,7 @@ angular.module('moola').component('filterEditor', {
         vm.applyType = APPLY_ALL;
         vm.error = null;
         vm.subjectType = FilterService.SUBJECT_CATEGORY;
-        vm.subject = "";
+        vm.subject = {};
         vm.filterExpression = "";
         vm.exampleTransaction = {};
         vm.exampleOutputLoading = false;
@@ -39,6 +39,11 @@ angular.module('moola').component('filterEditor', {
             vm.exampleOutputLoading = true;
             vm.error = undefined;
             doUpdate();
+        };
+
+        vm.setFilter = function(expr){
+            vm.filterExpression = expr;
+            vm.update();
         };
 
         var doUpdate = debounce(function () {

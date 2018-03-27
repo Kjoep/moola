@@ -8,19 +8,20 @@
             <textarea id="filter-exp" class="filter" ng-model="vm.filterExpression" ng-keyup="vm.update()"></textarea>
             <h4 ng-show="vm.exampleTransaction">Your selected transaction</h4>
             <table class="example-transaction key-value">
-                <tr><td>amount</td><td>{{vm.exampleTransaction.amount}}</td></tr>
-                <tr><td>category.id</td><td>{{vm.exampleTransaction.category.id}}</td></tr>
-                <tr><td>category.name</td><td>{{vm.exampleTransaction.category.name}}</td></tr>
-                <tr><td>category.direction</td><td>{{vm.exampleTransaction.category.direction}}</td></tr>
-                <tr><td>peer.id</td><td>{{vm.exampleTransaction.peer.id}}</td></tr>
-                <tr><td>peer.name</td><td>{{vm.exampleTransaction.peer.name}}</td></tr>
-                <tr><td>timestamp</td><td>{{vm.exampleTransaction.timestamp}}</td></tr>
-                <tr><td>comment</td><td>{{vm.exampleTransaction.comment}}</td></tr>
-                <tr><td>type</td><td>{{vm.exampleTransaction.type}}</td></tr>
-                <tr><td>peerInfo</td><td>{{vm.exampleTransaction.peerInfo | json}}</td></tr>
-                <tr><td>terminalInfo.name</td><td>{{vm.exampleTransaction.terminalInfo.name}}</td></tr>
-                <tr><td>terminalInfo.location</td><td>{{vm.exampleTransaction.terminalInfo.location}}</td></tr>
-                <tr><td>terminalInfo.card</td><td>{{vm.exampleTransaction.terminalInfo.card}}</td></tr>
+                <tr><td ng-click="vm.setFilter('amount == '+vm.exampleTransaction.amount)">amount</td><td>{{vm.exampleTransaction.amount}}</td></tr>
+                <tr><td ng-click="vm.setFilter('category.id == \''+vm.exampleTransaction.category+'\'')">category.id</td><td>{{vm.exampleTransaction.category.id}}</td></tr>
+                <tr><td ng-click="vm.setFilter('category.name == \''+vm.exampleTransaction.category.name+'\'')">category.name</td><td>{{vm.exampleTransaction.category.name}}</td></tr>
+                <tr><td ng-click="vm.setFilter('category.direction == '+vm.exampleTransaction.category.direction)">category.direction</td><td>{{vm.exampleTransaction.category.direction}}</td></tr>
+                <tr><td ng-click="vm.setFilter('peer.id == \''+vm.exampleTransaction.peer.id+'\'')">peer.id</td><td>{{vm.exampleTransaction.peer.id}}</td></tr>
+                <tr><td ng-click="vm.setFilter('peer.name == \''+vm.exampleTransaction.peer.name+'\'')">peer.name</td><td>{{vm.exampleTransaction.peer.name}}</td></tr>
+                <tr><td ng-click="vm.setFilter('timestamp == \''+vm.exampleTransaction.timestamp+'\'')">timestamp</td><td>{{vm.exampleTransaction.timestamp}}</td></tr>
+                <tr><td ng-click="vm.setFilter('comment == \''+vm.exampleTransaction.comment+'\'')">comment</td><td>{{vm.exampleTransaction.comment}}</td></tr>
+                <tr><td ng-click="vm.setFilter('type == '+vm.exampleTransaction.type)">type</td><td>{{vm.exampleTransaction.type}}</td></tr>
+                <tr><td ng-click="vm.setFilter('peerInfo.name == \''+vm.exampleTransaction.peerInfo.name+'\'')">peerInfo.name</td><td>{{vm.exampleTransaction.peerInfo.name}}</td></tr>
+                <tr><td ng-click="vm.setFilter('peerInfo.accountNr == \''+vm.exampleTransaction.peerInfo.account+'\'')">peerInfo.accountNr</td><td>{{vm.exampleTransaction.peerInfo.account}}</td></tr>
+                <tr><td ng-click="vm.setFilter('terminalInfo.name == \''+vm.exampleTransaction.terminalInfo.name+'\'')">terminalInfo.name</td><td>{{vm.exampleTransaction.terminalInfo.name}}</td></tr>
+                <tr><td ng-click="vm.setFilter('terminalInfo.location == \''+vm.exampleTransaction.location+'\'')">terminalInfo.location</td><td>{{vm.exampleTransaction.terminalInfo.location}}</td></tr>
+                <tr><td ng-click="vm.setFilter('terminalInfo.card == \''+vm.exampleTransaction.terminalInfo.card+'\'')">terminalInfo.card</td><td>{{vm.exampleTransaction.terminalInfo.card}}</td></tr>
             </table>
         </div>
         <div class="filter-example invalidatable" ng-class="{'invalidated': vm.exampleOutputLoading}">

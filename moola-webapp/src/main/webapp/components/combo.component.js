@@ -104,7 +104,7 @@ angular.module('moola').component('combo', {
                 }
             };
 
-            vm.$onChanges = function(){
+            vm.$doCheck = function () {
                 if (!vm.active)
                     vm.filter = vm.ngModel ? vm.ngModel.name : vm.placeholder;
             };
