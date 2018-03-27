@@ -34,12 +34,16 @@ public class AxaParserTest {
 
         List<AccountEntry> output = parser.parse(st, target);
 
-        assertEquals(19, output.size());
+        assertEquals(23, output.size());
 
-        assertEquals("503630237302", output.get(0).getComment());
+        AccountEntry record0 = output.get(0);
+        assertEquals("503630237302", record0.getComment());
         assertEquals("/C/ DOSSIER    B 315900    011231 A                  PERIODE: 201409; KINDERBIJSLAG   WWW.KIDS.PARTENA.BE", output.get(5).getComment());
         assertEquals(new TerminalInfo("KINEPOLIS LEUVEN", "LEUVEN", "7506376832160113"), output.get(10).getTerminalInfo());
         assertEquals(new PeerInfo("NL26RABO0120615789", "AZERTY B.V."), output.get(11).getPeerInfo());
+
+        AccountEntry record20 = output.get(20);
+        System.out.println(record20);
     }
 
     private class DummyAccountEntry extends AccountEntry {

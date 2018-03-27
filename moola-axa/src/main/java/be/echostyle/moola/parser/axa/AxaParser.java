@@ -113,11 +113,19 @@ public class AxaParser implements HistoryParser {
     private AccountEntryType mapToType(String typeString) {
         switch (typeString.toLowerCase()) {
             case "aankoop met axa bankkaart": return AccountEntryType.cardPayment;
+            case "aankoop - bancontact": return AccountEntryType.cardPayment;
+            case "aankoop - maestro": return AccountEntryType.cardPayment;
             case "aankp buitenl.mt axa bnkkrt": return AccountEntryType.cardPayment;
             case "geldopname met axa bankkaart": return AccountEntryType.withdrawal;
+            case "geldopname - bancontact": return AccountEntryType.withdrawal;
+            case "geldopname - maestro": return AccountEntryType.withdrawal;
             case "interne invordering": return AccountEntryType.managementCost;
+            case "bijdrage zichtrekening": return AccountEntryType.managementCost;
             case "europese overschrijving": return AccountEntryType.transfer;
             case "europese domiciliëring": return AccountEntryType.fixedOrder;
+            case "domiciliëring visa-kaart": return AccountEntryType.fixedOrder;
+            case "Glob. verk. - Bancontact": return AccountEntryType.cardPayment;
+            case "Europese overschr via Mobile": return AccountEntryType.transfer;
             default: {
                 log.warn("Unknown entry type: {}", typeString);
                 return AccountEntryType.unknown;
