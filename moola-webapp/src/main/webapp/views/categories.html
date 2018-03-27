@@ -10,16 +10,26 @@
             <th><!-- color --></th>
             <th>Name</th>
             <th>In/Out</th>
+            <th>Occcurence</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
             <tr ng-repeat="category in categories.categories">
                 <td clas="tree">├</td>
-                <td><color-display fg="{{category.colors.fg}}" bg="{{category.colors.bg}}" ></color-display></td>
-                <td>{{category.name}}</td>
-                <td>{{category.inOut}}</td>
+                <td><color-display fg="{{category.color.fg}}" bg="{{category.color.bg}}" ></color-display></td>
+                <td><input type="text" ng-model="category.name" /></td>
+                <td><select name="direction" ng-model="category.direction" ng-options="item as item for item in ['in', 'out']"></select></td>
+                <td><select name="occurence" ng-model="category.occcurence" ng-options="item as item for item in ['fixed', 'variable']"></select></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
                 <td></td>
+                <td></td>
+                <td><input type="text" ng-model="categories.newCategory.name" /></td>
+                <td><select name="direction" ng-model="categories.newCategory.direction" ng-options="item as item for item in ['in', 'out']"></select></td>
+                <td><select name="occurence" ng-model="categories.newCategory.occurence" ng-options="item as item for item in ['fixed', 'variable']" id=""></select></td>
+                <td><button>Add</button></td>
             </tr>
         </tbody>
     </table>
