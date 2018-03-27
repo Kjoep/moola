@@ -19,9 +19,9 @@ public interface Account {
 
     List<AccountEntry> getTransactions(LocalDateTime from, LocalDateTime to);
 
-    List<AccountEntry> getTransactions(LocalDateTime to, int count);
+    List<AccountEntry> getTransactions(LocalDateTime to, int count, int from);
 
-    List<AccountEntry> getTransactions(LocalDateTime to, TransactionFilter filter, int count);
+    List<AccountEntry> getTransactions(LocalDateTime to, TransactionFilter filter, int count, int from);
 
     List<AccountEntry> getTransactions(String batchId);
 

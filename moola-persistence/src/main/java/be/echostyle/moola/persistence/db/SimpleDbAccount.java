@@ -61,19 +61,19 @@ public class SimpleDbAccount extends DbAccount implements SimpleAccount {
     }
 
     @Override
-    public List<AccountEntry> getTransactions(LocalDateTime to, int count) {
+    public List<AccountEntry> getTransactions(LocalDateTime to, int count, int from) {
         CacheMapper mapper = cacheMapper();
         return repository
                 .from(DbAccountEntry.TABLE)
                 .where(COL_ACCOUNT_ID +" = ?", this.id)
                 .where(COL_TIMESTAMP +" < ?", to)
                 .orderDesc(COL_TIMESTAMP)
-                .limit(count)
+                .limit(count, from)
                 .list(mapper, ALL_COLS);
     }
 
     @Override
-    public List<AccountEntry> getTransactions(LocalDateTime to, TransactionFilter filter, int count) {
+    public List<AccountEntry> getTransactions(LocalDateTime to, TransactionFilter filter, int count, int from) {
         CacheMapper mapper = cacheMapper();
         try (Stream<AccountEntry> stream = repository
                 .from(DbAccountEntry.TABLE)
@@ -82,6 +82,7 @@ public class SimpleDbAccount extends DbAccount implements SimpleAccount {
                 .orderDesc(COL_TIMESTAMP)
                 .stream(mapper, ALL_COLS)){
             return stream.filter(filter::match)
+                    .skip(from)
                     .limit(count)
                     .collect(Collectors.toList());
         }

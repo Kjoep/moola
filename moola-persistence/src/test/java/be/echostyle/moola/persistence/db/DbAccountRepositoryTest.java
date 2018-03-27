@@ -119,7 +119,7 @@ public class DbAccountRepositoryTest extends DbTest {
     public void getsTransactionsWithLimit(){
         Account johnny = repo.getAccount("johnny");
         LocalDate day = LocalDate.of(2016, 2, 12);
-        List<AccountEntry> transactions = johnny.getTransactions(day.plusDays(1).atStartOfDay(), 2);
+        List<AccountEntry> transactions = johnny.getTransactions(day.plusDays(1).atStartOfDay(), 2, 0);
         System.out.println(transactions.stream().map(Object::toString).collect(Collectors.joining("\n")));
         assertEquals(2, transactions.size());
         assertEquals("I owe you some beers", transactions.get(0).getComment());
@@ -129,7 +129,7 @@ public class DbAccountRepositoryTest extends DbTest {
     public void getsTransactionsWithFilter(){
         Account johnny = repo.getAccount("johnny");
         LocalDate day = LocalDate.of(2016, 2, 12);
-        List<AccountEntry> transactions = johnny.getTransactions(day.plusDays(1).atStartOfDay(), t -> t.getComment().contains("beer"), 2);
+        List<AccountEntry> transactions = johnny.getTransactions(day.plusDays(1).atStartOfDay(), t -> t.getComment().contains("beer"), 2, 0);
         System.out.println(transactions.stream().map(Object::toString).collect(Collectors.joining("\n")));
         assertEquals(1, transactions.size());
         assertEquals("I owe you some beers", transactions.get(0).getComment());
@@ -230,7 +230,7 @@ public class DbAccountRepositoryTest extends DbTest {
     private AccountEntry getTransactionAbc1() {
         Account johnny = repo.getAccount("johnny");
         LocalDate day = LocalDate.of(2016, 2, 12);
-        List<AccountEntry> transactions = johnny.getTransactions(day.plusDays(1).atStartOfDay(), 2);
+        List<AccountEntry> transactions = johnny.getTransactions(day.plusDays(1).atStartOfDay(), 2, 0);
         return transactions.get(0);
     }
 
@@ -240,7 +240,7 @@ public class DbAccountRepositoryTest extends DbTest {
         Peer sandra = mock(Peer.class);
         when(sandra.getId()).thenReturn("sandraId");
         LocalDate day = LocalDate.of(2016, 2, 12);
-        List<AccountEntry> transactions = johnny.getTransactions(day.plusDays(1).atStartOfDay(), 2);
+        List<AccountEntry> transactions = johnny.getTransactions(day.plusDays(1).atStartOfDay(), 2, 0);
         AccountEntry transaction = transactions.get(0);
 
         assertNull(transaction.getPeer());

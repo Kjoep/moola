@@ -59,7 +59,9 @@ public interface RestAccountService {
             @PathParam("accountId") String accountId,
             @QueryParam("batch") String batchReference,
             @QueryParam("filter") String filterExpression,
-            @QueryParam("limit") @DefaultValue("200") Integer limit);
+            @QueryParam("limit") @DefaultValue("200") Integer limit,
+            @QueryParam("from") @DefaultValue("0") Integer from
+            );
 
     @POST
     @Path("accounts/{accountId}/transactions/{transactionId}")

@@ -48,17 +48,20 @@ public interface GroupedAccount extends Account {
     }
 
     @Override
-    default List<AccountEntry> getTransactions(LocalDateTime to, int count) {
-        return getMembers().stream().flatMap(member -> member.getTransactions(to, count).stream())
+    default List<AccountEntry> getTransactions(LocalDateTime to, int count, int from) {
+        //TODO: this count+from trick will work, but it's far from optimal
+        return getMembers().stream().flatMap(member -> member.getTransactions(to, count + from, 0).stream())
                 .sorted(Comparator.comparing(AccountEntry::getTimestamp).thenComparing(AccountEntry::getId))
+                .skip(from)
                 .limit(count)
                 .collect(Collectors.toList());
     }
 
     @Override
-    default List<AccountEntry> getTransactions(LocalDateTime to, TransactionFilter filter, int count) {
-        return getMembers().stream().flatMap(member -> member.getTransactions(to, filter, count).stream())
+    default List<AccountEntry> getTransactions(LocalDateTime to, TransactionFilter filter, int count, int from) {
+        return getMembers().stream().flatMap(member -> member.getTransactions(to, filter, count + from, 0).stream())
                 .sorted(Comparator.comparing(AccountEntry::getTimestamp).thenComparing(AccountEntry::getId))
+                .skip(from)
                 .limit(count)
                 .collect(Collectors.toList());
     }

@@ -38,6 +38,7 @@ public class RestAccountServiceImpl implements RestAccountService {
 
     private static final Logger log = LoggerFactory.getLogger(RestAccountServiceImpl.class);
     private static final int DEFAULT_LIMIT = 200;
+    private static final int DEFAULT_FROM = 0;
 
     private AccountService accountService;
     private ImportService importService;
@@ -113,21 +114,22 @@ public class RestAccountServiceImpl implements RestAccountService {
     }
 
     @Override
-    public List<Transaction> getTransactions(String accountId, String batchReference, String filterExpression, Integer limit) {
+    public List<Transaction> getTransactions(String accountId, String batchReference, String filterExpression, Integer limit, Integer from) {
         try {
             be.echostyle.moola.Account account = accountService.getAccount(accountId);
             if (account == null)
                 throw new NotFoundException(Response.status(404).entity("No such account: " + accountId).build());
 
             if (limit == null) limit = DEFAULT_LIMIT;
+            if (from == null) from = DEFAULT_FROM;
 
             if (batchReference != null)
                 return account.getTransactions(batchReference).stream().map(Transaction::fromModel).collect(Collectors.toList());
             else if (filterExpression != null)
-                return account.getTransactions(LocalDateTime.now(), filterService.filter(filterExpression), limit).stream().map(Transaction::fromModel).collect(Collectors.toList());
+                return account.getTransactions(LocalDateTime.now(), filterService.filter(filterExpression), limit, from).stream().map(Transaction::fromModel).collect(Collectors.toList());
             else
-                return account.getTransactions(LocalDateTime.now(), limit).stream()
-                        .sorted(Comparator.comparing(AccountEntry::getTimestamp).thenComparing(AccountEntry::getId))
+                return account.getTransactions(LocalDateTime.now(), limit, from).stream()
+                        .sorted(Comparator.comparing(AccountEntry::getTimestamp).thenComparing(AccountEntry::getId).reversed())
                         .map(Transaction::fromModel)
                         .collect(Collectors.toList());
         } catch (FilterExpressionException e){
