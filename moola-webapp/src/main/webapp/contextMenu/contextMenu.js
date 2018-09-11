@@ -15,6 +15,7 @@ angular.module('moola').directive('contextMenu', ['$parse', function ($parse) {
                 $elem.fadeIn(150);
                 setTimeout(function(){
                     $('body').bind('mousedown', hideFunction);
+                    if ($elem.offset().left < 0) $elem.css('transform', 'translateX('+(-$elem.offset().left)+'px)');
                 },10);
             });
 
