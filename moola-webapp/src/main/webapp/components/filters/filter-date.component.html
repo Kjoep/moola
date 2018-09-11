@@ -3,23 +3,15 @@
 <div class="report-query-panel" ng-show="vm.active" ng-blur="vm.cancel()">
     <div class="query-section">
         <h4>Filter</h4>
-        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="none" id="{{::$id}}qs-date-filter-none" /><label for="{{::$id}}qs-date-filter-none">All time</label></span>
-        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="7days" id="{{::$id}}qs-date-filter-7days" /><label for="{{::$id}}qs-date-filter-7days">Last 7 days</label></span>
-        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="30days" id="{{::$id}}qs-date-filter-30days" /><label for="{{::$id}}qs-date-filter-30days">Last 30 days</label></span>
-        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="1month" id="{{::$id}}qs-date-filter-1month" /><label for="{{::$id}}qs-date-filter-1month">Last month</label></span>
-        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="12months" id="{{::$id}}qs-date-filter-12months" /><label for="{{::$id}}qs-date-filter-12months">Last 12 months</label></span>
-        <span class="section-option"><input type="radio" name="qs-date-filter" ng-model="vm.filter" value="custom" id="{{::$id}}qs-date-filter-custom" class="custom-toggle" /><label for="{{::$id}}qs-date-filter-custom">Custom...</label>
-            <div class="custom-details" id="{{::$id}}qs-date-filter-custom-spec" style="padding-left: 15px; padding-top: 5px; margin-bottom: 3px">
-                    <input id="{{::$id}}qs-date-filter-custom-nr" type="text" placeholder="x" ng-model="vm.customNr" style="width: 2em; border: solid silver 1px; border-top-left-radius: 7px; border-bottom-left-radius: 7px;  padding-left: 7px;  margin-right: 0;" />
-                    <select id="{{::$id}}qs-date-filter-custom-type" ng-model="vm.customType" style="border: solid silver 1px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; transform: translateX(-7px);">
-                        <option>days</option>
-                        <option>weeks</option>
-                        <option>months</option>
-                        <option>years</option>
-                    </select><br />
-                    from
-                    <input id="{{::$id}}qs-date-filter-custom-from" type="text" ng-model="vm.customFrom" placeholder="yyyy-mm-dd" />
-            </div>
+        <span class="section-option">
+            <input type="text" ng-model="vm.from" />
+            to
+            <input type="text" ng-model="vm.to" />
+        </span>
+        <span class="section-option">
+            <a href="" ng-click="vm.selectRange('', '')">all time</a>
+            <a href="" ng-click="vm.selectRange('-7d', '')">last 7 days</a>
+            <a href="" ng-click="vm.selectRange('-30d', '')">last 30 days</a>
         </span>
     </div>
     <div class="query-section">

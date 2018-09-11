@@ -53,7 +53,7 @@
             if (value === undefined) value = true;
             if (!value && this.grouping[key])
                 delete this.grouping[key];
-            else
+            else if (value)
                 this.grouping[key] = value;
         },
         withNewFilter: function (key, value) {
@@ -62,7 +62,8 @@
             var grouping = {};
             filters[key] = [value];
             Object.assign(grouping, this.grouping);
-            return new Query(filters, grouping);
+            delete grouping[key];
+            return new moola.Query(filters, grouping);
         },
         withAddFilter: function (key, value) {
             if (value == '?') value = '';
@@ -85,4 +86,47 @@
             else return true;
         }
     }
+
+
+    var parseFilter = function (query, string) {
+        var string = string.split(":");
+        var key = string[0];
+        if (string.length == 1) {
+            query.addFilter(key, '');
+            return;
+        }
+        string[1].split(",").forEach(function(value){
+            query.addFilter(key, value);
+        });
+    };
+
+    var parseGrouping = function (query, string) {
+        var string = string.split(":");
+        var key = string[0];
+        if (string.length == 1) {
+            return;
+        }
+        query.setGrouping(key, string[1]);
+    };
+
+    moola.Query.parseHash = function (hash) {
+        var r = new moola.Query();
+        if (hash[0] == '/') hash = hash.substr(1);
+        hash.split('&').forEach(function(part){
+            var parts = part.split("=");
+            if (parts.length > 1) {
+                var key = parts[0];
+                var value = parts[1];
+                if (key == "filter") {
+                    parseFilter(r, value)
+                }
+                if (key == "grouping") {
+                    parseGrouping(r, value);
+                }
+            }
+        })
+        return r
+    }
+
+
 }());

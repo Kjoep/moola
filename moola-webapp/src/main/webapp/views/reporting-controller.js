@@ -259,6 +259,12 @@ angular.module('moola').controller('ReportingController',
             });
     };
 
+    self.rangeFor = function(slice){
+        if (!slice) return '';
+        var slice = moola.TimeSlice.parse(slice);
+        return slice.asRange();
+    };
+
     self.showFilterEditor = function(type, exampleTransaction, proposedFilter, subject){
         //this is a stub
     };
@@ -338,15 +344,7 @@ angular.module('moola').controller('ReportingController',
         return self.query.filters;
     }
 
-    self.applyQuery = function(key, filter, group){
-        console.log("Applying query on "+key);
-        console.log("Filter: "+JSON.stringify(filter));
-        console.log("Group: "+JSON.stringify(group));
-        var newQ = self.query.clone();
-        newQ.filters[key] = filter;
-        newQ.grouping[key] = group;
-        if (!filter) delete newQ.filters[key];
-        if (!group) delete newQ.grouping[key];
+    self.applyQuery = function(newQ){
         var r = newQ.asHash();
         console.log("Going to hash: "+r);
         $location.hash("/"+r);
