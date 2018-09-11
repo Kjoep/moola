@@ -32,21 +32,19 @@
     <table class="transactionsTable">
         <thead>
             <tr>
-                <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('date')">Time
-                    <div date-filter query="report.query" on-apply="report.applyQuery"></div>
+                <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('date')">
+                    <filter-date query="report.query" on-apply="report.applyQuery(query)">Time</filter-date>
                 </th>
                 <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('type')">
-                    Type
-                    <div type-filter query="report.query" on-apply="report.applyQuery">
+                    <filter-type types="report.transactionTypes" query="report.query" on-apply="report.applyQuery(query)">Type</filter-type>
                 </div></th>
-                <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('category')">
-                    Category
-                    <div category-filter categories="report.categoryOptions" query="report.query" on-apply="report.applyQuery">
+                <th style="text-align: center" ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('category')">
+                    <filter-category query="report.query" on-apply="report.applyQuery(query)">Category</filter-category>
                 </th>
                 <th ng-show="!report.query.isGrouped()">Comment</th>
-                <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('peer')">Peer</th>
-                <th>Amount</th>
-                <th ng-show="!report.query.isGrouped()">Balance</th>
+                <th style="text-align: center" ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('peer')">Peer</th>
+                <th style="text-align: right">Amount</th>
+                <th style="text-align: right" ng-show="!report.query.isGrouped()">Balance</th>
             </tr>
         </thead>
         <tbody>
