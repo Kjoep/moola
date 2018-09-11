@@ -1,97 +1,29 @@
-var Query = (function(){
-
-    /**
-     * Make a duplicate of an array, leaving out a single element.
-     */
-    var without = function (arr, value) {
-        var r = [];
-        for (var i = 0; i < arr.length; i++)
-            if (arr[i] !== value)
-                r.push(arr[i]);
-        return r;
-    }
-
-    var parseFilter = function (query, string) {
-        var string = string.split(":");
-        var key = string[0];
-        if (string.length == 1) {
-            query.addFilter(key, '');
-            return;
-        }
-        string[1].split(",").forEach(function(value){
-            query.addFilter(key, value);
-        });
-    };
-
-    var parseGrouping = function (query, string) {
-        var string = string.split(":");
-        var key = string[0];
-        if (string.length == 1) {
-            return;
-        }
-        query.setGrouping(key, string[1]);
-    };
-
-    Query.parseHash = function (hash) {
-        var r = new Query();
-        if (hash[0] == '/') hash = hash.substr(1);
-        hash.split('&').forEach(function(part){
-            var parts = part.split("=");
-            if (parts.length > 1) {
-                var key = parts[0];
-                var value = parts[1];
-                if (key == "filter") {
-                    parseFilter(r, value)
-                }
-                if (key == "grouping") {
-                    parseGrouping(r, value);
-                }
-            }
-        })
-        return r
-    }
-
-    return Query;
-}())
-
-
-
-
-
 angular.module('moola').controller('ReportingController',
-    ['$scope', '$location', '$resource', '$filter', '$http', 'Categories', 'Session',
-    function ($scope, $location, $resource, $filter, $http, Categories, Session) {
+    ['$scope', '$q', '$location', '$resource', '$filter', '$http', 'CategoryService', 'Session',
+    function ($scope, $q, $location, $resource, $filter, $http, CategoryService, Session) {
 
     var self = this;
 
     self.transactions = [];
-    self.categoryOptions = [];
     self.showCat = {};
     self.title = 'All transactions';
     var page=0;
 
-    self.query = new Query();
+    self.query = new moola.Query();
 
     var currentAccount;
-    var parentController = $scope.controller;
 
     var onAccountChanged = function(account) {
         currentAccount = account;
-        if (account) {
-            loadTransactions().then(function(){
-                adaptCategories(self.transactions);
-                createChartData();
-            });
-        }
-        else {
-            self.transactions = [];
-        }
+        loadTransactions().then(function(){
+            createChartData();
+        });
     };
 
     var loadTransactions = function(){
         console.log('loading transactions');
         var query = self.query;
-        if (!currentAccount) return {then:function(){}};
+        if (!currentAccount) return $q.when([]);
         var q = [];
         for (var key in query.filters){
             if (!query.filters.hasOwnProperty(key)) continue;

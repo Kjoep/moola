@@ -2,19 +2,15 @@ angular.module('moola').controller('TestController', ['$scope', '$resource', '$f
 
     var self = this;
 
-    this.apply = function(key, filter, group){
-        self.query.filters[key]=filter;
-        self.query.grouping[key]=group;
-        if (!filter) delete self.query.filters[key];
-        if (!group) delete self.query.grouping[key];
+    self.query = new moola.Query({type: ['miny', 'moe']},{type: true, date: 'month' });
+
+    self.types = [
+        'eenie', 'meenie', 'miny', 'moe'
+
+    ];
+
+    self.apply = function(newQuery){
+        self.query = newQuery;
     };
-
-    self.query = {
-        filters: { date: ["2016-01-01-7weeks"]},
-        grouping: {
-            date: 'month'
-        }
-
-    }
 
 }]);

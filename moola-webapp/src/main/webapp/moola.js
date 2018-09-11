@@ -13,6 +13,11 @@ angular.module('moola').config(function($routeProvider, $locationProvider) {
         controllerAs: 'transactions',
         controller: 'TransactionController'
     })
+    .when('/test', {
+        templateUrl: 'views/test.html',
+        controllerAs: 'test',
+        controller: 'TestController'
+    })
     .when('/reporting', {
         templateUrl: 'views/reporting.html',
         controllerAs: 'report',
