@@ -238,20 +238,6 @@ angular.module('moola').controller('ReportingController',
         return template.replace(" ", "_");
     }
 
-    self.showAllCategories = function(val){
-        self.showCat['?'] = val;
-        for (var i=0; i<self.categoryOptions.length; i++)
-            self.showCat[self.categoryOptions[i].id] = val;
-    }
-
-    self.categoryOptions = Categories.get();
-    self.categoryOptions.$promise.then(function(){
-        for (var i=0; i<self.categoryOptions.length; i++){
-            self.categoryOptions[i] = parentController.internCategory(self.categoryOptions[i]);
-        }
-        self.showAllCategories(true);
-    });
-
     self.showDetails = function(transaction){
         self.detailTransaction = transaction;
         setTimeout(function(){
