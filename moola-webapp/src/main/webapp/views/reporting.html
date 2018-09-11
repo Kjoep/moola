@@ -55,6 +55,13 @@
                     <span class="date" ng-show="!report.query.isGrouped()">{{report.formatDateShort(trans.timestamp)}}</span>
                     <span class="timeslice" ng-show="report.query.isGrouped('date')">{{trans.timeSlice}}</span>
                     <span ng-show="report.query.isGrouped() && !report.query.isGrouped('date')">*</span>
+                    <div context-menu context-button="0" ng-show="trans.timestamp || trans.timeSlice">
+                        <a href="#!/reporting#{{report.query.withNewFilter('date', trans.timestamp).asHash()}}" ng-show="trans.timestamp">New filter</a>
+                        <a href="#!/reporting#{{report.withAddFilter('date', trans.timestamp)}}" ng-show="trans.timestamp">Add to filter</a>
+                        <a href="#!/reporting#{{report.query.withNewFilter('date', report.rangeFor(trans.timeSlice)).asHash()}}" ng-show="trans.timeSlice">New filter</a>
+                        <a href="#!/reporting#{{report.withAddFilter('date', report.rangeFor(trans.timeSlice))}}" ng-show="trans.timeSlice">Add to filter</a>
+                        <a href="" ng-click="report.showDetails(trans)">Details ...</a>
+                    </div>
                 </td>
                 <td ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('type')">
                     <span ng-show="!report.query.isGrouped() || report.query.isGrouped('type')">{{trans.type}}</span>

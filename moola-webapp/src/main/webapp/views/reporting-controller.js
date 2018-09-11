@@ -295,11 +295,11 @@ angular.module('moola').controller('ReportingController',
     Session.onAccountChanged(onAccountChanged);
 
     $scope.$watch(function(){return $location.hash();}, function(){
-        self.query = Query.parseHash($location.hash());
+        self.query = moola.Query.parseHash($location.hash());
         loadTransactions();
     });
 
-    self.query = Query.parseHash($location.hash());
+    self.query = moola.Query.parseHash($location.hash());
     onAccountChanged(Session.account());
 
 }]);
