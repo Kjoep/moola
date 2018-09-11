@@ -91,28 +91,41 @@ angular.module('moola').controller('ReportingController',
             }
         }
 
-        else {
+        else if (self.query.isGrouped()){
 
             var groupName = function(transaction){
                 return groupKeys.map(function(gk){
-                    return transaction[gk]
+                    var value = transaction[gk];
+                    return value ? (value.id || value) : value;
                 }).join('/');
             }
 
             var groupKeys = Object.keys(self.query.grouping);
             var data = {
-                datasets: [{data: []}],
-                labels: []
+                type: 'pie',
+                income: {data: [],labels: [], colors:[]},
+                expense: {data: [],labels: [], colors: []}
             };
+            var defaultColor = {color:{bg:'#606060'}};
             self.transactions.forEach(function(transaction){
-                data.labels.push(groupName(transaction));
-                data.datasets[0].data.push(transaction.amount);
+                if (transaction.total > 0){
+                    data.income.labels.push(groupName(transaction));
+                    data.income.data.push(transaction.total);
+                    if (groupKeys[0] == 'category')
+                        data.income.colors.push((transaction.category || defaultColor).color.bg);
+                }
+                else {
+                    data.expense.labels.push(groupName(transaction));
+                    data.expense.data.push(0-transaction.total);
+                    if (groupKeys[0] == 'category')
+                        data.expense.colors.push((transaction.category || defaultColor).color.bg);
+                }
             });
 
-            self.chart = {
-                type: 'doughnut',
-                data: data
-            }
+            self.chart = data
+        }
+        else {
+            self.chart = {};
         }
 
     };
@@ -296,7 +309,9 @@ angular.module('moola').controller('ReportingController',
 
     $scope.$watch(function(){return $location.hash();}, function(){
         self.query = moola.Query.parseHash($location.hash());
-        loadTransactions();
+        loadTransactions().then(function(){
+            createChartData();
+        });
     });
 
     self.query = moola.Query.parseHash($location.hash());

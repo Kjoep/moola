@@ -3,16 +3,19 @@
         <h2>{{report.title}}</h2>
     </div>
 
-    <chart ng-show="report.chart.type == 'bar'" labels="report.chart.labels">
-        <series ng-repeat="(name, data) in report.chart.groups" name="{{name}}"
-            type="bar" stacked="true" data="data" axis="amounts"></series>
-    </chart>
-    
-    <pie-chart ng-show="report.chart.type == 'pie'" labels="report.chart.labels">
-        <series ng-repeat="(name, data) in report.chart.groups" name="{{name}}"
+    <div class="charts">
+        <chart ng-if="report.chart.type == 'bar'" labels="report.chart.labels">
+            <series ng-repeat="(name, data) in report.chart.groups" name="{{name}}"
                 type="bar" stacked="true" data="data" axis="amounts"></series>
-    </pie-chart>
-        
+        </chart>
+        <pie-chart ng-if="report.chart.type == 'pie'" title="Income" labels="report.chart.income.labels"  
+                   data="report.chart.income.data" colors="report.chart.income.colors">
+        </pie-chart>
+        <pie-chart ng-if="report.chart.type == 'pie'" title="Expenses" labels="report.chart.expense.labels" 
+                   data="report.chart.expense.data" colors="report.chart.expense.colors">
+        </pie-chart>
+    </div>
+
     <div class="details-pane">
         <table class="key-value">
                 <tr><td class="key">ID</td><td class="value">{{report.detailTransaction.id}}</td></tr>

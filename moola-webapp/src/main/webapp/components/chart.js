@@ -116,3 +116,64 @@ angular.module('moola')
     }
 
 }])
+.component('pieChart', {
+    bindings: {
+        labels:"<",
+        data:"<",
+        colors:"<",
+        title:"@"
+    },
+    controllerAs: 'chart',
+    controller: ['$element', '$scope',  function($elem, $scope){
+        var self = this;
+        var datasets = [];
+
+        self.$onChanges = function(){
+            scheduleUpdate();
+        };
+
+        var updateTimeout;
+        var update;
+        var scheduleUpdate = function(){
+            if (updateTimeout)
+                clearTimeout(updateTimeout);
+
+            updateTimeout = setTimeout(function(){
+                update();
+            }, 250);
+        }
+
+        var chart;
+
+        self.$onInit = function(){
+            console.log('performing piechart init');
+
+            var cfg = {
+                type: 'doughnut',
+                title: self.title,
+                data: {},
+                options: {
+                    responsive: false,
+                    legend: {display: false}
+                }
+            };
+
+            update = function(){
+                if (!self.labels || !self.data || self.data.length === 0 || self.labels.length === 0) return;
+
+                cfg.data.labels = self.labels;
+                cfg.data.datasets = [{data: self.data, backgroundColor: self.colors}];
+
+                console.log('Doing piechart update: '+JSON.stringify(cfg));
+
+                if (!chart)
+                    chart = new Chart($elem.find('canvas')[0], cfg);
+                else
+                    chart.update();
+            }
+            scheduleUpdate();
+        }
+    }],
+
+    template: '<h3>{{chart.title}}</h3><canvas class="chart" width="300" height="300"></canvas>'
+})
