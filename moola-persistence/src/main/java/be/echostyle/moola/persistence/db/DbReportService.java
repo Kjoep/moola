@@ -66,9 +66,10 @@ public class DbReportService implements ReportService {
 
             @Override
             public EntryQuery withTimestamp(LocalDateTime from, LocalDateTime to) {
-                q = q
-                        .where(COL_TIMESTAMP+" >= ?", from)
-                        .where(COL_TIMESTAMP+ " < ?", to);
+                if (from != null)
+                    q = q.where(COL_TIMESTAMP+" >= ?", from);
+                if (to != null)
+                    q = q.where(COL_TIMESTAMP+ " < ?", to);
                 return this;
             }
 

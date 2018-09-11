@@ -1,14 +1,19 @@
 package be.echostyle.moola.rest;
 
 import javax.ws.rs.BadRequestException;
+import java.text.ParseException;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.apache.commons.lang.StringUtils.isBlank;
 
 public abstract class DateFilter {
 
@@ -33,6 +38,7 @@ public abstract class DateFilter {
             namedParser("30days", n -> n.truncatedTo(ChronoUnit.DAYS).minusDays(30), n -> n.truncatedTo(ChronoUnit.DAYS).plusDays(1)),
             namedParser("1month", n -> n.truncatedTo(ChronoUnit.DAYS).minusMonths(1), n -> n.truncatedTo(ChronoUnit.DAYS).plusMonths(1)),
             namedParser("12months", n -> n.truncatedTo(ChronoUnit.DAYS).minusMonths(12), n -> n.truncatedTo(ChronoUnit.DAYS).plusMonths(1)),
+            new RangeParser(),
             new ComplexParser()
     };
 
@@ -58,6 +64,49 @@ public abstract class DateFilter {
                 };
             }
         };
+    }
+
+    private static class RangeParser implements DateFilterParser {
+
+        Pattern pattern = Pattern.compile("^(\\d{4}-\\d{2}-\\d{2})?-(\\d{4}-\\d{2}-\\d{2})?$");
+
+        @Override
+        public boolean accept(String string) {
+            try {
+                Matcher matcher = pattern.matcher(string);
+                if (!matcher.find()) return false;
+                parseDate(matcher.group(1));
+                parseDate(matcher.group(2));
+                return true;
+            } catch (ParseException e) {
+                return false;
+            }
+        }
+
+        @Override
+        public DateFilter parse(String string, Clock clock) {
+            try {
+                Matcher matcher = pattern.matcher(string);
+                if (!matcher.find()) throw new ParseException("Non-accepted pattern", 0);
+                LocalDateTime from = parseDate(matcher.group(1));
+                LocalDateTime to = parseDate(matcher.group(2));
+                return new DateFilter() {
+                    public LocalDateTime from() {
+                        return from;
+                    }
+                    public LocalDateTime to() {
+                        return to;
+                    }
+                };
+            } catch (ParseException e) {
+                throw new RuntimeException("Non-accepted string passed in", e);
+            }
+        }
+
+        private LocalDateTime parseDate(String formatted) throws ParseException {
+            if (isBlank(formatted)) return null;
+            return LocalDate.parse(formatted, DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+        }
     }
 
     private static class ComplexParser implements DateFilterParser {
