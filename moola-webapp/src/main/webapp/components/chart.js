@@ -10,9 +10,9 @@ angular.module('moola')
         var self = this;
         var datasets = [];
 
-        $scope.$watch(function(){ return self.labels; }, function(){
+        self.$onChanges = function(){
             scheduleUpdate();
-        });
+        };
 
         self.addDataSet = function(name, data, type, axis, bgColor, fgColor, borderColor) {
             if (!data || !(data instanceof Array))
