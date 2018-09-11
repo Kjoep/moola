@@ -4,10 +4,14 @@ angular.module('moola').service('CategoryService', ['$http', 'config',
         var DEFAULT_COLOR = { fg: '#FFF', bg: '#00D' };
         
         var self = this;
+        var categories = {};
 
         self.getCategories = function(){
             return $http.get(url(`/categories?q=`))
                 .then(unwrapResponse)
+                .then(function(categories){
+                    return categories.map(self.internCategory);
+                })
                 .catch(unwrapError);
         };
 
@@ -51,4 +55,11 @@ angular.module('moola').service('CategoryService', ['$http', 'config',
             throw response.data;
         };
 
+        self.internCategory = function(category) {
+            if (!category) return category;
+            var interned = categories[category.id];
+            if (interned) return interned;
+            categories[category.id] = category;
+            return category;
+        }
     }]);

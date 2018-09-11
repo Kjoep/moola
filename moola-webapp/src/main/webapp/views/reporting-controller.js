@@ -110,6 +110,7 @@ angular.module('moola').controller('ReportingController',
             method:'GET',
             url: 'http://localhost:8080/moola/rest/accounts/'+currentAccount.id+'/reports/adhoc/'+(page)+q
         }).then(function(r){
+            adaptCategories(r.data);
             self.transactions = r.data;
         });
     };
@@ -176,8 +177,9 @@ angular.module('moola').controller('ReportingController',
     ];
 
     var adaptCategories = function(transactions) {
+        // TODO: this really should not be done at this point
         for (var i=0; i<transactions.length; i++){
-            transactions[i].category = parentController.internCategory(transactions[i].category);
+            transactions[i].category = CategoryService.internCategory(transactions[i].category);
         }
     }
 
