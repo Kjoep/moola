@@ -65,8 +65,8 @@ public class DbReportServiceTest extends DbTest {
 
         assertEquals(AccountEntryType.cardPayment, result.get(0).getType());
         assertEquals(AccountEntryType.transfer, result.get(1).getType());
-        assertEquals(new BigDecimal("-6.4"), result.get(0).getTotal());
-        assertEquals(new BigDecimal("11.2"), result.get(1).getTotal());
+        assertEquals(-640L, result.get(0).getTotal());
+        assertEquals(1120L, result.get(1).getTotal());
     }
 
     @Test
@@ -86,8 +86,8 @@ public class DbReportServiceTest extends DbTest {
 
         assertEquals("groceries", result.get(0).getCategory().getId());
         assertEquals("salary", result.get(1).getCategory().getId());
-        assertEquals(new BigDecimal("-48"), result.get(0).getTotal());
-        assertEquals(new BigDecimal("27"), result.get(1).getTotal());
+        assertEquals(-4800L, result.get(0).getTotal());
+        assertEquals(2700L, result.get(1).getTotal());
     }
 
     private Category mockCategory(String id) {
@@ -126,10 +126,9 @@ public class DbReportServiceTest extends DbTest {
         List<Bucket> result = reportService.report("test")
                 .aggregate().byDay().range(0, 30);
 
-        assertEquals(new BigDecimal("-6.2"), result.get(0).getTotal());
-        assertEquals(new BigDecimal("11.2"), result.get(1).getTotal());
-        assertEquals(new BigDecimal("-.2"), result.get(2).getTotal());
-
+        assertEquals(-620L, result.get(0).getTotal());
+        assertEquals(1120L, result.get(1).getTotal());
+        assertEquals(-20L, result.get(2).getTotal());
     }
 
 
@@ -143,9 +142,9 @@ public class DbReportServiceTest extends DbTest {
         List<Bucket> result = reportService.report("test")
                 .aggregate().byDay().range(0, 30);
 
-        assertEquals(new BigDecimal("-6.2"), result.get(0).getTotal());
-        assertEquals(new BigDecimal("11.2"), result.get(1).getTotal());
-        assertEquals(new BigDecimal("-.2"), result.get(2).getTotal());
+        assertEquals(-620L, result.get(0).getTotal());
+        assertEquals(1120L, result.get(1).getTotal());
+        assertEquals(-20L, result.get(2).getTotal());
 
     }
 
@@ -159,8 +158,8 @@ public class DbReportServiceTest extends DbTest {
         List<Bucket> result = reportService.report("test")
                 .aggregate().byMonth().range(0, 2);
 
-        assertEquals(new BigDecimal("-6.2"), result.get(0).getTotal());
-        assertEquals(new BigDecimal("11"), result.get(1).getTotal());
+        assertEquals(-620L, result.get(0).getTotal());
+        assertEquals(1100L, result.get(1).getTotal());
 
     }
 
