@@ -8,5 +8,6 @@ RUN sed -i -e 's/port="8080"/port="8080" address="0.0.0.0"/' /moola-server/tomca
 WORKDIR /moola-server
 
 EXPOSE 8080
+EXPOSE 8000
 ENTRYPOINT ["tomcat/bin/catalina.sh"]
 CMD ["run"]

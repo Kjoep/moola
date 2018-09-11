@@ -13,6 +13,8 @@ services:
       REBEL_HOME: /jrebel6
       JAVA_OPTS: -agentpath:/jrebel6/lib/libjrebel64.so
       MOOLA_DB_URL: jdbc:postgresql://db/postgres
+      JPDA_ADDRESS: 8000
+      JPDA_TRANSPORT: dt_socket
     volumes:
       - ~/.jrebel:/.jrebel
       - ${REBEL_HOME}:/jrebel6
@@ -21,6 +23,8 @@ services:
       - .:/moola-server/src
     ports:
       - 8080:8080
+      - 8000:8000
+    command: jpda run
   client:
     build:
       context: .
