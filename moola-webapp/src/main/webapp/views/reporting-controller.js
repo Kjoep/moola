@@ -91,6 +91,30 @@ angular.module('moola').controller('ReportingController',
             }
         }
 
+        else {
+
+            var groupName = function(transaction){
+                return groupKeys.map(function(gk){
+                    return transaction[gk]
+                }).join('/');
+            }
+
+            var groupKeys = Object.keys(self.query.grouping);
+            var data = {
+                datasets: [{data: []}],
+                labels: []
+            };
+            self.transactions.forEach(function(transaction){
+                data.labels.push(groupName(transaction));
+                data.datasets[0].data.push(transaction.amount);
+            });
+
+            self.chart = {
+                type: 'doughnut',
+                data: data
+            }
+        }
+
     };
 
     self.values = function(key){
