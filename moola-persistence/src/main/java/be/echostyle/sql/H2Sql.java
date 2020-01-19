@@ -42,4 +42,14 @@ public class H2Sql extends Sql {
 
         jdbc.update(sql, mapTypes(allValues).toArray());
     }
+
+    @Override
+    public boolean supportsDistinctOn() {
+        return false;
+    }
+
+    @Override
+    public boolean supportsIgnoreConflict() {
+        return false;
+    }
 }

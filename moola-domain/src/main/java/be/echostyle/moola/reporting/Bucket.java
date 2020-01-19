@@ -15,6 +15,7 @@ public class Bucket {
 
     private long count;
     private long total;
+    private long balance;
 
     public String getTimeSlice() {
         return timeSlice;
@@ -62,5 +63,13 @@ public class Bucket {
 
     public Category getCategory() {
         return category;
+    }
+
+    public void setBalance(long balance) {
+        this.balance = balance;
+    }
+
+    public long getBalance() {
+        return balance;
     }
 }

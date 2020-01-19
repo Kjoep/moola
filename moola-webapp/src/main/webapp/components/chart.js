@@ -70,7 +70,7 @@ angular.module('moola')
 
             update = function(){
                 if (!self.labels || datasets.length === 0 || self.labels.length === 0) return;
-                console.log('Doing update with '+JSON.stringify(datasets));
+                //console.log('Doing update with '+JSON.stringify(datasets));
 
                 cfg.data.labels = self.labels;
                 cfg.data.datasets = datasets;
@@ -104,8 +104,10 @@ angular.module('moola')
                 var chart = findInParents($scope, 'chart');
                 if (!chart) throw 'Series should be nested inside a chart.';
                 var chartData = $scope.$eval(attrs.data);
+                var bgColor = attrs.bgColor; 
+                if (attrs.bgColors) bgColor = $scope.$eval(attrs.bgColors);
                 var dataSet = chart.addDataSet(attrs.name, chartData, attrs.type, attrs.axis,
-                    attrs.bgColor, attrs.fgColor, attrs.borderColor);
+                    bgColor, attrs.fgColor, attrs.borderColor);
                 $scope.$watch(attrs.data, function(value){
                     dataSet.updateData(value);
                 }, true);
@@ -164,7 +166,7 @@ angular.module('moola')
                 cfg.data.labels = self.labels;
                 cfg.data.datasets = [{data: self.data, backgroundColor: self.colors}];
 
-                console.log('Doing piechart update: '+JSON.stringify(cfg));
+                //console.log('Doing piechart update: '+JSON.stringify(cfg));
 
                 if (!chart)
                     chart = new Chart($elem.find('canvas')[0], cfg);

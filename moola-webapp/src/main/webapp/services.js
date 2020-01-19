@@ -33,8 +33,15 @@ angular.module('moola').factory('Categories', ['$resource', function($resource){
     },
 
     update: function(category){
-      return categoriesResource.update({id:category.id}, category).$promise.then(function() {
-        console.log("Updated category: " + JSON.stringify(category))
+      var value = {
+        name: category.name,
+        color: category.color, 
+        parentId: (category.$parent || {}).id,
+        direction: category.direction,
+        recurrence: category.recurrence
+      }
+      return categoriesResource.update({id:category.id}, value).$promise.then(function() {
+        console.log("Updated category: " + category.id)
       });
     },
 

@@ -147,7 +147,7 @@ public class RestAccountServiceImpl implements RestAccountService {
 
         if (spec.getDescription()!=null) transaction.setDescription(spec.getDescription());
         if (spec.getPeer()!=null) transaction.setPeer(accountService.getPeer(spec.getPeer().getId()));
-        if (spec.getCategory()!=null) transaction.setCategory(accountService.getCategory(spec.getCategory().getId()));
+        if (spec.getCategory()!=null) transaction.setCategory(accountService.getCategory(spec.getCategory().getId()).orElseThrow(()->new IllegalArgumentException("Unknown category given: "+spec.getCategory().getId())));
     }
 
     @Override

@@ -60,15 +60,19 @@ angular.module('moola').controller('ReportingController',
                 }).join('/');
             }
 
+            var transactions = self.transactions.slice(0);
+            transactions.reverse();
+
             var timeSlices = [];
+            var balances = undefined;
             var lastTs;
             var groups = {};
             var groupKeys = Object.keys(self.query.grouping).filter(function(key){ return key !== 'date'});
-            self.transactions.forEach(function(transaction){
+            transactions.forEach(function(transaction){
                 groups[groupName(transaction)] = [];
             });
             var tsIdx = -1;
-            self.transactions.forEach(function(transaction){
+            transactions.forEach(function(transaction){
                 // we assume the timeslices are ordered
                 var ts = transaction['timeSlice'];
                 if (ts !== lastTs) {
@@ -83,15 +87,23 @@ angular.module('moola').controller('ReportingController',
 
                 //this assumes we want total - but it could be count, or average that we're looking for.
             });
+            if (self.query.isTimeSeries()){
+                balances = transactions.map(function(transaction){
+                    return transaction.balance;
+                });
+            }
 
             self.chart = {
                 type: 'bar',
                 labels: timeSlices,
-                groups: groups
+                groups: groups,
+                balances: balances
             }
         }
 
         else if (self.query.isGrouped()){
+
+            var CAMPFIRE = ['#588C7E', '#F2E394', '#F2AE72' ,'#D96459' ,'#8C4646'];
 
             var groupName = function(transaction){
                 return groupKeys.map(function(gk){
@@ -101,24 +113,36 @@ angular.module('moola').controller('ReportingController',
             }
 
             var groupKeys = Object.keys(self.query.grouping);
+            var colorProvider = function(){
+                var idx = 0;
+                return function(transaction){
+                    var i = idx++;
+                    return CAMPFIRE[i%CAMPFIRE.length];
+                };
+            }();
+            if (groupKeys.length === 1 && groupKeys[0] === 'category')
+                colorProvider = function(transaction){
+                    if (!transaction.category) return '#606060';
+                    if (!transaction.category.color) return '#606060';
+                    return transaction.category.color.bg;
+                };
+
             var data = {
                 type: 'pie',
                 income: {data: [],labels: [], colors:[]},
                 expense: {data: [],labels: [], colors: []}
             };
-            var defaultColor = {color:{bg:'#606060'}};
             self.transactions.forEach(function(transaction){
+                transaction.colorHint = colorProvider(transaction);
                 if (transaction.total > 0){
                     data.income.labels.push(groupName(transaction));
                     data.income.data.push(transaction.total);
-                    if (groupKeys[0] == 'category')
-                        data.income.colors.push((transaction.category || defaultColor).color.bg);
+                    data.income.colors.push(transaction.colorHint);
                 }
                 else {
                     data.expense.labels.push(groupName(transaction));
                     data.expense.data.push(0-transaction.total);
-                    if (groupKeys[0] == 'category')
-                        data.expense.colors.push((transaction.category || defaultColor).color.bg);
+                    data.expense.colors.push(transaction.colorHint);
                 }
             });
 
@@ -129,6 +153,12 @@ angular.module('moola').controller('ReportingController',
         }
 
     };
+
+    self.inOutColors = function(data){
+        return data.map(function(entry){
+            return entry<0 ? "#D96459" : "#588C7E";
+        })
+    }
 
     self.values = function(key){
         return self.transactions.map(function(transaction){

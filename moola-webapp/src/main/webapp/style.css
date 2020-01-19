@@ -60,6 +60,7 @@ h1 img {
     border: solid black 2px;
     height: 500px;
     width: 600px;
+    margin: 0 auto;
 }
 
 table.report {

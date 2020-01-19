@@ -84,6 +84,9 @@
             if (Object.keys(this.grouping).length === 0) return false;
             if (by) return !!this.grouping[by];
             else return true;
+        },
+        isTimeSeries: function () {
+            return Object.keys(this.grouping).length === 1 && this.grouping.date;
         }
     }
 

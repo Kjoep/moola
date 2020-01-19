@@ -11,6 +11,7 @@ public class Bucket {
 
     private long count;
     private BigDecimal total;
+    private BigDecimal balance;
 
     public String getTimeSlice() {
         return timeSlice;
@@ -36,10 +37,15 @@ public class Bucket {
         return total;
     }
 
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
     public static Bucket fromModel(be.echostyle.moola.reporting.Bucket bucket){
         Bucket r = new Bucket();
 
         r.total = centsToFull(bucket.getTotal());
+        r.balance = centsToFull(bucket.getBalance());
         r.peer = Peer.fromModel(bucket.getPeer());
         r.category = Category.fromModel(bucket.getCategory());
         r.timeSlice = bucket.getTimeSlice();

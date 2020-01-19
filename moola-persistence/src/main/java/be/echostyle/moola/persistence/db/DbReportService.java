@@ -21,9 +21,14 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static be.echostyle.moola.persistence.db.DbAccountEntry.*;
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toMap;
+import static java.util.stream.Collectors.toSet;
 
 public class DbReportService implements ReportService {
 
@@ -46,6 +51,8 @@ public class DbReportService implements ReportService {
                     .from(DbAccountEntry.TABLE)
                     .whereIn(DbAccountEntry.COL_ACCOUNT_ID, account.getSimpleIds());
 
+            String timeSliceFunction;
+
             @Override
             public EntryQuery withPeer(Set<String> peerIds) {
                 q = q.whereIn(DbAccountEntry.COL_PEER_ID, peerIds);
@@ -60,7 +67,7 @@ public class DbReportService implements ReportService {
 
             @Override
             public EntryQuery withType(Set<AccountEntryType> type) {
-                q = q.whereIn(COL_TYPE, type.stream().map(Enum::name).collect(Collectors.toSet()));
+                q = q.whereIn(COL_TYPE, type.stream().map(Enum::name).collect(toSet()));
                 return this;
             }
 
@@ -75,7 +82,7 @@ public class DbReportService implements ReportService {
 
             @Override
             public EntryQuery newestFirst() {
-                q = q.orderDesc(COL_TIMESTAMP);
+                q = q.orderDesc(COL_TIMESTAMP).orderDesc(COL_ORDERNR);
                 return this;
             }
 
@@ -112,25 +119,29 @@ public class DbReportService implements ReportService {
 
                     @Override
                     public AggregatedQuery byDay() {
-                        aggregateDesc(func("TS_DAY", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
+                        timeSliceFunction = func("TS_DAY", COL_TIMESTAMP);
+                        aggregateDesc(timeSliceFunction, "timeslice", RowAdapter::string, Bucket::setTimeSlice);
                         return this;
                     }
 
                     @Override
                     public AggregatedQuery byWeek() {
-                        aggregateDesc(func("TS_WEEK", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
+                        timeSliceFunction = func("TS_WEEK", COL_TIMESTAMP);
+                        aggregateDesc(timeSliceFunction, "timeslice", RowAdapter::string, Bucket::setTimeSlice);
                         return this;
                     }
 
                     @Override
                     public AggregatedQuery byMonth() {
-                        aggregateDesc(func("TS_MONTH", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
+                        timeSliceFunction = func("TS_MONTH", COL_TIMESTAMP);
+                        aggregateDesc(timeSliceFunction, "timeslice", RowAdapter::string, Bucket::setTimeSlice);
                         return this;
                     }
 
                     @Override
                     public AggregatedQuery byYear() {
-                        aggregateDesc(func("TS_YEAR", COL_TIMESTAMP), "timeslice", RowAdapter::string, Bucket::setTimeSlice);
+                        timeSliceFunction = func("TS_YEAR", COL_TIMESTAMP);
+                        aggregateDesc(timeSliceFunction, "timeslice", RowAdapter::string, Bucket::setTimeSlice);
                         return this;
                     }
 
@@ -159,9 +170,30 @@ public class DbReportService implements ReportService {
                         select.add(func("COUNT", DbAccountEntry.COL_AMOUNT)+" as count");
                         select.add(func("SUM", DbAccountEntry.COL_AMOUNT)+" as total");
                         select.addAll(keys.entrySet().stream().map(e->e.getValue()+" as "+e.getKey()).collect(Collectors.toList()));
-                        return q
+                        List<Bucket> result = q
                                 .limit(limit, from)
                                 .list(bucketCacheMapper(), select);
+                        if (timeSliceFunction != null)
+                            appendBalance(result);
+                        return result;
+                    }
+
+                    private void appendBalance(List<Bucket> result){
+                        if (!repository.supportsDistinctOn()) return;
+                        Map<String, Bucket> sliced = result.stream().collect(toMap(Bucket::getTimeSlice, identity()));
+                        if (sliced.size() != result.size()) return;
+                        repository
+                            .from(DbAccountEntry.TABLE)
+                            .whereIn(DbAccountEntry.COL_ACCOUNT_ID, account.getSimpleIds())
+                            .whereIn(timeSliceFunction, result.stream().map(Bucket::getTimeSlice).collect(toSet()))
+                            .distinctOnAsc(timeSliceFunction)
+                            .orderDesc(DbAccountEntry.COL_ORDERNR)
+                            .list(row -> {
+                                Bucket actual = sliced.get(row.string("timeslice"));
+                                actual.setBalance(row.longInt(DbAccountEntry.COL_BALANCE));
+                                return actual;
+                            }, timeSliceFunction+" as timeslice", DbAccountEntry.COL_BALANCE);
+
                     }
 
                     private BucketMapper bucketCacheMapper() {

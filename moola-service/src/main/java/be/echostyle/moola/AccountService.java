@@ -9,6 +9,7 @@ import be.echostyle.moola.peer.PeerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class AccountService {
 
@@ -111,8 +112,8 @@ public class AccountService {
         this.categoryFactory = categoryFactory;
     }
 
-    public Category getCategory(String id) {
-        return categoryRepository.getCategory(id);
+    public Optional<Category> getCategory(String id) {
+        return Optional.ofNullable(categoryRepository.getCategory(id));
     }
 
 }

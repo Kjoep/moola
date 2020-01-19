@@ -5,8 +5,11 @@
 
     <div class="charts">
         <chart ng-if="report.chart.type == 'bar'" labels="report.chart.labels">
+            <series ng-if="report.query.isTimeSeries()" name="balance"
+                type="line" stacked="true" data="report.chart.balances" axis="balance"
+                border-color="#F2AE72" bg-color="transparent"></series>
             <series ng-repeat="(name, data) in report.chart.groups" name="{{name}}"
-                type="bar" stacked="true" data="data" axis="amounts"></series>
+                type="bar" stacked="true" data="data" axis="amounts" bg-colors="report.inOutColors(data)"></series>
         </chart>
         <pie-chart ng-if="report.chart.type == 'pie'" title="Income" labels="report.chart.income.labels"  
                    data="report.chart.income.data" colors="report.chart.income.colors">
@@ -34,7 +37,7 @@
 
     <table class="transactionsTable">
         <thead>
-            <tr>
+            <tr><th></th>
                 <th ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('date')">
                     <filter-date query="report.query" on-apply="report.applyQuery(query)">Time</filter-date>
                 </th>
@@ -47,11 +50,12 @@
                 <th ng-show="!report.query.isGrouped()">Comment</th>
                 <th style="text-align: center" ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('peer')">Peer</th>
                 <th style="text-align: right">Amount</th>
-                <th style="text-align: right" ng-show="!report.query.isGrouped()">Balance</th>
+                <th style="text-align: right" ng-show="!report.query.isGrouped() || report.query.isTimeSeries()">Balance</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="trans in report.transactions" data-id="{{trans.id}}">
+                <td><color-display bg="{{trans.colorHint}}" fg="{{trans.colorHint}}"></color-display></td>
                 <td ng-show="showUnusedCols || !report.query.isGrouped() || report.query.isGrouped('date')">
                     <span class="date" ng-show="!report.query.isGrouped()">{{report.formatDateShort(trans.timestamp)}}</span>
                     <span class="timeslice" ng-show="report.query.isGrouped('date')">{{trans.timeSlice}}</span>
@@ -101,7 +105,7 @@
                     <span ng-show="trans.amount" class="amount {{trans.amount > 0 ? 'positive' : 'negative'}}">{{trans.amount | number : 2}}</span>
                     <span ng-show="trans.total" class="amount {{trans.total > 0 ? 'positive' : 'negative'}}">{{trans.total | number : 2}}</span>
                 </td>
-                <td ng-show="!report.query.isGrouped()" class="amount">{{trans.balance | number:2}}</td>
+                <td ng-show="!report.query.isGrouped() || report.query.isTimeSeries()" class="amount">{{trans.balance | number:2}}</td>
             </tr>
         </tbody>
     </table>

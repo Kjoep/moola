@@ -1,0 +1,46 @@
+tree-editor {
+    display: block;
+
+    .tree-branch {
+        position: relative
+    }
+
+    .tree-item {
+        display: block;
+        padding: 3px;
+        border-top: solid #eee 1px;
+        padding-left: 20px;
+    }
+
+    .drag-handle {
+        position: absolute;
+        background: white url('../img/draghandle.png') repeat-x center;
+        top: 0;
+        left: 0;
+        width: 10px;
+        height: 32px;
+        cursor: pointer;
+    }
+
+    .drag-handle:hover {
+        background-color: grey;
+    }
+
+    tree-editor-branch {
+        display: block;
+
+        .children {
+            padding-left: 10px;
+        }
+    }
+
+    tree-editor-branch .dragged {
+        display: block;
+        opacity: .5;
+    }
+
+    tree-editor-branch.dragging .tree-item:hover {
+        display: block;
+        background-color:rgba(0,0,0,.2);
+    }
+}

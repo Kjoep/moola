@@ -1,0 +1,6 @@
+<a href="" ng-click="vm.showPicker=!vm.showPicker"><color-display fg="{{vm.ngModel.fg}}" bg="{{vm.ngModel.bg}}"></color-display></a>
+<div class="picker-panel" ng-show="vm.showPicker">
+    <a href="" ng-repeat="color in vm.options" ng-click="vm.pick(color);">
+        <color-display fg="{{color.fg}}" bg="{{color.bg}}"></color-display>
+    </a>
+</div>

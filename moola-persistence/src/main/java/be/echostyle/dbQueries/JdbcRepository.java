@@ -18,6 +18,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Stream.concat;
+
 public abstract class JdbcRepository {
 
     private static final Logger log = LoggerFactory.getLogger(JdbcRepository.class);
@@ -41,6 +44,7 @@ public abstract class JdbcRepository {
             private List<String> where = new ArrayList<>();
             private List<String> order = new ArrayList<>();
             private List<String> group = new ArrayList<>();
+            private List<String> distinctOn = new ArrayList<>();
             private List<Object> parameters = new ArrayList<>();
             private Integer limit;
             private Integer fromRange;
@@ -93,8 +97,9 @@ public abstract class JdbcRepository {
 
             @Override
             public int count(String column) {
-                if (!group.isEmpty()) {
-                    String sql = "select count(distinct("+String.join(", ", group)+")) as cnt from " + table;
+                if (!group.isEmpty() || !distinctOn.isEmpty()) {
+                    List<String> allGroup = concat(group.stream(), distinctOn.stream()).collect(toList());
+                    String sql = "select count(distinct("+String.join(", ", allGroup)+")) as cnt from " + table;
                     if (!where.isEmpty())
                         sql += " where " + String.join(" and ", where);
                     log.debug("Executing {} with {}", sql, parameters);
@@ -134,8 +139,23 @@ public abstract class JdbcRepository {
                 return this;
             }
 
+            @Override
+            public QueryBuilder distinctOnAsc(String expression) {
+                distinctOn.add(expression);
+                return orderAsc(expression);
+            }
+
+            @Override
+            public QueryBuilder distinctOnDesc(String expression) {
+                distinctOn.add(expression);
+                return orderDesc(expression);
+            }
+
             private String buildQuery(String[] select) {
-                String sql = "select "+String.join(", ", select)+" from "+from;
+                String sql = "select ";
+                if (!distinctOn.isEmpty())
+                    sql+= "distinct on ("+String.join(", ", distinctOn)+") ";
+                sql+= String.join(", ", select)+" from "+from;
                 if (!where.isEmpty())
                     sql+=" where "+String.join(" and ", where);
                 if (!group.isEmpty())
@@ -171,7 +191,7 @@ public abstract class JdbcRepository {
                 String[] select = map(mapping, Value::describe);
                 String selectValues = buildQuery(select);
                 String sql = "insert into "+table+" ("+selectValues+")";
-                if (conflictHandling == ConflictHandling.IGNORE)
+                if (conflictHandling == ConflictHandling.IGNORE && dialect.supportsIgnoreConflict())
                     sql += " on conflict do nothing";
                 return jdbcTemplate.update(sql, parameters.toArray(new Object[0]));
             }
@@ -396,4 +416,7 @@ public abstract class JdbcRepository {
     }
 
 
+    public boolean supportsDistinctOn() {
+        return dialect.supportsDistinctOn();
+    }
 }

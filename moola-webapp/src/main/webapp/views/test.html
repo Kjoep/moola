@@ -1,0 +1,12 @@
+<div style="margin:40px">
+
+<h2>Test</h2>
+
+<color-display fg="{{value.fg}}" bg="{{value.bg}}"></color-display>
+<color-picker ng-model="value" ng-change="changed = color; changedVal = value"></color-picker>
+
+<pre>value: {{value|json}}</pre>
+<pre>changed: {{changed|json}}</pre>
+<pre>changedVal: {{changedVal|json}}</pre>
+
+</div>

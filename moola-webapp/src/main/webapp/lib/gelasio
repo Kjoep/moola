@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'GelasioBold';
+        src: url('/assets/fonts/gelasio/4d610887ff4d445cbc639aae7828d139/7be1d568c30cf0392e265effc0e8604f/GelasioBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+      }
+
+@font-face {
+    font-family: 'GelasioBoldItalic';
+        src: url('/assets/fonts/gelasio/4d610887ff4d445cbc639aae7828d139/d3c8a6d0d785a2774aa93cf061af46bb/GelasioBoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+      }
+
+@font-face {
+    font-family: 'GelasioItalic';
+        src: url('/assets/fonts/gelasio/4d610887ff4d445cbc639aae7828d139/54575c749906783220bc30cd278d4cb9/GelasioItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+      }
+
+@font-face {
+    font-family: 'GelasioRegular';
+        src: url('/assets/fonts/gelasio/4d610887ff4d445cbc639aae7828d139/bd1bdf873b65bde2d28e5320a441f733/GelasioRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+ /* The following rules are deprecated. */ 
+
+@font-face {
+    font-family: 'Gelasio';
+        src: url('/assets/fonts/gelasio/4d610887ff4d445cbc639aae7828d139/7be1d568c30cf0392e265effc0e8604f/GelasioBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+      }
+
+
+
+@font-face {
+    font-family: 'Gelasio';
+        src: url('/assets/fonts/gelasio/4d610887ff4d445cbc639aae7828d139/d3c8a6d0d785a2774aa93cf061af46bb/GelasioBoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+      }
+
+
+
+@font-face {
+    font-family: 'Gelasio';
+        src: url('/assets/fonts/gelasio/4d610887ff4d445cbc639aae7828d139/54575c749906783220bc30cd278d4cb9/GelasioItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+      }
+
+
+
+@font-face {
+    font-family: 'Gelasio';
+        src: url('/assets/fonts/gelasio/4d610887ff4d445cbc639aae7828d139/bd1bdf873b65bde2d28e5320a441f733/GelasioRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+      }
+

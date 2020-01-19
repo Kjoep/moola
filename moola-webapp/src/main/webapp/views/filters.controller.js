@@ -33,7 +33,7 @@ function ($scope, $resource, $filter, BacklogService, config) {
 
     self.updateCategory = function(category){
         categoriesResource.update({id:category.id}, category).$promise.then(function(){
-            console.log("Updated category: "+JSON.stringify(category))
+            console.log("Updated category: "+category.id)
         })
     }
 

@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'GidoleRegular';
+        src: url('/assets/fonts/gidole-regular/ef7019d028f3059ddb29cc01f2f47881/1810ef31ec03f69edc35c9ebf2909757/GidoleRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+@font-face {
+    font-family: 'GidolinyaRegular';
+        src: url('/assets/fonts/gidole-regular/ef7019d028f3059ddb29cc01f2f47881/09e4fb21fe7bdc1d36bfe0bca4282d41/GidolinyaRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+ /* The following rules are deprecated. */ 
+
+@font-face {
+    font-family: 'Gidole';
+        src: url('/assets/fonts/gidole-regular/ef7019d028f3059ddb29cc01f2f47881/1810ef31ec03f69edc35c9ebf2909757/GidoleRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+
+
+@font-face {
+    font-family: 'Gidolinya';
+        src: url('/assets/fonts/gidole-regular/ef7019d028f3059ddb29cc01f2f47881/09e4fb21fe7bdc1d36bfe0bca4282d41/GidolinyaRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+      }
+

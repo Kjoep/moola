@@ -30,6 +30,8 @@ public interface QueryBuilder {
     }
 
     QueryBuilder groupedBy(String expression);
+    QueryBuilder distinctOnAsc(String expression);
+    QueryBuilder distinctOnDesc(String expression);
 
     default <T> Optional<T> one(Mapper<T> mapper, String... columns){
         List<T> r = list(mapper, columns);

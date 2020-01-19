@@ -87,7 +87,7 @@ public class AxaParser implements HistoryParser {
 
     private AccountEntry parseLineSingle(CsvLine accountLine, AccountEntryFactory entryFactory) {
         return entryFactory.create(
-                accountLine.timestamp(Header.datum_verrichting),
+                accountLine.timestamp(Header.datum_boeking),
                 accountLine.index(),
                 accountLine.longCents(Header.bedrag),
                 accountLine.longCents(Header.saldo_rekening),
@@ -127,7 +127,7 @@ public class AxaParser implements HistoryParser {
             case "Glob. verk. - Bancontact": return AccountEntryType.cardPayment;
             case "Europese overschr via Mobile": return AccountEntryType.transfer;
             default: {
-                log.warn("Unknown entry type: {}", typeString);
+                log.warn("Unknown entry type: '{}'", typeString);
                 return AccountEntryType.unknown;
             }
         }

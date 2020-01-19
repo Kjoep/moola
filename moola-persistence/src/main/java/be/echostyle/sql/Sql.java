@@ -38,6 +38,10 @@ public abstract class Sql {
 
     public abstract void merge(JdbcTemplate jdbc, String table, String[] keyColumns, String[] columns, Object[] keyValues, Object[] values);
 
+    public abstract boolean supportsDistinctOn();
+
+    public abstract boolean supportsIgnoreConflict();
+
     public enum Type {
         VARCHAR,
         INT,

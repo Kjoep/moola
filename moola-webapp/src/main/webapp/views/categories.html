@@ -3,34 +3,24 @@
         <h2>Categories</h2>
     </div>
 
-    <table class="categoriesTable">
-        <thead>
-        <tr>
-            <th><!-- tree --></th>
-            <th><!-- color --></th>
-            <th>Name</th>
-            <th>In/Out</th>
-            <th>Occcurence</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="category in categories.categories">
-                <td clas="tree">├</td>
-                <td><color-display fg="{{category.color.fg}}" bg="{{category.color.bg}}" ></color-display></td>
-                <td><input type="text" ng-model="category.name" /></td>
-                <td><select name="direction" ng-model="category.direction" ng-options="item as item for item in ['in', 'out']"></select></td>
-                <td><select name="occurence" ng-model="category.occcurence" ng-options="item as item for item in ['fixed', 'variable']"></select></td>
-                <td><button>Delete</button></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td><input type="text" ng-model="categories.newCategory.name" /></td>
-                <td><select name="direction" ng-model="categories.newCategory.direction" ng-options="item as item for item in ['in', 'out']"></select></td>
-                <td><select name="occurence" ng-model="categories.newCategory.occurence" ng-options="item as item for item in ['fixed', 'variable']" id=""></select></td>
-                <td><button>Add</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <h3>Add category</h3>
+        <input type="text" ng-model="name"></input><button ng-click="categories.addNew(name); name=''">Add</button>
+    </div>
+
+    <tree-editor nodes="categories.roots" set-parent="categories.setParent(parent, child)" expose="{categories: categories}">
+        <div class="category-edit" ng-class="{saving: categories.updates[node.id]}">
+            <color-picker ng-model="node.color" ng-change="categories.save(node)"></color-picker>
+            <input type="text" ng-model="node.name" ng-change="categories.save(node)" />
+            <select name="direction" ng-model="node.direction" ng-change="categories.save(node)" ng-options="item as item for item in ['incoming', 'outgoing']"></select>
+            <select name="occurence" ng-model="node.occcurence" ng-change="categories.save(node)" cng-options="item as item for item in ['variable', 'monthly', 'yearly']"></select>
+            <button ng-click="categories.delete(node)">Delete</button>
+        </div>
+    </tree-editor>
 </div>
+<style>
+    .category-edit.saving {
+        background: red;
+    }
+
+</style>

@@ -44,4 +44,14 @@ public class PostgresSql extends Sql {
 
         jdbc.update(sql, mapTypes(allValues).toArray(new Object[0]));
     }
+
+    @Override
+    public boolean supportsDistinctOn() {
+        return true;
+    }
+
+    @Override
+    public boolean supportsIgnoreConflict() {
+        return true;
+    }
 }

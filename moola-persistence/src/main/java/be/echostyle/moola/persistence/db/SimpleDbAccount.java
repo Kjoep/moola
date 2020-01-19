@@ -31,7 +31,7 @@ public class SimpleDbAccount extends DbAccount implements SimpleAccount {
 
     @Override
     public AccountEntry addEntry(String batchId, LocalDateTime timestamp, int orderNr, long amount, long balance, String comment, AccountEntryType type, PeerInfo peerInfo, TerminalInfo terminalInfo) {
-        DbAccountEntry r = find(timestamp, amount, comment, type);
+        DbAccountEntry r = find(timestamp, amount, comment, type, balance);
         if (r==null) {
             String id = idGenerator.generate();
             repository
@@ -114,12 +114,13 @@ public class SimpleDbAccount extends DbAccount implements SimpleAccount {
         super.removeAll();
     }
 
-    private DbAccountEntry find(LocalDateTime timestamp, long amount, String comment, AccountEntryType type) {
+    private DbAccountEntry find(LocalDateTime timestamp, long amount, String comment, AccountEntryType type, long balance) {
         return (DbAccountEntry) repository.from(DbAccountEntry.TABLE)
                 .where(COL_ACCOUNT_ID +" = ?", this.id)
                 .where(COL_TIMESTAMP +" = ?", timestamp)
                 .where(COL_AMOUNT+" = ?", amount)
                 .where(COL_TYPE+" = ?", type)
+                .where(COL_BALANCE+" = ?", balance)
                 .one(cacheMapper(), ALL_COLS).orElse(null);
     }
 

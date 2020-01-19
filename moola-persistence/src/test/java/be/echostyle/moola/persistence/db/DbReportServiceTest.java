@@ -4,6 +4,7 @@ import be.echostyle.moola.AccountEntryType;
 import be.echostyle.moola.category.Category;
 import be.echostyle.moola.category.CategoryRepository;
 import be.echostyle.moola.category.Direction;
+import be.echostyle.moola.category.Recurrence;
 import be.echostyle.moola.peer.PeerRepository;
 import be.echostyle.moola.reporting.Bucket;
 import org.junit.After;
@@ -18,7 +19,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyString;
@@ -95,6 +98,9 @@ public class DbReportServiceTest extends DbTest {
             public Direction getDirection() {
                 return null;
             }
+            public Recurrence getRecurrence() {
+                return null;
+            }
             public String getName() {
                 return id;
             }
@@ -107,11 +113,21 @@ public class DbReportServiceTest extends DbTest {
             public String getBgColor() {
                 return null;
             }
+            public Category getParent() {
+                return null;
+            }
+            public Set<Category> getChildren() {
+                return Collections.emptySet();
+            }
+            public void setDirection(Direction direction) {
+            }
+            public void setRecurrence(Recurrence recurrence) {
+            }
+            public void setParent(Category parent) {
+            }
             public void setName(String name) {
-
             }
             public void setColor(String fgColor, String bgColor) {
-
             }
         };
     }
